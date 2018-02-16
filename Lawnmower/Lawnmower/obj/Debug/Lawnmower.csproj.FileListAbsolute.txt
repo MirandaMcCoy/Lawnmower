@@ -1,0 +1,15 @@
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\bin\Debug\Lawnmower.dll
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\bin\Debug\Lawnmower.pdb
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\bin\Debug\Lawnmower.Lawnmower.apk
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\bin\Debug\Lawnmower.Lawnmower-Signed.apk
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\Lawnmower.csprojResolveAssemblyReference.cache
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\Lawnmower.csproj.CoreCompileInputs.cache
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\Lawnmower.dll
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\Lawnmower.pdb
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\android\bin\Lawnmower.Lawnmower.apk
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\res\layout\main.xml
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\res\values\strings.xml
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\R.cs.flag
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\uploadflags.txt
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\bin\Debug\Lawnmower.dll.mdb
+C:\Users\Miranda\Desktop\Desktop Folders\Repos\Lawnmower\Lawnmower\Lawnmower\obj\Debug\android\assets\Lawnmower.dll.mdb

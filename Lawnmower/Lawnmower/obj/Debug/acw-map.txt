@@ -2,3 +2,7 @@ Lawnmower.MainActivity, Lawnmower;md5ed3913b6287fe9f6c5b6a4373a83fe9d.MainActivi
 Lawnmower.MainActivity, Lawnmower, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ed3913b6287fe9f6c5b6a4373a83fe9d.MainActivity
 Lawnmower.MainActivity;md5ed3913b6287fe9f6c5b6a4373a83fe9d.MainActivity
 lawnmower.MainActivity;md5ed3913b6287fe9f6c5b6a4373a83fe9d.MainActivity
+Lawnmower.Holders.LoginViewHolder, Lawnmower;md5b4e31651d657ad2fd182b15a340861c2.LoginViewHolder
+Lawnmower.Holders.LoginViewHolder, Lawnmower, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5b4e31651d657ad2fd182b15a340861c2.LoginViewHolder
+Lawnmower.Holders.LoginViewHolder;md5b4e31651d657ad2fd182b15a340861c2.LoginViewHolder
+lawnmower.holders.LoginViewHolder;md5b4e31651d657ad2fd182b15a340861c2.LoginViewHolder

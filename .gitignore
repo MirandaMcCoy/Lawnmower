@@ -11,6 +11,7 @@
 *.userprefs
 
 # Build results
+*/Debug/*
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -247,4 +248,4 @@ _Pvt_Extensions
 .idea/
 *.sln.iml
 
-Lawnmower\Resources\Resource.Designer.cs
+Lawnmower/Resources/Resource.Designer.cs

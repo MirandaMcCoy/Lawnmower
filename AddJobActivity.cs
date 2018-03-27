@@ -12,14 +12,18 @@ using Android.Widget;
 
 namespace Lawnmower
 {
-    [Activity(Label = "AddJobActivity")]
-    public class AddJobActivity : Activity
+    public class AddJobActivity : Fragment
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your application here
+        }
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            return base.OnCreateView(inflater, container, savedInstanceState);
         }
     }
 }

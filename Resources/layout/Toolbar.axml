@@ -5,26 +5,22 @@
     android:layout_height="@dimen/toolbar_height"
     android:gravity="center_vertical"
     android:background="@color/toolbar_gray">
-
-  <TextView
-    android:id="@+id/Logo"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:layout_gravity="left"
-    android:paddingLeft="@dimen/toolbar_padding"
-    android:text="DML"
-    android:textSize="24sp"/>
-
-  <TextView
-    android:id="@+id/AddJobButton"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:layout_gravity="right"
-    android:paddingRight="@dimen/toolbar_padding"
-    android:gravity="right"
-    android:text="+"
-    android:textSize="24sp"/>
-  
+    <TextView
+        android:id="@+id/Logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="left"
+        android:paddingLeft="@dimen/toolbar_padding"
+        android:text="DML"
+        android:textSize="24sp" />
+    <TextView
+        android:id="@+id/AddJobButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:layout_gravity="right"
+        android:paddingRight="@dimen/toolbar_padding"
+        android:gravity="right"
+        android:text="X"/>
 </LinearLayout>

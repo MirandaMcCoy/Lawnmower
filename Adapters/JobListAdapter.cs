@@ -9,17 +9,23 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Lawnmower.Objects;
+using Lawnmower.ViewHolders;
 
 namespace Lawnmower.Adapters
 {
     class JobListAdapter : BaseAdapter
     {
 
-        Context context;
+        Activity context;
+        List<Job> jobs;
+        JobListItemViewHolder holder;
+        View view;
 
-        public JobListAdapter(Context context)
+        public JobListAdapter(Activity context, Job[] jobs)
         {
             this.context = context;
+            this.jobs = jobs.ToList();
         }
 
 
@@ -35,44 +41,49 @@ namespace Lawnmower.Adapters
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            var view = convertView;
-            JobListAdapterViewHolder holder = null;
+            view = convertView;
 
-            if (view != null)
-                holder = view.Tag as JobListAdapterViewHolder;
-
-            if (holder == null)
+            if (view == null)
             {
-                holder = new JobListAdapterViewHolder();
                 var inflater = context.GetSystemService(Context.LayoutInflaterService).JavaCast<LayoutInflater>();
-                //replace with your item and your holder items
-                //comment back in
-                //view = inflater.Inflate(Resource.Layout.item, parent, false);
-                //holder.Title = view.FindViewById<TextView>(Resource.Id.text);
+                view = inflater.Inflate(Resource.Layout.JobListItem, parent, false);
+
+                holder = new JobListItemViewHolder();
+
+                SetHolderViews();
+
                 view.Tag = holder;
+            } else
+            {
+                holder = view.Tag as JobListItemViewHolder;
             }
 
-
-            //fill in your items
-            //holder.Title.Text = "new text here";
+            SetViews(position);
 
             return view;
         }
-
-        //Fill in cound here, currently 0
+        
         public override int Count
         {
             get
             {
-                return 0;
+                return jobs.Count;
             }
         }
 
-    }
+        private void SetViews(int position)
+        {
+            holder.FirstNameText.Text = jobs[position].FirstName;
+            holder.LastNameText.Text = jobs[position].LastName;
+            holder.AddressNameText.Text = jobs[position].Address;
+        }
 
-    class JobListAdapterViewHolder : Java.Lang.Object
-    {
-        //Your adapter views to re-use
-        //public TextView Title { get; set; }
+        private void SetHolderViews()
+        {
+            holder.AddressNameText = view.FindViewById<TextView>(Resource.Id.AddressTextView);
+            holder.FirstNameText = view.FindViewById<TextView>(Resource.Id.FirstNameTextView);
+            holder.LastNameText = view.FindViewById<TextView>(Resource.Id.LastNameTextView);
+        }
+
     }
 }

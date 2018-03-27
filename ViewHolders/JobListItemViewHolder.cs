@@ -12,8 +12,10 @@ using Android.Widget;
 
 namespace Lawnmower.ViewHolders
 {
-    class ListViewHolder
+    class JobListItemViewHolder : Java.Lang.Object
     {
-        public ListView JobListView { get; set; }
+        public TextView FirstNameText { get; set; }
+        public TextView LastNameText { get; set; }
+        public TextView AddressNameText { get; set; }
     }
 }

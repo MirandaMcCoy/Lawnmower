@@ -14,7 +14,7 @@ using Lawnmower.ViewHolders;
 
 namespace Lawnmower
 {
-    [Activity(Label = "LoginActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true)]
+    [Activity(Label = "LoginActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public class LoginActivity : Activity
     {
         private LoginViewHolder holder;
@@ -45,6 +45,8 @@ namespace Lawnmower
         private void SetHolderViews()
         {
             holder.mainButton = FindViewById<Button>(Resource.Id.MainButton);
+
+            var t = holder.mainButton;
         }
 
         #region Click Events

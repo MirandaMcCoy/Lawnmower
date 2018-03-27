@@ -10,10 +10,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace Lawnmower.ViewHolders
+namespace Lawnmower.Objects
 {
-    class ListViewHolder
+    class Job
     {
-        public ListView JobListView { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string Notes { get; set; }
     }
 }

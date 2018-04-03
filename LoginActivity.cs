@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Lawnmower.ViewHolders;
+using Android.Gms.Common;
 
 namespace Lawnmower
 {

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "656243720140",
+    "firebase_url": "https://dml-cms-c70ac.firebaseio.com",
+    "project_id": "dml-cms-c70ac",
+    "storage_bucket": "dml-cms-c70ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656243720140:android:1e1f3167454c8730",
+        "android_client_info": {
+          "package_name": "Lawnmower.Lawnmower"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656243720140-566b6tuv07s8rlh4186qumcifm5uoavm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "Lawnmower.Lawnmower",
+            "certificate_hash": "bf769f686cae6e30c6ac399217669feb786a1619"
+          }
+        },
+        {
+          "client_id": "656243720140-30k052vuk2ue3udabr925km6pc9fqg1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlXDQMaH5P3YRghSiTrWZ_lCmrfhRFS2U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656243720140-30k052vuk2ue3udabr925km6pc9fqg1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

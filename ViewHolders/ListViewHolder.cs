@@ -15,5 +15,7 @@ namespace Lawnmower.ViewHolders
     class ListViewHolder
     {
         public ListView JobListView { get; set; }
+        public ImageView AddJobImage { get; set; }
+        public AddJobActivity AddJobFragment { get; set; }
     }
 }

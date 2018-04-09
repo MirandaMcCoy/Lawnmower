@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 using Lawnmower.Adapters;
+using System;
 
 namespace Lawnmower
 {
@@ -39,12 +40,17 @@ namespace Lawnmower
 
         private void AssignClickEvents()
         {
-
+            holder.AddJobImage.Click += AddJobClick;
         }
 
         private void UnassignClickEvents()
         {
 
+        }
+
+        private void AddJobClick(object sender, EventArgs e)
+        {
+            FragmentManager.BeginTransaction().Show(holder.AddJobFragment).Commit();
         }
 
         #endregion
@@ -76,7 +82,9 @@ namespace Lawnmower
 
         private void SetHolderViews()
         {
-            holder.JobListView = FindViewById<ListView>(Resource.Id.JobList); 
+            holder.JobListView = FindViewById<ListView>(Resource.Id.JobList);
+            holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
+            holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
         }
 
         private void SetViewAdapter()

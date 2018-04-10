@@ -5,5 +5,24 @@
           android:versionName="1.0">
   <uses-sdk android:minSdkVersion="21" />
   <application android:allowBackup="true" android:label="@string/app_name">
+    <!--instance ID Reciever for firebase setup
+         https://docs.microsoft.com/en-us/xamarin/android/data-cloud/google-messaging/remote-notifications-with-fcm?tabs=vswin#add-the-instance-id-receiver
+      This XML does the following:
+        1)Declares a FirebaseInstanceIdReceiver implementation that provides a unique identifier for each app instance. This receiver also authenticates and authorizes actions.
+        2)Declares an internal FirebaseInstanceIdInternalReceiver implementation that is used to start services securely.
+      -->
+    <receiver
+    android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+    android:exported="false" />
+    <receiver
+        android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="${applicationId}" />
+      </intent-filter>
+    </receiver>
   </application>
 </manifest>

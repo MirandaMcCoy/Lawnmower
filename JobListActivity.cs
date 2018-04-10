@@ -19,6 +19,10 @@ namespace Lawnmower
             IsPlayServicesAvailable();
         }
 
+        /// <testGooglePlay>
+        /// testting abilities to connect to google play services 
+        /// for firebase connection
+        /// </testGooglePlay>
         TextView msgText;
         public bool IsPlayServicesAvailable()
         {

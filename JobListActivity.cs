@@ -3,6 +3,9 @@ using Android.Widget;
 using Android.OS;
 using Android.Content.PM;
 using Android.Gms.Common;
+using Lawnmower;
+using Firebase.Xamarin.Database;
+using Firebase.Xamarin.Database.Query;
 
 namespace Lawnmower
 {
@@ -17,6 +20,7 @@ namespace Lawnmower
 
             msgText = FindViewById<TextView>(Resource.Id.msgText);
             IsPlayServicesAvailable();
+
         }
 
         /// <testGooglePlay>
@@ -41,6 +45,7 @@ namespace Lawnmower
             else
             {
                 msgText.Text = "Google Play Services is available.";
+                
                 return true;
             }
         }

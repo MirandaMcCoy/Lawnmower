@@ -39,5 +39,5 @@
     android:text="Login"
     android:textSize="@dimen/login_button_text_size"
     android:background="@color/white"
-    android:textColor="@color/toolbar_gray"/>
+    android:textColor="@color/gray1"/>
 </LinearLayout>

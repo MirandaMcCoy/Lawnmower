@@ -3,8 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="@color/bedazzled_blue">
+    android:gravity="center_horizontal"
+    android:paddingTop="@dimen/login_top_padding"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/loginGradient">
   <ImageView
     android:id="@+id/Logo"
     android:layout_height="200dp"
@@ -15,12 +18,17 @@
     android:layout_height="wrap_content"
     android:layout_width="@dimen/login_control_width"
     android:layout_margin="20dp"
-    android:hint="Username"/>
+    android:padding="@dimen/login_edit_padding"
+    android:background="@drawable/editTextBox"
+    android:hint="Username"
+    android:singleLine="true"/>
   <EditText
     android:id="@+id/PasswordEdit"
     android:layout_height="wrap_content"
     android:layout_width="@dimen/login_control_width"
     android:layout_marginBottom="20dp"
+    android:padding="@dimen/login_edit_padding"
+    android:background="@drawable/editTextBox"
     android:hint="Password"
     android:singleLine="true"
     android:inputType="textPassword"/>
@@ -29,5 +37,7 @@
     android:layout_height="50dp"
     android:layout_width="@dimen/login_control_width"
     android:text="Login"
-    android:background="#ffffff"/>
+    android:textSize="@dimen/login_button_text_size"
+    android:background="@color/white"
+    android:textColor="@color/toolbar_gray"/>
 </LinearLayout>

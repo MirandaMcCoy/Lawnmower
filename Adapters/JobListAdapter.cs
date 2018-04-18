@@ -52,6 +52,8 @@ namespace Lawnmower.Adapters
 
                 SetHolderViews();
 
+                AssignClickEvents();
+
                 view.Tag = holder;
             } else
             {
@@ -83,6 +85,16 @@ namespace Lawnmower.Adapters
             holder.AddressNameText = view.FindViewById<TextView>(Resource.Id.AddressTextView);
             holder.FirstNameText = view.FindViewById<TextView>(Resource.Id.FirstNameTextView);
             holder.LastNameText = view.FindViewById<TextView>(Resource.Id.LastNameTextView);
+        }
+
+        private void AssignClickEvents()
+        {
+            holder.FirstNameText.Click += AssignJobOpen;
+        }
+
+        private void AssignJobOpen(object sender, EventArgs e)
+        {
+            this.context.FragmentManager.BeginTransaction().Show(this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu)).Commit();
         }
 
     }

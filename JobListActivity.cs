@@ -9,7 +9,7 @@ using System;
 
 namespace Lawnmower
 {
-    [Activity(Label = "Lawnmower", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true)]
+    [Activity(Label = "Lawnmower", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public class JobListActivity : Activity
     {
         Job[] jobs;
@@ -85,13 +85,29 @@ namespace Lawnmower
             holder.JobListView = FindViewById<ListView>(Resource.Id.JobList);
             holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
             holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
+            holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
+
         }
 
-        private void SetViewAdapter()
+            private void SetViewAdapter()
         {
             JobListAdapter adapter = new JobListAdapter(this, jobs);
 
             holder.JobListView.Adapter = adapter;
+        }
+
+        public override void OnBackPressed()
+        {
+            if (holder.AddJobFragment.IsVisible)
+            {
+                FragmentManager.BeginTransaction().Hide(holder.AddJobFragment).Commit();
+            } else if (holder.AssignJobFragment.IsVisible)
+            {
+                FragmentManager.BeginTransaction().Hide(holder.AssignJobFragment).Commit();
+            } else
+            {
+                base.OnBackPressed();
+            }
         }
     }
 }

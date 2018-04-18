@@ -14,7 +14,7 @@ using Lawnmower.ViewHolders;
 
 namespace Lawnmower
 {
-    [Activity(Label = "LoginActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
+    [Activity(Label = "LoginActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true)]
     public class LoginActivity : Activity
     {
         private LoginViewHolder holder;

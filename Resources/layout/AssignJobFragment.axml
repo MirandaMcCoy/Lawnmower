@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bedazzled_blue">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="Open: "
+        android:text="Assign Job To: "
         android:textSize="20sp" />
-    <Button
-        android:id="@+id/MainButton"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Main" />
+    <Spinner
+        android:id="@+id/EmployeeListSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

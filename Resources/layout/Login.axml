@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="Open: "
-        android:textSize="20sp" />
-    <Button
-        android:id="@+id/MainButton"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Main" />
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/bedazzled_blue">
+  <ImageView
+    android:id="@+id/Logo"
+    android:layout_height="200dp"
+    android:layout_width="@dimen/login_control_width"
+    android:src="@drawable/dml"/>
+  <EditText
+    android:id="@+id/UsernameEdit"
+    android:layout_height="wrap_content"
+    android:layout_width="@dimen/login_control_width"
+    android:layout_margin="20dp"
+    android:hint="Username"/>
+  <EditText
+    android:id="@+id/PasswordEdit"
+    android:layout_height="wrap_content"
+    android:layout_width="@dimen/login_control_width"
+    android:layout_marginBottom="20dp"
+    android:hint="Password"
+    android:singleLine="true"
+    android:inputType="textPassword"/>
+  <Button
+    android:id="@+id/LoginButton"
+    android:layout_height="50dp"
+    android:layout_width="@dimen/login_control_width"
+    android:text="Login"
+    android:background="#ffffff"/>
 </LinearLayout>

@@ -3,10 +3,14 @@
   <!-- Toolbar -->
   <dimen name="toolbar_height">60dp</dimen>
   <dimen name="toolbar_padding">10dp</dimen>
+  <dimen name="toolbar_logo_height">55dp</dimen>
   
   <!-- Login Screen -->
   <dimen name="login_control_width">300dp</dimen>
   <dimen name="login_top_padding">100dp</dimen>
   <dimen name="login_edit_padding">10dp</dimen>
   <dimen name="login_button_text_size">20sp</dimen>
+
+  <!-- List -->
+  <dimen name="fragment_margin">30dp</dimen>
 </resources>

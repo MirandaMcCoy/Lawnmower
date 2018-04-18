@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/toolbar_height"
-    android:gravity="center_vertical"
-    android:background="@color/toolbar_gray">
-    <TextView
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+  <FrameLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/toolbar_height"
+      android:gravity="center_horizontal"
+      android:background="@color/gray2">
+    <ImageView
         android:id="@+id/Logo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="left|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_logo_height"
+        android:gravity="center"
+        android:paddingTop="2dp"
         android:paddingLeft="@dimen/toolbar_padding"
-        android:text="DML"
-        android:textSize="24sp" />
+        android:src="@drawable/dml"/>
     <ImageView
         android:id="@+id/AddJobButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:layout_gravity="right|center_vertical"
+        android:layout_width="@dimen/toolbar_logo_height"
+        android:layout_height="@dimen/toolbar_logo_height"
         android:paddingRight="@dimen/toolbar_padding"
-        android:gravity="right"
-        android:src="@drawable/add"/>
+        android:layout_gravity="right"
+        android:src="@drawable/add" />
+  </FrameLayout>
+  <View
+    android:layout_height="1dp"
+    android:layout_width="match_parent"
+    android:background="@color/gray1" />
 </LinearLayout>

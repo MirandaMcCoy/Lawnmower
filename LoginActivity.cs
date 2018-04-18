@@ -65,6 +65,12 @@ namespace Lawnmower
             // Only worry about passing the username and password data and returning
             //     if the user is a valid employee or not.
             //     Job List will handle what to show/not to show to different employees
+
+            // To get the entered username, use:
+            // holder.UsernameEdit.Text
+
+            // To get the entered password, use:
+            // holder.PasswordEdit.Text
             
             // Open Up Job List if valid employee (Currently open regardless for testing)
             StartActivity(typeof(JobListActivity));

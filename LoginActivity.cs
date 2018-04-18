@@ -45,6 +45,8 @@ namespace Lawnmower
         private void SetHolderViews()
         {
             holder.mainButton = FindViewById<Button>(Resource.Id.MainButton);
+
+            var t = holder.mainButton;
         }
 
         #region Click Events

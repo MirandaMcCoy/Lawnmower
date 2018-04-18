@@ -14,6 +14,8 @@ namespace Lawnmower
 {
     public class AssignJobActivity : Fragment
     {
+        View view;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,7 +25,15 @@ namespace Lawnmower
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return base.OnCreateView(inflater, container, savedInstanceState);
+            view = this.View;
+
+            view = inflater.Inflate(Resource.Layout.AssignJobFragment, container, false);
+
+            FragmentManager.BeginTransaction().Hide(this).Commit();
+
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.EmployeeListSpinner);
+
+            return view;
         }
     }
 }

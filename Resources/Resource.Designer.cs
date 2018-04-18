@@ -44,8 +44,11 @@ namespace Lawnmower
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int toolbar_gray = 2130903040;
+			// aapt resource value: 0x7f040001
+			public const int bedazzled_blue = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public const int toolbar_gray = 2130968576;
 			
 			static Color()
 			{
@@ -60,11 +63,11 @@ namespace Lawnmower
 		public partial class Dimension
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int toolbar_height = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int toolbar_height = 2131034112;
 			
-			// aapt resource value: 0x7f040001
-			public const int toolbar_padding = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int toolbar_padding = 2131034113;
 			
 			static Dimension()
 			{
@@ -76,17 +79,54 @@ namespace Lawnmower
 			}
 		}
 		
+		public partial class Drawable
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int add = 2130837504;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Drawable()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060002
-			public const int AddJobButton = 2131099650;
+			// aapt resource value: 0x7f070009
+			public const int AddJobButton = 2131165193;
 			
-			// aapt resource value: 0x7f060001
-			public const int Logo = 2131099649;
+			// aapt resource value: 0x7f070004
+			public const int AddJobMenu = 2131165188;
 			
-			// aapt resource value: 0x7f060000
-			public const int MainButton = 2131099648;
+			// aapt resource value: 0x7f070007
+			public const int AddressTextView = 2131165191;
+			
+			// aapt resource value: 0x7f070000
+			public const int FirstNameEdit = 2131165184;
+			
+			// aapt resource value: 0x7f070005
+			public const int FirstNameTextView = 2131165189;
+			
+			// aapt resource value: 0x7f070003
+			public const int JobList = 2131165187;
+			
+			// aapt resource value: 0x7f070001
+			public const int LastNameEdit = 2131165185;
+			
+			// aapt resource value: 0x7f070006
+			public const int LastNameTextView = 2131165190;
+			
+			// aapt resource value: 0x7f070008
+			public const int Logo = 2131165192;
+			
+			// aapt resource value: 0x7f070002
+			public const int MainButton = 2131165186;
 			
 			static Id()
 			{
@@ -101,20 +141,23 @@ namespace Lawnmower
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int AddJobFragment = 2130837504;
+			// aapt resource value: 0x7f030000
+			public const int AddJobFragment = 2130903040;
 			
-			// aapt resource value: 0x7f020001
-			public const int AssignJobFragment = 2130837505;
+			// aapt resource value: 0x7f030001
+			public const int AssignJobFragment = 2130903041;
 			
-			// aapt resource value: 0x7f020002
-			public const int JobList = 2130837506;
+			// aapt resource value: 0x7f030002
+			public const int JobList = 2130903042;
 			
-			// aapt resource value: 0x7f020003
-			public const int Login = 2130837507;
+			// aapt resource value: 0x7f030003
+			public const int JobListItem = 2130903043;
 			
-			// aapt resource value: 0x7f020004
-			public const int Toolbar = 2130837508;
+			// aapt resource value: 0x7f030004
+			public const int Login = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int Toolbar = 2130903045;
 			
 			static Layout()
 			{
@@ -129,8 +172,8 @@ namespace Lawnmower
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int app_name = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int app_name = 2131099648;
 			
 			static String()
 			{

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="toolbar_gray">#383F51</color>
+  <color name="bedazzled_blue">#36558f</color>
 </resources>

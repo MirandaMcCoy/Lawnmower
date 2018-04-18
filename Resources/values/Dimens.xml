@@ -10,4 +10,7 @@
   <dimen name="login_top_padding">100dp</dimen>
   <dimen name="login_edit_padding">10dp</dimen>
   <dimen name="login_button_text_size">20sp</dimen>
+
+  <!-- List -->
+  <dimen name="fragment_margin">30dp</dimen>
 </resources>

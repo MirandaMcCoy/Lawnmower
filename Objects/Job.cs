@@ -17,6 +17,10 @@ namespace Lawnmower.Objects
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
+        public string ContactNumber { get; set; }
+        public string JobType { get; set; } // Eventually make this an enum
+        public DateTime Date { get; set; }
+        public bool Repeating { get; set; }
         public string Notes { get; set; }
     }
 }

@@ -14,8 +14,17 @@ namespace Lawnmower.ViewHolders
 {
     class JobListItemViewHolder : Java.Lang.Object
     {
+        public TextView AssignText { get; set; }
         public TextView FirstNameText { get; set; }
         public TextView LastNameText { get; set; }
         public TextView AddressNameText { get; set; }
+        public TextView ContactText { get; set; }
+        public TextView JobTypeText { get; set; }
+        public TextView JobDayText { get; set; }
+        public TextView JobDateText { get; set; }
+        public TextView RepeatingMark { get; set; } // To be an image
+        public ImageView DirectionsImage { get; set; }
+        public ImageView NotesImage { get; set; }
+        public ImageView CancelImage { get; set; }
     }
 }

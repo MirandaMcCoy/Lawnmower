@@ -44,24 +44,35 @@ namespace Lawnmower
 
         private void SetHolderViews()
         {
-            holder.mainButton = FindViewById<Button>(Resource.Id.MainButton);
-
-            var t = holder.mainButton;
+            holder.UsernameEdit = FindViewById<EditText>(Resource.Id.UsernameEdit);
+            holder.PasswordEdit = FindViewById<EditText>(Resource.Id.PasswordEdit);
+            holder.LoginButton = FindViewById<Button>(Resource.Id.LoginButton);
         }
 
         #region Click Events
         private void AssignClickEvents()
         {
-            holder.mainButton.Click += MainClick;
+            holder.LoginButton.Click += LoginClick;
         }
 
         private void UnassignClickEvents()
         {
-            holder.mainButton.Click -= MainClick;
+            holder.LoginButton.Click -= LoginClick;
         }
 
-        private void MainClick(object sender, EventArgs e)
+        private void LoginClick(object sender, EventArgs e)
         {
+            // Only worry about passing the username and password data and returning
+            //     if the user is a valid employee or not.
+            //     Job List will handle what to show/not to show to different employees
+
+            // To get the entered username, use:
+            // holder.UsernameEdit.Text
+
+            // To get the entered password, use:
+            // holder.PasswordEdit.Text
+            
+            // Open Up Job List if valid employee (Currently open regardless for testing)
             StartActivity(typeof(JobListActivity));
         }
 #endregion

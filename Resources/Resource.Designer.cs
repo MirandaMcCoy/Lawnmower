@@ -44,11 +44,26 @@ namespace Lawnmower
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int bedazzled_blue = 2130968577;
+			// aapt resource value: 0x7f040002
+			public const int bedazzled_blue = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int cloudy_blue = 2130968579;
 			
 			// aapt resource value: 0x7f040000
-			public const int toolbar_gray = 2130968576;
+			public const int gray1 = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int gray2 = 2130968577;
+			
+			// aapt resource value: 0x7f040005
+			public const int off_white = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int transparent = 2130968582;
+			
+			// aapt resource value: 0x7f040004
+			public const int white = 2130968580;
 			
 			static Color()
 			{
@@ -63,8 +78,44 @@ namespace Lawnmower
 		public partial class Dimension
 		{
 			
+			// aapt resource value: 0x7f050007
+			public const int fragment_margin = 2131034119;
+			
+			// aapt resource value: 0x7f05000b
+			public const int job_item_assign_padding = 2131034123;
+			
+			// aapt resource value: 0x7f05000d
+			public const int job_item_icon_size = 2131034125;
+			
+			// aapt resource value: 0x7f05000c
+			public const int job_item_padding = 2131034124;
+			
+			// aapt resource value: 0x7f05000a
+			public const int job_item_text_padding_left = 2131034122;
+			
+			// aapt resource value: 0x7f050009
+			public const int job_item_text_size = 2131034121;
+			
+			// aapt resource value: 0x7f050008
+			public const int job_view_bottom_margin = 2131034120;
+			
+			// aapt resource value: 0x7f050006
+			public const int login_button_text_size = 2131034118;
+			
+			// aapt resource value: 0x7f050003
+			public const int login_control_width = 2131034115;
+			
+			// aapt resource value: 0x7f050005
+			public const int login_edit_padding = 2131034117;
+			
+			// aapt resource value: 0x7f050004
+			public const int login_top_padding = 2131034116;
+			
 			// aapt resource value: 0x7f050000
 			public const int toolbar_height = 2131034112;
+			
+			// aapt resource value: 0x7f050002
+			public const int toolbar_logo_height = 2131034114;
 			
 			// aapt resource value: 0x7f050001
 			public const int toolbar_padding = 2131034113;
@@ -85,6 +136,33 @@ namespace Lawnmower
 			// aapt resource value: 0x7f020000
 			public const int add = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int cancel = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int delete = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int directions = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int dml = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int editTextBox = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int finish = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int loginGradient = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int notepad = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int notes = 2130837513;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -98,35 +176,89 @@ namespace Lawnmower
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070009
-			public const int AddJobButton = 2131165193;
+			// aapt resource value: 0x7f07001b
+			public const int AddJobButton = 2131165211;
 			
 			// aapt resource value: 0x7f070004
 			public const int AddJobMenu = 2131165188;
 			
+			// aapt resource value: 0x7f07000c
+			public const int AddressText = 2131165196;
+			
+			// aapt resource value: 0x7f070005
+			public const int AssignJobMenu = 2131165189;
+			
+			// aapt resource value: 0x7f070006
+			public const int AssignedText = 2131165190;
+			
+			// aapt resource value: 0x7f070013
+			public const int ButtonsLayout = 2131165203;
+			
+			// aapt resource value: 0x7f07000d
+			public const int ContactText = 2131165197;
+			
+			// aapt resource value: 0x7f070016
+			public const int DeleteImage = 2131165206;
+			
+			// aapt resource value: 0x7f070014
+			public const int DirectionsImage = 2131165204;
+			
+			// aapt resource value: 0x7f070002
+			public const int EmployeeListSpinner = 2131165186;
+			
 			// aapt resource value: 0x7f070007
-			public const int AddressTextView = 2131165191;
+			public const int EverythingLayout = 2131165191;
 			
 			// aapt resource value: 0x7f070000
 			public const int FirstNameEdit = 2131165184;
 			
-			// aapt resource value: 0x7f070005
-			public const int FirstNameTextView = 2131165189;
+			// aapt resource value: 0x7f07000a
+			public const int FirstNameTextView = 2131165194;
+			
+			// aapt resource value: 0x7f070008
+			public const int InfoLayout = 2131165192;
+			
+			// aapt resource value: 0x7f070010
+			public const int JobDateText = 2131165200;
+			
+			// aapt resource value: 0x7f07000f
+			public const int JobDayText = 2131165199;
 			
 			// aapt resource value: 0x7f070003
 			public const int JobList = 2131165187;
 			
+			// aapt resource value: 0x7f07000e
+			public const int JobTypeText = 2131165198;
+			
 			// aapt resource value: 0x7f070001
 			public const int LastNameEdit = 2131165185;
 			
-			// aapt resource value: 0x7f070006
-			public const int LastNameTextView = 2131165190;
+			// aapt resource value: 0x7f07000b
+			public const int LastNameTextView = 2131165195;
 			
-			// aapt resource value: 0x7f070008
-			public const int Logo = 2131165192;
+			// aapt resource value: 0x7f07001a
+			public const int LoginButton = 2131165210;
 			
-			// aapt resource value: 0x7f070002
-			public const int MainButton = 2131165186;
+			// aapt resource value: 0x7f070017
+			public const int Logo = 2131165207;
+			
+			// aapt resource value: 0x7f070009
+			public const int NameHolder = 2131165193;
+			
+			// aapt resource value: 0x7f070015
+			public const int NotepadImage = 2131165205;
+			
+			// aapt resource value: 0x7f070019
+			public const int PasswordEdit = 2131165209;
+			
+			// aapt resource value: 0x7f070011
+			public const int RepeatingText = 2131165201;
+			
+			// aapt resource value: 0x7f070012
+			public const int RepeatingXText = 2131165202;
+			
+			// aapt resource value: 0x7f070018
+			public const int UsernameEdit = 2131165208;
 			
 			static Id()
 			{

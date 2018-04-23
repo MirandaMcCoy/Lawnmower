@@ -60,23 +60,35 @@ namespace Lawnmower
             jobs = new Job[3];
             jobs[0] = new Job();
 
-            jobs[0].FirstName = "A";
-            jobs[0].LastName = "a";
-            jobs[0].Address = "0000 Street St, Ozark, MO 65721";
+            jobs[0].FirstName = "Bob";
+            jobs[0].LastName = "by";
+            jobs[0].Address = "1505 W Mathew Ct, Ozark, MO 65721";
+            jobs[0].ContactNumber = "555-555-5555";
+            jobs[0].JobType = "Mow and Weedeat";
+            jobs[0].Date = new DateTime(2018, 4, 23);
+            jobs[0].Repeating = true;
             jobs[0].Notes = "A a aa";
 
             jobs[1] = new Job();
 
-            jobs[1].FirstName = "B";
-            jobs[1].LastName = "b";
+            jobs[1].FirstName = "Angie";
+            jobs[1].LastName = "Fish";
             jobs[1].Address = "1111 Street St, Ozark, MO 65721";
+            jobs[1].ContactNumber = "555-555-5555";
+            jobs[1].JobType = "Mow and Weedeat";
+            jobs[1].Date = new DateTime(2018, 4, 23);
+            jobs[1].Repeating = true;
             jobs[1].Notes = "B b bb";
 
             jobs[2] = new Job();
 
-            jobs[2].FirstName = "C";
-            jobs[2].LastName = "c";
+            jobs[2].FirstName = "Raymond";
+            jobs[2].LastName = "Noodles";
             jobs[2].Address = "2222 Street St, Ozark, MO 65721";
+            jobs[2].ContactNumber = "555-555-5555";
+            jobs[2].JobType = "Mow and Weedeat";
+            jobs[2].Date = new DateTime(2018, 4, 23);
+            jobs[2].Repeating = true;
             jobs[2].Notes = "C c cc";
         }
 

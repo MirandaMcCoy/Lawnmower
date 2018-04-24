@@ -140,12 +140,12 @@
         android:id="@+id/NotepadImage"
         android:layout_width="@dimen/job_item_icon_size"
         android:layout_height="@dimen/job_item_icon_size"
-        android:src="@drawable/notepad"/>
+        android:src="@drawable/directions"/>
       <ImageView
         android:id="@+id/DeleteImage"
         android:layout_width="@dimen/job_item_icon_size"
         android:layout_height="@dimen/job_item_icon_size"
-        android:src="@drawable/delete"/>
+        android:src="@drawable/directions"/>
     
     </LinearLayout>
   </LinearLayout>

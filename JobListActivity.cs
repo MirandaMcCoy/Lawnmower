@@ -6,10 +6,11 @@ using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 using Lawnmower.Adapters;
 using System;
+using Android.Views;
 
 namespace Lawnmower
 {
-    [Activity(Label = "Lawnmower", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
+    [Activity(Label = "Lawnmower", WindowSoftInputMode = SoftInput.AdjustPan, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public class JobListActivity : Activity
     {
         Job[] jobs;

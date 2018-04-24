@@ -98,8 +98,8 @@ namespace Lawnmower.Adapters
             holder.JobTypeText = view.FindViewById<TextView>(Resource.Id.JobTypeText);
             holder.RepeatingMark = view.FindViewById<TextView>(Resource.Id.RepeatingXText);
             holder.DirectionsImage = view.FindViewById<ImageView>(Resource.Id.DirectionsImage);
-            holder.CancelImage = view.FindViewById<ImageView>(Resource.Id.CancelImage);
-            holder.NotesImage = view.FindViewById<ImageView>(Resource.Id.NotesImage);
+            holder.CancelImage = view.FindViewById<ImageView>(Resource.Id.DeleteImage);
+            holder.NotesImage = view.FindViewById<ImageView>(Resource.Id.NotepadImage);
         }
 
         #region Click Events

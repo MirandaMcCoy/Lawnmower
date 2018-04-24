@@ -13,8 +13,6 @@ namespace Lawnmower
     [Activity(Label = "Lawnmower", WindowSoftInputMode = SoftInput.AdjustPan, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public class JobListActivity : Activity
     {
-        Job[] jobs;
-
         ListViewHolder holder;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -58,39 +56,39 @@ namespace Lawnmower
 
         private void CreateJobs()
         {
-            jobs = new Job[3];
-            jobs[0] = new Job();
+            Shared.jobList = new Job[3];
+            Shared.jobList[0] = new Job();
 
-            jobs[0].FirstName = "Bob";
-            jobs[0].LastName = "by";
-            jobs[0].Address = "1505 W Mathew Ct, Ozark, MO 65721";
-            jobs[0].ContactNumber = "555-555-5555";
-            jobs[0].JobType = "Mow and Weedeat";
-            jobs[0].Date = new DateTime(2018, 4, 23);
-            jobs[0].Repeating = true;
-            jobs[0].Notes = "A a aa";
+            Shared.jobList[0].FirstName = "Bob";
+            Shared.jobList[0].LastName = "by";
+            Shared.jobList[0].Address = "1505 W Mathew Ct, Ozark, MO 65721";
+            Shared.jobList[0].ContactNumber = "555-555-5555";
+            Shared.jobList[0].JobType = "Mow and Weedeat";
+            Shared.jobList[0].Date = new DateTime(2018, 4, 23);
+            Shared.jobList[0].Repeating = true;
+            Shared.jobList[0].Notes = "A a aa";
 
-            jobs[1] = new Job();
+            Shared.jobList[1] = new Job();
 
-            jobs[1].FirstName = "Angie";
-            jobs[1].LastName = "Fish";
-            jobs[1].Address = "1111 Street St, Ozark, MO 65721";
-            jobs[1].ContactNumber = "555-555-5555";
-            jobs[1].JobType = "Mow and Weedeat";
-            jobs[1].Date = new DateTime(2018, 4, 23);
-            jobs[1].Repeating = true;
-            jobs[1].Notes = "B b bb";
+            Shared.jobList[1].FirstName = "Angie";
+            Shared.jobList[1].LastName = "Fish";
+            Shared.jobList[1].Address = "1111 Street St, Ozark, MO 65721";
+            Shared.jobList[1].ContactNumber = "555-555-5555";
+            Shared.jobList[1].JobType = "Mow and Weedeat";
+            Shared.jobList[1].Date = new DateTime(2018, 4, 23);
+            Shared.jobList[1].Repeating = true;
+            Shared.jobList[1].Notes = "B b bb";
 
-            jobs[2] = new Job();
+            Shared.jobList[2] = new Job();
 
-            jobs[2].FirstName = "Raymond";
-            jobs[2].LastName = "Noodles";
-            jobs[2].Address = "2222 Street St, Ozark, MO 65721";
-            jobs[2].ContactNumber = "555-555-5555";
-            jobs[2].JobType = "Mow and Weedeat";
-            jobs[2].Date = new DateTime(2018, 4, 23);
-            jobs[2].Repeating = true;
-            jobs[2].Notes = "C c cc";
+            Shared.jobList[2].FirstName = "Raymond";
+            Shared.jobList[2].LastName = "Noodles";
+            Shared.jobList[2].Address = "2222 Street St, Ozark, MO 65721";
+            Shared.jobList[2].ContactNumber = "555-555-5555";
+            Shared.jobList[2].JobType = "Mow and Weedeat";
+            Shared.jobList[2].Date = new DateTime(2018, 4, 23);
+            Shared.jobList[2].Repeating = true;
+            Shared.jobList[2].Notes = "C c cc";
         }
 
         private void SetHolderViews()
@@ -104,7 +102,7 @@ namespace Lawnmower
 
             private void SetViewAdapter()
         {
-            JobListAdapter adapter = new JobListAdapter(this, jobs);
+            JobListAdapter adapter = new JobListAdapter(this, Shared.jobList);
 
             holder.JobListView.Adapter = adapter;
         }

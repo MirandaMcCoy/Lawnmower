@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 
 namespace Lawnmower
@@ -97,6 +98,10 @@ namespace Lawnmower
         private void CreateJob(object sender, EventArgs e)
         {
             // Add job to list
+            Shared.jobList[Shared.jobList.Length] = new Job();
+
+
+
             // Perhaps test that all the fields were filled out, but later
         }
 

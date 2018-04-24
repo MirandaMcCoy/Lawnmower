@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bedazzled_blue">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="Assign Job To: "
-        android:textSize="20sp" />
-    <Spinner
-        android:id="@+id/EmployeeListSpinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+    android:background="@color/semi_solid_menu_background">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bedazzled_blue"
+        android:layout_margin="@dimen/fragment_margin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Assign Job To: "
+            android:textSize="20sp" />
+        <Spinner
+            android:id="@+id/EmployeeListSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</FrameLayout>

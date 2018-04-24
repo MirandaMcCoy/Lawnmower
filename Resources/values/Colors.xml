@@ -5,6 +5,8 @@
   <color name="bedazzled_blue">#36558f</color>
   <color name="cloudy_blue">#A7BED3</color>
   <color name="white">#ffffff</color>
+  <color name="black">#000000</color>
   <color name="off_white">#F5F5F5</color>
   <color name="transparent">#00000000</color>
+  <color name="semi_solid_menu_background">#60000000</color>
 </resources>

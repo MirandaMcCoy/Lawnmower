@@ -1,35 +1,39 @@
 {
   "project_info": {
-    "project_number": "23338760453",
-    "firebase_url": "https://lawnmower-96de6.firebaseio.com",
-    "project_id": "lawnmower-96de6",
-    "storage_bucket": "lawnmower-96de6.appspot.com"
+    "project_number": "1008581880784",
+    "firebase_url": "https://test-a05bd.firebaseio.com",
+    "project_id": "test-a05bd",
+    "storage_bucket": "test-a05bd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:23338760453:android:0181956bbc8d6756",
+        "mobilesdk_app_id": "1:1008581880784:android:1e1f3167454c8730",
         "android_client_info": {
-          "package_name": "Test1.Test1"
+          "package_name": "Lawnmower.Lawnmower"
         }
       },
       "oauth_client": [
         {
-          "client_id": "23338760453-u6e1nb25ckn6itn1p6k3btlh1kd8grd2.apps.googleusercontent.com",
+          "client_id": "1008581880784-d72jb7vj6r3f0ei4ecl35t60fqa6clsi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "Test1.Test1",
+            "package_name": "Lawnmower.Lawnmower",
             "certificate_hash": "bb2c298cfa8d277dc169afa5aea7edf4cc580b7a"
           }
         },
         {
-          "client_id": "23338760453-5is5v23pickhk8f4rl1mi6roa7fnbuhg.apps.googleusercontent.com",
+          "client_id": "1008581880784-2qtvtk3bmf7v6j8ek653bugfffasudsj.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1008581880784-gcbf6l98l7vt90ulppm6m19hdmva1edu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDCf0E5t3mjdozwHC_UF2ltneoATOMkKQI"
+          "current_key": "AIzaSyBzixWgYqWLNgQNY7LTnNChlgYJ0SpBwQM"
         }
       ],
       "services": {
@@ -40,7 +44,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "23338760453-5is5v23pickhk8f4rl1mi6roa7fnbuhg.apps.googleusercontent.com",
+              "client_id": "1008581880784-2qtvtk3bmf7v6j8ek653bugfffasudsj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

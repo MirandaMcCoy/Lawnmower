@@ -97,7 +97,7 @@ namespace Lawnmower
             holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
             holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
             holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
-
+            Shared.testDB();
         }
 
             private void SetViewAdapter()

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1008581880784-vgal5u6neds1lndhdd1rr70pladmnsb2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "Lawnmower.Lawnmower",
+            "certificate_hash": "53af75bf1e0544576540974d362fd5d17f807d30"
+          }
+        },
+        {
           "client_id": "1008581880784-d72jb7vj6r3f0ei4ecl35t60fqa6clsi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

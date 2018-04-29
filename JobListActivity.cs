@@ -2,11 +2,16 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content.PM;
+using Android.Support.V7.App;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 using Lawnmower.Adapters;
 using System;
+using System.Threading.Tasks;
 using Android.Views;
+using Firebase.Xamarin.Database;
+using Firebase.Xamarin.Database.Query;
+using System.Collections.Generic;
 
 namespace Lawnmower
 {
@@ -14,6 +19,7 @@ namespace Lawnmower
     public class JobListActivity : Activity
     {
         ListViewHolder holder;
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,6 +41,7 @@ namespace Lawnmower
             SetViewAdapter();
         }
 
+       
         #region Click Events
 
         private void AssignClickEvents()
@@ -53,6 +60,8 @@ namespace Lawnmower
         }
 
         #endregion
+
+        
 
         private void CreateJobs()
         {

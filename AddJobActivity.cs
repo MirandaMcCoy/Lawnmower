@@ -90,8 +90,12 @@ namespace Lawnmower
         {
             DatePickerDialog picker = new DatePickerDialog(this.Activity, SetDate, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
+#pragma warning disable CS0618 // Type or member is obsolete
             picker.DatePicker.CalendarViewShown = true;
+#pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning disable CS0618 // Type or member is obsolete
             picker.DatePicker.SpinnersShown = false;
+#pragma warning restore CS0618 // Type or member is obsolete
             picker.Show();
         }
 

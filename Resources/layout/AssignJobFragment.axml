@@ -6,17 +6,28 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/bedazzled_blue"
         android:layout_margin="@dimen/fragment_margin">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_marginBottom="20dp"
             android:text="Assign Job To: "
             android:textSize="20sp" />
         <Spinner
             android:id="@+id/EmployeeListSpinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
+
+        <TextView
+          android:id="@+id/ConfirmButton"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/add_job_view_height"
+          android:gravity="center"
+          android:background="@drawable/editTextBox"
+          android:textSize="@dimen/add_job_text_size"
+          android:textColor="@color/black"
+          android:text="Assign Job" />
     </LinearLayout>
 </FrameLayout>

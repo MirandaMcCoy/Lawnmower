@@ -26,5 +26,6 @@ namespace Lawnmower.ViewHolders
         public ImageView DirectionsImage { get; set; }
         public ImageView NotesImage { get; set; }
         public ImageView CancelImage { get; set; }
+        public int JobID { get; set; }
     }
 }

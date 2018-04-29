@@ -10,11 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace Lawnmower.ViewHolders
+namespace Lawnmower.Objects
 {
-    class AssignViewHolder
+    class Employee
     {
-        public Spinner EmployeeSpinner { get; set; }
-        public TextView ConfirmButton { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

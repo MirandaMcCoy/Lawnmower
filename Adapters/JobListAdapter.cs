@@ -21,6 +21,7 @@ namespace Lawnmower.Adapters
         public List<Job> jobs;
         JobListItemViewHolder holder;
         View view;
+        int position;
 
         public JobListAdapter(Activity context, Job[] jobs)
         {
@@ -61,6 +62,7 @@ namespace Lawnmower.Adapters
             }
 
             SetViews(position);
+            this.position = position;
 
             return view;
         }
@@ -85,6 +87,7 @@ namespace Lawnmower.Adapters
             holder.JobDayText.Text = job.Date.DayOfWeek.ToString();
             holder.JobTypeText.Text = job.JobType;
             holder.AssignText.Text = job.Assignee;
+            holder.JobID = position;
         }
 
         private void SetHolderViews()
@@ -115,6 +118,7 @@ namespace Lawnmower.Adapters
 
         private void AssignJobOpen(object sender, EventArgs e)
         {
+            this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu).SetSelectedJob(holder.JobID);
             this.context.FragmentManager.BeginTransaction().Show(this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu)).Commit();
         }
 

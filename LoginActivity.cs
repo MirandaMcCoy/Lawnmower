@@ -54,17 +54,16 @@ namespace Lawnmower
             {
                 User account = new User();
                 account.uid = item.Key;
-                account.name = item.Object.name;
-                account.email = item.Object.email;
+                account.userName = item.Object.userName;
+                account.passWord = item.Object.passWord;
                 list_users.Add(account);
             }
         }
         private async void CreateUser()
         {
             User user = new User();
-            user.uid = String.Empty;
-            user.name = holder.UsernameEdit.Text;
-            user.email = holder.PasswordEdit.Text;
+            user.userName = holder.UsernameEdit.Text;
+            user.passWord = holder.PasswordEdit.Text;
             var firebase = new FirebaseClient(firebaseURL);
             //Add Item  
             var item = await firebase.Child("login").PostAsync<User>(user);

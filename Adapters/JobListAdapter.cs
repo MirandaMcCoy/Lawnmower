@@ -18,7 +18,7 @@ namespace Lawnmower.Adapters
     {
 
         Activity context;
-        List<Job> jobs;
+        public List<Job> jobs;
         JobListItemViewHolder holder;
         View view;
 
@@ -84,6 +84,7 @@ namespace Lawnmower.Adapters
             holder.JobDateText.Text = job.Date.Month.ToString() + "/" + job.Date.Day.ToString() + "/" + job.Date.Year.ToString();
             holder.JobDayText.Text = job.Date.DayOfWeek.ToString();
             holder.JobTypeText.Text = job.JobType;
+            holder.AssignText.Text = job.Assignee;
         }
 
         private void SetHolderViews()

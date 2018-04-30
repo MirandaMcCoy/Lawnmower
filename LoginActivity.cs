@@ -12,14 +12,23 @@ using Android.Views;
 using Android.Widget;
 using Lawnmower.ViewHolders;
 
+using Android.Support.V7.App;
+using Lawnmower.Objects;
+using Lawnmower.Adapters;
+using System.Threading.Tasks;
+using Firebase.Xamarin.Database;
+using Firebase.Xamarin.Database.Query;
+
 namespace Lawnmower
 {
     [Activity(Label = "LoginActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true)]
     public class LoginActivity : Activity
     {
         private LoginViewHolder holder;
+        private List<User> list_users = new List<User>();
+        private const string firebaseURL = "https://lawnmower-a4296.firebaseio.com/";
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -33,6 +42,32 @@ namespace Lawnmower
             SetHolderViews();
 
             AssignClickEvents();
+
+            await LoadData();
+        }
+
+        private async Task LoadData()
+        {
+            var firebase = new FirebaseClient(firebaseURL);
+            var items = await firebase.Child("Users").OnceAsync<User>();
+            foreach (var item in items)
+            {
+                User account = new User();
+                account.uid = item.Key;
+                account.userName = item.Object.userName;
+                account.passWord = item.Object.passWord;
+                list_users.Add(account);
+            }
+        }
+        private async void CreateUser()
+        {
+            User user = new User();
+            user.userName = holder.UsernameEdit.Text;
+            user.passWord = holder.PasswordEdit.Text;
+            var firebase = new FirebaseClient(firebaseURL);
+            //Add Item  
+            var item = await firebase.Child("login").PostAsync<User>(user);
+            await LoadData();
         }
 
         protected override void OnDestroy()
@@ -65,6 +100,7 @@ namespace Lawnmower
             // Only worry about passing the username and password data and returning
             //     if the user is a valid employee or not.
             //     Job List will handle what to show/not to show to different employees
+            CreateUser();
 
             // To get the entered username, use:
             // holder.UsernameEdit.Text

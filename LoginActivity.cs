@@ -53,7 +53,6 @@ namespace Lawnmower
             foreach (var item in items)
             {
                 User account = new User();
-                account.uid = item.Key;
                 account.userName = item.Object.userName;
                 account.passWord = item.Object.passWord;
                 list_users.Add(account);
@@ -100,7 +99,8 @@ namespace Lawnmower
             // Only worry about passing the username and password data and returning
             //     if the user is a valid employee or not.
             //     Job List will handle what to show/not to show to different employees
-            CreateUser();
+
+            //CreateUser(); <--This works GREAT, but we need to validate here.
 
             // To get the entered username, use:
             // holder.UsernameEdit.Text

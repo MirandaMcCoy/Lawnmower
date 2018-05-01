@@ -11,6 +11,9 @@ using Android.Views;
 using Android.Widget;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
+using System.Threading.Tasks;
+using Firebase.Xamarin.Database;
+using Firebase.Xamarin.Database.Query;
 
 namespace Lawnmower
 {
@@ -18,6 +21,7 @@ namespace Lawnmower
     {
         View view;
         AddJobViewHolder holder;
+        private const string firebaseURL = "https://lawnmower-a4296.firebaseio.com/";
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -90,20 +94,43 @@ namespace Lawnmower
         {
             DatePickerDialog picker = new DatePickerDialog(this.Activity, SetDate, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
-#pragma warning disable CS0618 // Type or member is obsolete
+
             picker.DatePicker.CalendarViewShown = true;
-#pragma warning restore CS0618 // Type or member is obsolete
-#pragma warning disable CS0618 // Type or member is obsolete
+
             picker.DatePicker.SpinnersShown = false;
-#pragma warning restore CS0618 // Type or member is obsolete
+
             picker.Show();
         }
-
-        private void CreateJob(object sender, EventArgs e)
+        private async Task LoadData()
+        {
+            var firebase = new FirebaseClient(firebaseURL);
+            var items = await firebase.Child("Jobs").OnceAsync<NewJobs>();
+            foreach (var item in items)
+            {
+                NewJobs myJobs = new NewJobs();
+                myJobs.cusAddress = item.Object.cusAddress;
+                myJobs.cusCity = item.Object.cusCity;
+                myJobs.cusZip = item.Object.cusZip;
+                myJobs.cusPhone = item.Object.cusPhone;
+                myJobs.cusTasks = item.Object.cusTasks;
+                myJobs.cusNotes = item.Object.cusNotes;
+            }
+        }
+        private async void CreateJob(object sender, EventArgs e)
         {
             // Add job to list
-            Shared.jobList[Shared.jobList.Length] = new Job();
-
+            //Shared.jobList[Shared.jobList.Length] = new Job(); --Miranda code, possibly needed later
+            NewJobs newjob = new NewJobs();
+            newjob.cusAddress = holder.AddressEdit.Text;
+            newjob.cusCity = holder.CityEdit.Text;
+            newjob.cusZip = holder.ZipcodeEdit.Text;
+            newjob.cusPhone = holder.ContactEdit.Text;
+            newjob.cusTasks = holder.JobSpinner.SelectedItem.ToString();
+            newjob.cusNotes = holder.NotesEdit.Text;
+            var firebase = new FirebaseClient(firebaseURL);
+            //add item
+            var item = await firebase.Child("jobs").PostAsync<NewJobs>(newjob);
+            //HERE!
 
 
             // Perhaps test that all the fields were filled out, but later

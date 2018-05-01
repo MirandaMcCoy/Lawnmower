@@ -2,19 +2,21 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:background="@color/semi_solid_menu_background">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bedazzled_blue"
-        android:layout_margin="@dimen/fragment_margin">
+        android:background="@drawable/menuFragmentBackground"
+        android:layout_margin="@dimen/fragment_margin"
+        android:padding="@dimen/fragment_padding">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/assign_job_inside_margin"
             android:text="Assign Job To: "
-            android:textSize="20sp" />
+            android:textSize="@dimen/fragment_text_size" />
         <Spinner
             android:id="@+id/EmployeeListSpinner"
             android:layout_width="fill_parent"
@@ -26,8 +28,8 @@
           android:layout_height="@dimen/add_job_view_height"
           android:gravity="center"
           android:background="@drawable/editTextBox"
-          android:textSize="@dimen/add_job_text_size"
+          android:textSize="@dimen/fragment_text_size"
           android:textColor="@color/black"
-          android:text="Assign Job" />
+          android:text="@string/assign_job_text" />
     </LinearLayout>
 </FrameLayout>

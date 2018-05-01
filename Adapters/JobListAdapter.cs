@@ -61,6 +61,8 @@ namespace Lawnmower.Adapters
                 holder = view.Tag as JobListItemViewHolder;
             }
 
+            holder.AssignText.Tag = position;
+
             SetViews(position);
             this.position = position;
 
@@ -77,7 +79,7 @@ namespace Lawnmower.Adapters
 
         private void SetViews(int position)
         {
-            var job = jobs[position];
+            var job = jobs[(int)holder.AssignText.Tag];
 
             holder.FirstNameText.Text = job.FirstName;
             holder.LastNameText.Text = job.LastName;
@@ -87,7 +89,6 @@ namespace Lawnmower.Adapters
             holder.JobDayText.Text = job.Date.DayOfWeek.ToString();
             holder.JobTypeText.Text = job.JobType;
             holder.AssignText.Text = job.Assignee;
-            holder.JobID = position;
         }
 
         private void SetHolderViews()
@@ -104,6 +105,7 @@ namespace Lawnmower.Adapters
             holder.DirectionsImage = view.FindViewById<ImageView>(Resource.Id.DirectionsImage);
             holder.CancelImage = view.FindViewById<ImageView>(Resource.Id.DeleteImage);
             holder.NotesImage = view.FindViewById<ImageView>(Resource.Id.NotepadImage);
+            holder.AssignJobFragment = this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
         }
 
         #region Click Events
@@ -118,8 +120,10 @@ namespace Lawnmower.Adapters
 
         private void AssignJobOpen(object sender, EventArgs e)
         {
-            this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu).SetSelectedJob(holder.JobID);
-            this.context.FragmentManager.BeginTransaction().Show(this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu)).Commit();
+            var assignText = (TextView)sender;
+
+            holder.AssignJobFragment.SetSelectedJob((int)assignText.Tag);
+            this.context.FragmentManager.BeginTransaction().Show(holder.AssignJobFragment).Commit();
         }
 
         private void DirectionsClick(object sender, EventArgs e)

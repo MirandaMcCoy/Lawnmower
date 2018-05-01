@@ -67,6 +67,8 @@ namespace Lawnmower
             Shared.jobListAdapter.NotifyDataSetChanged();
 
             FragmentManager.BeginTransaction().Hide(this).Commit();
+
+            holder.EmployeeSpinner.SetSelection(0);
         }
         #endregion
 

@@ -135,7 +135,17 @@ namespace Lawnmower
             // To be replaced with a call to Firebase for this info instead of hardcoding it
             var jobList = new List<string>() { "Mow", "Weedeat", "Mow and Weedeat" };
             var stateList = new List<string>() { "AZ", "MO", "OH" };
-            var employeeList = new List<string>() {"Unassigned", "John White", "Earl Grey", "John Buck" };
+            var employeeList = new List<string>();
+
+            if (Shared.dummyEmployeeList.Count == 0)
+            {
+                Shared.FillEmployeeList();
+            }
+
+            for (int i = 0; i < Shared.dummyEmployeeList.Count; i++)
+            {
+                employeeList.Add(Shared.dummyEmployeeList[i].FirstName + " " + Shared.dummyEmployeeList[i].LastName);
+            }
 
             holder.JobSpinner.Adapter = new ArrayAdapter<string>(this.Activity, Android.Resource.Layout.SimpleSpinnerItem, jobList);
             holder.StateSpinner.Adapter = new ArrayAdapter<string>(this.Activity, Android.Resource.Layout.SimpleSpinnerItem, stateList);

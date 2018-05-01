@@ -162,13 +162,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\EmployeeListAdapter.cs" />
     <Compile Include="Adapters\JobListAdapter.cs" />
     <Compile Include="AddJobActivity.cs" />
     <Compile Include="AssignJobActivity.cs" />
     <Compile Include="FirebaseConstructors\Account.cs" />
     <Compile Include="JobListActivity.cs" />
     <Compile Include="LoginActivity.cs" />
+    <Compile Include="Objects\Employee.cs" />
     <Compile Include="Objects\Job.cs" />
     <Compile Include="Objects\User.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

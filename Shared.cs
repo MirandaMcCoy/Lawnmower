@@ -22,6 +22,7 @@ namespace Lawnmower
         public static FirebaseClient FirebaseClient = new FirebaseClient(FirebaseURL);
         //public static FirebaseFirestore fs = FirebaseFirestore.Instance;
         public static List<Job> dummyJobList = new List<Job>();
+        public static List<Employee> dummyEmployeeList = new List<Employee>();
         public static Adapters.JobListAdapter jobListAdapter;
 
         public static void testDB()
@@ -32,6 +33,27 @@ namespace Lawnmower
             //newUser.Add("passWord", "password");
 
             //fs.Collection("Users").Document("0").Set(newUser);
+        }
+
+        public static void FillEmployeeList()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+
+                dummyEmployeeList.Add(new Employee());
+            }
+
+            dummyEmployeeList[0].FirstName = "Unassigned";
+            dummyEmployeeList[0].LastName = "";
+
+            dummyEmployeeList[1].FirstName = "Earl";
+            dummyEmployeeList[1].LastName = "Gray";
+
+            dummyEmployeeList[2].FirstName = "John";
+            dummyEmployeeList[2].LastName = "White";
+
+            dummyEmployeeList[3].FirstName = "Jane";
+            dummyEmployeeList[3].LastName = "Doe";
         }
     }
 }

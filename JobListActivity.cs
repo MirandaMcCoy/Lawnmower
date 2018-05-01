@@ -74,6 +74,7 @@ namespace Lawnmower
             Shared.dummyJobList[0].Date = new DateTime(2018, 4, 23);
             Shared.dummyJobList[0].Repeating = true;
             Shared.dummyJobList[0].Notes = "A a aa";
+            Shared.dummyJobList[0].Assignee = Shared.dummyEmployeeList[0].FirstName + " " + Shared.dummyEmployeeList[0].LastName;
 
             Shared.dummyJobList[1] = new Job();
 
@@ -85,6 +86,7 @@ namespace Lawnmower
             Shared.dummyJobList[1].Date = new DateTime(2018, 4, 23);
             Shared.dummyJobList[1].Repeating = true;
             Shared.dummyJobList[1].Notes = "B b bb";
+            Shared.dummyJobList[1].Assignee = Shared.dummyEmployeeList[1].FirstName + " " + Shared.dummyEmployeeList[1].LastName;
 
             Shared.dummyJobList[2] = new Job();
 
@@ -96,6 +98,7 @@ namespace Lawnmower
             Shared.dummyJobList[2].Date = new DateTime(2018, 4, 23);
             Shared.dummyJobList[2].Repeating = true;
             Shared.dummyJobList[2].Notes = "C c cc";
+            Shared.dummyJobList[2].Assignee = Shared.dummyEmployeeList[2].FirstName + " " + Shared.dummyEmployeeList[2].LastName;
         }
 
         private void SetHolderViews()

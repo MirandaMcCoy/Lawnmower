@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Lawnmower</string>
+  
+  <!-- Assign Job Fragment -->
+  <string name="assign_job_text">Assign Job</string>
 </resources>

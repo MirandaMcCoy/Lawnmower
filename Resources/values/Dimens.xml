@@ -12,13 +12,12 @@
   <dimen name="login_button_text_size">20sp</dimen>
 
   <!-- List -->
-  <dimen name="fragment_margin">30dp</dimen>
   <dimen name="job_view_bottom_margin">3dp</dimen>
   <dimen name="job_item_text_size">15sp</dimen>
   <dimen name="job_item_text_padding_left">20dp</dimen>
   <dimen name="job_item_assign_padding">5dp</dimen>
   <dimen name="job_item_padding">10dp</dimen>
-  <dimen name="job_item_icon_size">65dp</dimen>
+  <dimen name="job_item_icon_size">50dp</dimen>
 
   <!-- Add Job Fragment -->
   <dimen name="add_job_inside_margin">5dp</dimen>
@@ -26,4 +25,12 @@
   <dimen name="add_job_text_size">20sp</dimen>
   <dimen name="add_job_fragment_padding">10dp</dimen>
   <dimen name="add_job_notes_height">150dp</dimen>
+  
+  <!-- Assign Job Fragment -->
+  <dimen name="assign_job_inside_margin">5dp</dimen>
+  
+  <!-- Menu General -->
+  <dimen name="fragment_padding">10dp</dimen>
+  <dimen name="fragment_margin">30dp</dimen>
+  <dimen name="fragment_text_size">20sp</dimen>
 </resources>

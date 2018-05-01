@@ -127,12 +127,9 @@ namespace Lawnmower
             var item = await firebase.Child("jobs").PostAsync<NewJobs>(newjob);
             //HERE!
 
-            string[] date = holder.DateText.Text.Split('/', ' ');
-            newJob.Date = new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1]));
-
-            // Update job list
-            Shared.jobListAdapter.jobs = Shared.dummyJobList.ToList();
-            Shared.jobListAdapter.NotifyDataSetChanged();
+            // Update job list -- This use to add to the dummy job list. Hopefully we can change this in time.
+            //Shared.jobListAdapter.jobs = Shared.dummyJobList.ToList();
+            //Shared.jobListAdapter.NotifyDataSetChanged();
 
             FragmentManager.BeginTransaction().Hide(this).Commit();
 

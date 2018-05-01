@@ -36,7 +36,7 @@ namespace Lawnmower
 
             AssignClickEvents();
 
-            CreateJobs();
+            CreateDummyJobs();
 
             SetViewAdapter();
         }
@@ -61,43 +61,44 @@ namespace Lawnmower
 
         #endregion
 
-        
-
-        private void CreateJobs()
+        private void CreateDummyJobs()
         {
-            Shared.jobList = new Job[3];
-            Shared.jobList[0] = new Job();
+            Shared.dummyJobList.AddRange(new Job[3]);
+            Shared.dummyJobList[0] = new Job();
 
-            Shared.jobList[0].FirstName = "Bob";
-            Shared.jobList[0].LastName = "by";
-            Shared.jobList[0].Address = "1505 W Mathew Ct, Ozark, MO 65721";
-            Shared.jobList[0].ContactNumber = "555-555-5555";
-            Shared.jobList[0].JobType = "Mow and Weedeat";
-            Shared.jobList[0].Date = new DateTime(2018, 4, 23);
-            Shared.jobList[0].Repeating = true;
-            Shared.jobList[0].Notes = "A a aa";
+            Shared.dummyJobList[0].FirstName = "Bob";
+            Shared.dummyJobList[0].LastName = "by";
+            Shared.dummyJobList[0].Address = "1505 W Mathew Ct, Ozark, MO 65721";
+            Shared.dummyJobList[0].ContactNumber = "555-555-5555";
+            Shared.dummyJobList[0].JobType = "Mow and Weedeat";
+            Shared.dummyJobList[0].Date = new DateTime(2018, 4, 23);
+            Shared.dummyJobList[0].Repeating = true;
+            Shared.dummyJobList[0].Notes = "A a aa";
+            Shared.dummyJobList[0].Assignee = Shared.dummyEmployeeList[0].FirstName + " " + Shared.dummyEmployeeList[0].LastName;
 
-            Shared.jobList[1] = new Job();
+            Shared.dummyJobList[1] = new Job();
 
-            Shared.jobList[1].FirstName = "Angie";
-            Shared.jobList[1].LastName = "Fish";
-            Shared.jobList[1].Address = "1111 Street St, Ozark, MO 65721";
-            Shared.jobList[1].ContactNumber = "555-555-5555";
-            Shared.jobList[1].JobType = "Mow and Weedeat";
-            Shared.jobList[1].Date = new DateTime(2018, 4, 23);
-            Shared.jobList[1].Repeating = true;
-            Shared.jobList[1].Notes = "B b bb";
+            Shared.dummyJobList[1].FirstName = "Angie";
+            Shared.dummyJobList[1].LastName = "Fish";
+            Shared.dummyJobList[1].Address = "1111 Street St, Ozark, MO 65721";
+            Shared.dummyJobList[1].ContactNumber = "555-555-5555";
+            Shared.dummyJobList[1].JobType = "Mow and Weedeat";
+            Shared.dummyJobList[1].Date = new DateTime(2018, 4, 23);
+            Shared.dummyJobList[1].Repeating = true;
+            Shared.dummyJobList[1].Notes = "B b bb";
+            Shared.dummyJobList[1].Assignee = Shared.dummyEmployeeList[1].FirstName + " " + Shared.dummyEmployeeList[1].LastName;
 
-            Shared.jobList[2] = new Job();
+            Shared.dummyJobList[2] = new Job();
 
-            Shared.jobList[2].FirstName = "Raymond";
-            Shared.jobList[2].LastName = "Noodles";
-            Shared.jobList[2].Address = "2222 Street St, Ozark, MO 65721";
-            Shared.jobList[2].ContactNumber = "555-555-5555";
-            Shared.jobList[2].JobType = "Mow and Weedeat";
-            Shared.jobList[2].Date = new DateTime(2018, 4, 23);
-            Shared.jobList[2].Repeating = true;
-            Shared.jobList[2].Notes = "C c cc";
+            Shared.dummyJobList[2].FirstName = "Raymond";
+            Shared.dummyJobList[2].LastName = "Noodles";
+            Shared.dummyJobList[2].Address = "2222 Street St, Ozark, MO 65721";
+            Shared.dummyJobList[2].ContactNumber = "555-555-5555";
+            Shared.dummyJobList[2].JobType = "Mow and Weedeat";
+            Shared.dummyJobList[2].Date = new DateTime(2018, 4, 23);
+            Shared.dummyJobList[2].Repeating = true;
+            Shared.dummyJobList[2].Notes = "C c cc";
+            Shared.dummyJobList[2].Assignee = Shared.dummyEmployeeList[2].FirstName + " " + Shared.dummyEmployeeList[2].LastName;
         }
 
         private void SetHolderViews()
@@ -106,14 +107,13 @@ namespace Lawnmower
             holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
             holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
             holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
-
         }
 
             private void SetViewAdapter()
         {
-            JobListAdapter adapter = new JobListAdapter(this, Shared.jobList);
+            Shared.jobListAdapter = new JobListAdapter(this, Shared.dummyJobList.ToArray());
 
-            holder.JobListView.Adapter = adapter;
+            holder.JobListView.Adapter = Shared.jobListAdapter;
         }
 
         public override void OnBackPressed()

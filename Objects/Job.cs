@@ -22,5 +22,6 @@ namespace Lawnmower.Objects
         public DateTime Date { get; set; }
         public bool Repeating { get; set; }
         public string Notes { get; set; }
+        public string Assignee { get; set; }
     }
 }

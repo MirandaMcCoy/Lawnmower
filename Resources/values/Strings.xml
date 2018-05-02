@@ -4,4 +4,7 @@
   
   <!-- Assign Job Fragment -->
   <string name="assign_job_text">Assign Job</string>
+  
+  <!-- Login -->
+  <string name="new_user_text">New user?</string>
 </resources>

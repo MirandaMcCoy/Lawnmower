@@ -82,6 +82,7 @@ namespace Lawnmower
             holder.UsernameEdit = FindViewById<EditText>(Resource.Id.UsernameEdit);
             holder.PasswordEdit = FindViewById<EditText>(Resource.Id.PasswordEdit);
             holder.LoginButton = FindViewById<Button>(Resource.Id.LoginButton);
+            holder.NewUserText = FindViewById<TextView>(Resource.Id.NewUserText);
         }
 
         #region Click Events

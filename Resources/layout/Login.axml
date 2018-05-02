@@ -40,4 +40,11 @@
     android:textSize="@dimen/login_button_text_size"
     android:background="@color/white"
     android:textColor="@color/gray1"/>
+  <TextView
+    android:id="@+id/NewUserText"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:text="@string/new_user_text"
+    android:textSize="@dimen/login_new_user_text_size"
+    android:textColor="@color/cloudy_blue" />
 </LinearLayout>

@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\JobListAdapter.cs" />
+    <Compile Include="AlertBoxActivity.cs" />
     <Compile Include="AddJobActivity.cs" />
     <Compile Include="AssignJobActivity.cs" />
     <Compile Include="FirebaseConstructors\Account.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared.cs" />
+    <Compile Include="ViewHolders\AlertBoxViewHolder.cs" />
     <Compile Include="ViewHolders\AddJobViewHolder.cs" />
     <Compile Include="ViewHolders\AssignViewHolder.cs" />
     <Compile Include="ViewHolders\JobListItemViewHolder.cs" />
@@ -196,6 +198,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\NewUser.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AlertBoxFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

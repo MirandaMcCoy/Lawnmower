@@ -10,4 +10,10 @@
 
   <!-- New User -->
   <string name="new_user_create_account_text">Create Account</string>
+  
+  <!-- Alert Box Alerts -->
+  <string name="incorrect_username">The username you entered already exists.</string>
+  <string name="incorrect_password">The password you entered was incorrect.</string>
+  <string name="mismatched_passwords">The passwords you entered did not match.</string>
+  <string name="username_taken">The username you entered has already been taken.</string>
 </resources>

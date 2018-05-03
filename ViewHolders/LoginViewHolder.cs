@@ -18,5 +18,6 @@ namespace Lawnmower.ViewHolders
         public EditText PasswordEdit { get; set; }
         public Button LoginButton { get; set; }
         public TextView NewUserText { get; set; }
+        public AlertBoxActivity AlertBox { get; set; }
     }
 }

@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
 using Android.Support.V4.Content;
+using Firebase.Auth;
 
 namespace Lawnmower
 {

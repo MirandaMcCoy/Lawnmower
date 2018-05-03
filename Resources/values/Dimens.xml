@@ -36,8 +36,8 @@
   <dimen name="assign_job_inside_margin">5dp</dimen>
   
   <!-- Menu General -->
-  <dimen name="fragment_padding">10dp</dimen>
-  <dimen name="fragment_margin">30dp</dimen>
+  <dimen name="fragment_padding">15dp</dimen>
+  <dimen name="fragment_margin">20dp</dimen>
   <dimen name="fragment_text_size">20sp</dimen>
   
   <!-- Alert Box -->

@@ -2,6 +2,16 @@
 <resources>
   <string name="app_name">Dunn Mowing and Landscaping, LLC</string>
   
+  <!-- Add Job Fragment -->
+  <string name="add_job_first_name">First Name</string>
+  <string name="add_job_last_name">Last Name</string>
+  <string name="add_job_address">Address</string>
+  <string name="add_job_city">City</string>
+  <string name="add_job_zipcode">Zipcode</string>
+  <string name="add_job_contact">Contact Number</string>
+  <string name="add_job_notes_header">Notes</string>
+  <string name="add_job_create_button">Add Job</string>
+  
   <!-- Assign Job Fragment -->
   <string name="assign_job_text">Assign Job</string>
   

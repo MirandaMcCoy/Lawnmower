@@ -55,6 +55,13 @@ namespace Lawnmower
             base.OnDestroyView();
         }
 
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            
+            ClearInfo();
+        }
+
         private void SetHolderViews()
         {
             holder.AddressEdit = view.FindViewById<EditText>(Resource.Id.AddressEdit);

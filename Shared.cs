@@ -23,6 +23,7 @@ namespace Lawnmower
         public static List<Job> dummyJobList = new List<Job>();
         public static List<Employee> dummyEmployeeList = new List<Employee>();
         public static Adapters.JobListAdapter jobListAdapter;
+        public static int selectedJob;
 
         public static void testDB()
         {

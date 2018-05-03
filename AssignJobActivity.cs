@@ -62,7 +62,7 @@ namespace Lawnmower
         private void ConfirmClick(object sender, EventArgs e)
         {
             // Assign job to proper employee
-            selectedJob.Assignee = holder.EmployeeSpinner.SelectedItem.ToString();
+            Shared.dummyJobList[Shared.selectedJob].Assignee = holder.EmployeeSpinner.SelectedItem.ToString();
 
             Shared.jobListAdapter.NotifyDataSetChanged();
 
@@ -89,11 +89,6 @@ namespace Lawnmower
 
 
             holder.EmployeeSpinner.Adapter = new ArrayAdapter<string>(this.Activity, Android.Resource.Layout.SimpleSpinnerItem, employeeList);
-        }
-
-        public void SetSelectedJob(int jobIndex)
-        {
-            selectedJob = Shared.dummyJobList[jobIndex];
         }
     }
 }

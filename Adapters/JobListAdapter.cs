@@ -63,6 +63,7 @@ namespace Lawnmower.Adapters
 
             holder.AssignText.Tag = position;
             holder.NotesImage.Tag = position;
+            holder.DirectionsImage.Tag = position;
 
             SetViews(position);
             this.position = position;
@@ -130,7 +131,21 @@ namespace Lawnmower.Adapters
 
         private void DirectionsClick(object sender, EventArgs e)
         {
-            // Open google maps
+            var directionsImage = (ImageView)sender;
+            Shared.selectedJob = (int)directionsImage.Tag;
+
+            try
+            {
+                this.context.StartActivity(new Intent(Intent.ActionView, global::Android.Net.Uri.Parse("google.navigation:q=" + Shared.dummyJobList[Shared.selectedJob].Address)));
+            }
+            catch
+            {
+                using (Toast alert = Toast.MakeText(this.context, "No maps application found", ToastLength.Short))
+                {
+                    alert.Show();
+                }
+
+            }
         }
 
         private void NotesClick(object sender, EventArgs e)

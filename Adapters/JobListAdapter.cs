@@ -62,6 +62,7 @@ namespace Lawnmower.Adapters
             }
 
             holder.AssignText.Tag = position;
+            holder.NotesImage.Tag = position;
 
             SetViews(position);
             this.position = position;
@@ -106,6 +107,7 @@ namespace Lawnmower.Adapters
             holder.CancelImage = view.FindViewById<ImageView>(Resource.Id.DeleteImage);
             holder.NotesImage = view.FindViewById<ImageView>(Resource.Id.NotepadImage);
             holder.AssignJobFragment = this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
+            holder.NotesFragment = this.context.FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
         }
 
         #region Click Events
@@ -122,7 +124,7 @@ namespace Lawnmower.Adapters
         {
             var assignText = (TextView)sender;
 
-            holder.AssignJobFragment.SetSelectedJob((int)assignText.Tag);
+            Shared.selectedJob = (int)assignText.Tag;
             this.context.FragmentManager.BeginTransaction().Show(holder.AssignJobFragment).Commit();
         }
 
@@ -133,7 +135,10 @@ namespace Lawnmower.Adapters
 
         private void NotesClick(object sender, EventArgs e)
         {
-            // Open notes fragment
+            var notesImage = (ImageView)sender;
+
+            Shared.selectedJob = (int)notesImage.Tag;
+            this.context.FragmentManager.BeginTransaction().Show(holder.NotesFragment).Commit();
         }
 
         private void CancelClick(object sender, EventArgs e)

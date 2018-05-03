@@ -11,6 +11,10 @@
   <!-- New User -->
   <string name="new_user_create_account_text">Create Account</string>
   
+  <!-- Notes -->
+  <string name="notes_header">Notes</string>
+  <string name="notes_close">Close</string>
+  
   <!-- Alert Box Alerts -->
   <string name="incorrect_username">The username you entered already exists.</string>
   <string name="incorrect_password">The password you entered was incorrect.</string>

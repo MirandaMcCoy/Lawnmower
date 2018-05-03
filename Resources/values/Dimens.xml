@@ -45,4 +45,10 @@
   <dimen name="alert_box_padding">10dp</dimen>
   <dimen name="alert_box_cancel_width_height">25dp</dimen>
   <dimen name="alert_box_cancel_margin">5dp</dimen>
+  
+  <!-- Notes -->
+  <dimen name="notes_fragment_header_text_size">24sp</dimen>
+  <dimen name="notes_fragment_header_margin_bottom">15dp</dimen>
+  <dimen name="notes_fragment_text_size">15sp</dimen>
+  <dimen name="notes_fragment_box_height">300dp</dimen>
 </resources>

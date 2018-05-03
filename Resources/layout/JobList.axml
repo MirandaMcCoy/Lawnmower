@@ -18,11 +18,18 @@
   <fragment
       android:name="lawnmower.AddJobActivity"
       android:id="@+id/AddJobMenu"
+      android:layout_gravity="center"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
   <fragment
       android:name="lawnmower.AssignJobActivity"
       android:id="@+id/AssignJobMenu"
+      android:layout_gravity="center"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+  <fragment
+      android:name="lawnmower.NotesActivity"
+      android:id="@+id/NotesMenu"
       android:layout_gravity="center"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>

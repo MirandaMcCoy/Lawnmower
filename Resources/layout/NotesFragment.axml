@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/semi_solid_menu_background">
+  <LinearLayout
+      android:orientation="vertical"
+      android:background="@drawable/menuFragmentBackground"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/fragment_margin"
+      android:layout_gravity="center"
+      android:gravity="center"
+      android:padding="@dimen/fragment_padding">
+    <TextView
+      android:id="@+id/NotesHeader"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/notes_fragment_header_margin_bottom"
+      android:gravity="center"
+      android:textSize="@dimen/notes_fragment_header_text_size"
+      android:text="Notes"/>
+
+    <EditText
+      android:id="@+id/NotesEdit"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/notes_fragment_box_height"
+      android:gravity="top|left"
+      android:textSize="@dimen/fragment_text_size"
+      android:text="Notes"/>
+
+    <TextView
+      android:id="@+id/CloseButton"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/add_job_view_height"
+      android:gravity="center"
+      android:background="@drawable/editTextBox"
+      android:textSize="@dimen/fragment_text_size"
+      android:textColor="@color/black"
+      android:text="@string/notes_close" />
+    </LinearLayout>
+</FrameLayout>

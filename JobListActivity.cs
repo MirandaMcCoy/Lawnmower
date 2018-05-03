@@ -107,6 +107,7 @@ namespace Lawnmower
             holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
             holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
             holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
+            holder.NotesFragment = FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
         }
 
             private void SetViewAdapter()
@@ -124,6 +125,9 @@ namespace Lawnmower
             } else if (holder.AssignJobFragment.IsVisible)
             {
                 FragmentManager.BeginTransaction().Hide(holder.AssignJobFragment).Commit();
+            } else if (holder.NotesFragment.IsVisible)
+            {
+                FragmentManager.BeginTransaction().Hide(holder.NotesFragment).Commit();
             } else
             {
                 base.OnBackPressed();

@@ -9,6 +9,7 @@ using Lawnmower.Adapters;
 using System;
 using System.Threading.Tasks;
 using Android.Views;
+using Firebase;
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Lawnmower
     public class JobListActivity : Activity
     {
         ListViewHolder holder;
-        
+        NewJobs newJob = new NewJobs();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -60,7 +61,7 @@ namespace Lawnmower
         }
 
         #endregion
-
+        
         private void CreateDummyJobs()
         {
             Shared.dummyJobList.AddRange(new Job[3]);

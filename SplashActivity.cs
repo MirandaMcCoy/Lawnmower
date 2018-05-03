@@ -33,7 +33,7 @@ namespace Lawnmower
         async void SimulateStartup()
         {
             // Simulate waiting time so splash screen does not look awkward
-            await Task.Delay(3000);
+            await Task.Delay(1000);
 
             // Start login activity
             StartActivity(new Intent(Application.Context, typeof(LoginActivity)));

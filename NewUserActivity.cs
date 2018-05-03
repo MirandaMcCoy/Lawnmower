@@ -57,6 +57,7 @@ namespace Lawnmower
             holder.PasswordEdit = FindViewById<EditText>(Resource.Id.PasswordEdit);
             holder.VerifyPasswordEdit = FindViewById<EditText>(Resource.Id.VerifyPasswordEdit);
             holder.CreateAccountButton = FindViewById<TextView>(Resource.Id.CreateUserButton);
+            holder.AlertBox = FragmentManager.FindFragmentById<AlertBoxActivity>(Resource.Id.AlertBoxFragment);
         }
 
         #region Click Events

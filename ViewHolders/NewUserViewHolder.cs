@@ -20,5 +20,6 @@ namespace Lawnmower.ViewHolders
         public EditText PasswordEdit { get; set; }
         public EditText VerifyPasswordEdit { get; set; }
         public TextView CreateAccountButton { get; set; }
+        public AlertBoxActivity AlertBox { get; set; }
     }
 }

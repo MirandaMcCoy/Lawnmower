@@ -22,7 +22,7 @@ using Android.Support.V4.Content;
 
 namespace Lawnmower
 {
-    [Activity(Label = "LoginActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", RoundIcon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true)]
     public class LoginActivity : Activity
     {
         private LoginViewHolder holder;

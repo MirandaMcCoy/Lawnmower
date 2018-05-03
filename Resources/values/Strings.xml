@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Lawnmower</string>
+  <string name="app_name">Dunn Mowing and Landscaping, LLC</string>
   
   <!-- Assign Job Fragment -->
   <string name="assign_job_text">Assign Job</string>

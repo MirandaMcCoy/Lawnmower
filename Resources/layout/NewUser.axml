@@ -9,7 +9,7 @@
     android:background="@drawable/loginGradient">
   <ImageView
     android:id="@+id/Logo"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/front_page_logo_height_width"
     android:layout_width="@dimen/login_control_width"
     android:layout_marginBottom="@dimen/new_user_top_bottom_margin"
     android:src="@drawable/dml"/>
@@ -68,4 +68,13 @@
     android:hint="Verify Password"
     android:inputType="textPassword"
     android:singleLine="true"/>
+  <Button
+    android:id="@+id/CreateUserButton"
+    android:layout_height="50dp"
+    android:layout_width="@dimen/login_control_width"
+    android:layout_margin="10dp"
+    android:text="@string/new_user_create_account_text"
+    android:textSize="@dimen/login_button_text_size"
+    android:background="@color/white"
+    android:textColor="@color/gray1"/>
 </LinearLayout>

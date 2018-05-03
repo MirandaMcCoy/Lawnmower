@@ -21,7 +21,7 @@ using Firebase.Xamarin.Database.Query;
 
 namespace Lawnmower
 {
-    [Activity(Label = "LoginActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
+    [Activity(Label = "NewUserActivity", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public class NewUserActivity : Activity
     {
         private NewUserViewHolder holder;
@@ -51,18 +51,36 @@ namespace Lawnmower
 
         private void SetHolderViews()
         {
-            
+            holder.FirstNameEdit = FindViewById<EditText>(Resource.Id.FirstNameEdit);
+            holder.LastNameEdit = FindViewById<EditText>(Resource.Id.LastNameEdit);
+            holder.UsernameEdit = FindViewById<EditText>(Resource.Id.UsernameEdit);
+            holder.PasswordEdit = FindViewById<EditText>(Resource.Id.PasswordEdit);
+            holder.VerifyPasswordEdit = FindViewById<EditText>(Resource.Id.VerifyPasswordEdit);
+            holder.CreateAccountButton = FindViewById<TextView>(Resource.Id.CreateUserButton);
         }
 
         #region Click Events
         private void AssignClickEvents()
         {
-            
+            holder.CreateAccountButton.Click += CreateAccountClick;
         }
 
         private void UnassignClickEvents()
         {
-            
+            holder.CreateAccountButton.Click -= CreateAccountClick;
+        }
+
+        private void CreateAccountClick(object sender, EventArgs e)
+        {
+            // Verify that there is not an account with that username in the db
+            // If there is, alert the user
+            // Else, check that the two password fields match
+            //      If they don't, alert the user
+            //      If they do, create user and log them in
+
+            StartActivity(typeof(JobListActivity));
+
+            Finish();
         }
 #endregion
     }

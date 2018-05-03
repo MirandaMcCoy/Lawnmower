@@ -7,4 +7,7 @@
   
   <!-- Login -->
   <string name="new_user_text">New user?</string>
+
+  <!-- New User -->
+  <string name="new_user_create_account_text">Create Account</string>
 </resources>

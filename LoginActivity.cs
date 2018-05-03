@@ -124,6 +124,8 @@ namespace Lawnmower
             
             // Open Up Job List if valid employee (Currently open regardless for testing)
             StartActivity(typeof(JobListActivity));
+
+            Finish();
         }
 
         private void NewUserClick(object sender, EventArgs e)

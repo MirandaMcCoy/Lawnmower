@@ -18,6 +18,7 @@ using Lawnmower.Adapters;
 using System.Threading.Tasks;
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
+using Android.Support.V4.Content;
 
 namespace Lawnmower
 {
@@ -83,6 +84,7 @@ namespace Lawnmower
             holder.PasswordEdit = FindViewById<EditText>(Resource.Id.PasswordEdit);
             holder.LoginButton = FindViewById<Button>(Resource.Id.LoginButton);
             holder.NewUserText = FindViewById<TextView>(Resource.Id.NewUserText);
+            holder.AlertBox = FragmentManager.FindFragmentById<AlertBoxActivity>(Resource.Id.AlertBoxFragment);
         }
 
         #region Click Events

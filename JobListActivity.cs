@@ -15,7 +15,7 @@ using System.Collections.Generic;
 
 namespace Lawnmower
 {
-    [Activity(Label = "Lawnmower", WindowSoftInputMode = SoftInput.AdjustPan, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
+    [Activity(Label = "@string/app_name", WindowSoftInputMode = SoftInput.AdjustPan, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public class JobListActivity : Activity
     {
         ListViewHolder holder;

@@ -20,7 +20,6 @@ namespace Lawnmower
     {
         public static string FirebaseURL = "https://lawnmower-a4296.firebaseio.com/";
         public static FirebaseClient FirebaseClient = new FirebaseClient(FirebaseURL);
-        //public static FirebaseFirestore fs = FirebaseFirestore.Instance;
         public static List<Job> dummyJobList = new List<Job>();
         public static List<Employee> dummyEmployeeList = new List<Employee>();
         public static Adapters.JobListAdapter jobListAdapter;

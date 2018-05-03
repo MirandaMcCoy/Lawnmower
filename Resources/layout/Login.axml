@@ -36,6 +36,7 @@
     android:id="@+id/LoginButton"
     android:layout_height="50dp"
     android:layout_width="@dimen/login_control_width"
+    android:layout_margin="10dp"
     android:text="Login"
     android:textSize="@dimen/login_button_text_size"
     android:background="@color/white"

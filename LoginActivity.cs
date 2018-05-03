@@ -89,19 +89,32 @@ namespace Lawnmower
         private void AssignClickEvents()
         {
             holder.LoginButton.Click += LoginClick;
+            holder.NewUserText.Click += NewUserClick;
         }
 
         private void UnassignClickEvents()
         {
             holder.LoginButton.Click -= LoginClick;
+            holder.NewUserText.Click -= NewUserClick;
         }
 
         private void LoginClick(object sender, EventArgs e)
         {
+            // if holder.username == (any)database.username{
+            //      test if holder.password == (that)database.password
+            //      if not == {
+            //          tell user mismatched password
+            //      else {
+            //          log user in
+            // else {
+            //      tell user bad username
+
+
+
             // Only worry about passing the username and password data and returning
             //     if the user is a valid employee or not.
             //     Job List will handle what to show/not to show to different employees
-            CreateUser();
+            //CreateUser();
 
             // To get the entered username, use:
             // holder.UsernameEdit.Text
@@ -111,6 +124,11 @@ namespace Lawnmower
             
             // Open Up Job List if valid employee (Currently open regardless for testing)
             StartActivity(typeof(JobListActivity));
+        }
+
+        private void NewUserClick(object sender, EventArgs e)
+        {
+            StartActivity(typeof(NewUserActivity));
         }
 #endregion
     }

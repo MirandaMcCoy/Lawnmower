@@ -177,6 +177,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared.cs" />
+    <Compile Include="SplashActivity.cs" />
     <Compile Include="ViewHolders\NotesViewHolder.cs" />
     <Compile Include="ViewHolders\AlertBoxViewHolder.cs" />
     <Compile Include="ViewHolders\AddJobViewHolder.cs" />
@@ -325,6 +326,8 @@
     <Content Include="mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\cancel.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\cancel.png" />
+    <AndroidResource Include="Resources\drawable\SplashScreen.xml" />
+    <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

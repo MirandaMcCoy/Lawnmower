@@ -167,6 +167,7 @@
     <Compile Include="AssignJobActivity.cs" />
     <Compile Include="FirebaseConstructors\Account.cs" />
     <Compile Include="JobListActivity.cs" />
+    <Compile Include="NewUserActivity.cs" />
     <Compile Include="LoginActivity.cs" />
     <Compile Include="Objects\Employee.cs" />
     <Compile Include="Objects\Job.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="ViewHolders\AssignViewHolder.cs" />
     <Compile Include="ViewHolders\JobListItemViewHolder.cs" />
     <Compile Include="ViewHolders\ListViewHolder.cs" />
+    <Compile Include="ViewHolders\NewUserViewHolder.cs" />
     <Compile Include="ViewHolders\LoginViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +193,9 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\JobListItem.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NewUser.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

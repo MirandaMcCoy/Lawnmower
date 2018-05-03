@@ -10,7 +10,7 @@
     android:background="@drawable/loginGradient">
   <ImageView
     android:id="@+id/Logo"
-    android:layout_height="200dp"
+    android:layout_height="@dimen/front_page_logo_height_width"
     android:layout_width="@dimen/login_control_width"
     android:src="@drawable/dml"/>
   <EditText
@@ -36,8 +36,16 @@
     android:id="@+id/LoginButton"
     android:layout_height="50dp"
     android:layout_width="@dimen/login_control_width"
+    android:layout_margin="10dp"
     android:text="Login"
     android:textSize="@dimen/login_button_text_size"
     android:background="@color/white"
     android:textColor="@color/gray1"/>
+  <TextView
+    android:id="@+id/NewUserText"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:text="@string/new_user_text"
+    android:textSize="@dimen/login_new_user_text_size"
+    android:textColor="@color/cloudy_blue" />
 </LinearLayout>

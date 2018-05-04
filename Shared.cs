@@ -38,7 +38,7 @@ namespace Lawnmower
             for (int i = 0; i < employees.Count; i++)
             {
                 var employee = employees.ElementAt(i).Object;
-                if (employees.ElementAt(i).Object.Uid != FirebaseAuth.Instance.CurrentUser.Uid)
+                if (employees.ElementAt(i).Object.Uid != FirebaseAuth.Instance.CurrentUser.Uid && employees.ElementAt(i).Object.LastName != "")
                 {
                     employeeList.Add(new Employee());
 
@@ -55,8 +55,12 @@ namespace Lawnmower
                 }
             }
 
+            employeeList.Add(new Employee());
+            employeeList[employeeList.Count - 1].LastName = "Unassigned";
+
             return true;
         }
+
         public async static Task<bool> CheckIfAdmin()
         {
             var users = await Shared.firebaseClient.Child("users").OnceAsync<Objects.User>();
@@ -133,7 +137,7 @@ namespace Lawnmower
             job.Notes = "Please work please work please work";
             job.ContactNumber = "417 555 1234";
             job.Date = new DateTime().Date;
-            job.Assignee = "unassigned";
+            job.Assignee = "";
             var Item = await Shared.firebaseClient.Child("jobs").PostAsync<Job>(job);
         }
     }

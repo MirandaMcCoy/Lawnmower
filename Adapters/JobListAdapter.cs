@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Firebase.Auth;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 
@@ -97,7 +98,20 @@ namespace Lawnmower.Adapters
             holder.JobDateText.Text = job.Date.Month.ToString() + "/" + job.Date.Day.ToString() + "/" + job.Date.Year.ToString();
             holder.JobDayText.Text = job.Date.DayOfWeek.ToString();
             holder.JobTypeText.Text = job.JobType;
-            holder.AssignText.Text = job.Assignee;
+
+            if (job.Assignee == "")
+            {
+                holder.AssignText.Text = "Unassigned";
+            } else
+            {
+                for (int i = 0; i < Shared.employeeList.Count; i++)
+                {
+                    if (Shared.employeeList[i].Uid == Shared.jobList[Shared.selectedJob].Assignee)
+                    {
+                        holder.AssignText.Text = Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName;
+                    }
+                }
+            }
         }
 
         private void SetHolderViews()

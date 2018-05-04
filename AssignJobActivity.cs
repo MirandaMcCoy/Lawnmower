@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
+using Firebase.Xamarin.Database.Query;
 
 namespace Lawnmower
 {
@@ -78,18 +79,16 @@ namespace Lawnmower
             holder.ConfirmButton.Click -= ConfirmClick;
         }
 
-        private void ConfirmClick(object sender, EventArgs e)
+        private async void ConfirmClick(object sender, EventArgs e)
         {
             // Assign job to proper employee
             for (int i = 0; i < Shared.employeeList.Count; i++)
             {
                 if (holder.EmployeeSpinner.SelectedItem.ToString() == (Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName))
                 {
-                    var t = Shared.employeeList[i].Uid;
                     Shared.jobList[Shared.selectedJob].Assignee = Shared.employeeList[i].Uid;
-                } else
-                {
-                    Shared.jobList[Shared.selectedJob].Assignee = "";
+
+                    await Shared.firebaseClient.Child("jobs").Child(Shared.jobList[Shared.selectedJob].Id).Child("Assignee").PutAsync(Shared.employeeList[i].Uid);
                 }
             }
 

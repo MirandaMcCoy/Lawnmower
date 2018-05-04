@@ -78,14 +78,15 @@ namespace Lawnmower
 
         public static async void GetJobsAsync(Activity context)
         {
+            ProgressDialog dialog = new ProgressDialog(context);
+            dialog.SetMessage("Retrieving jobs...");
+            dialog.Indeterminate = true;
+            dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
             if (showAdmin) // If an admin, show all jobs
             {
-                ProgressDialog dialog = new ProgressDialog(context);
                 try
                 {
-                    dialog.SetMessage("Retrieving jobs...");
-                    dialog.Indeterminate = true;
-                    dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
                     dialog.Show();
 
                     var empJobs = await Shared.firebaseClient.Child("jobs").OnceAsync<Objects.Job>();
@@ -101,6 +102,7 @@ namespace Lawnmower
                         jobList[i].Date = empJobs.ElementAt(i).Object.Date;
                         jobList[i].Notes = empJobs.ElementAt(i).Object.Notes;
                         jobList[i].Assignee = empJobs.ElementAt(i).Object.Assignee;
+                        jobList[i].Id = empJobs.ElementAt(i).Key;
                     }
 
                 }
@@ -115,7 +117,36 @@ namespace Lawnmower
             }
             else // If not admin, only show jobs assigned to the employee
             {
+                try
+                {
+                    dialog.Show();
 
+                    var empJobs = await Shared.firebaseClient.Child("jobs").OnceAsync<Objects.Job>();
+
+                    for (int i = 0; i < empJobs.Count; i++)
+                    {
+                        if (empJobs.ElementAt(i).Object.Assignee == FirebaseAuth.Instance.CurrentUser.Uid)
+                        {
+                            jobList.Add(new Job());
+                            jobList[i].FirstName = empJobs.ElementAt(i).Object.FirstName;
+                            jobList[i].LastName = empJobs.ElementAt(i).Object.LastName;
+                            jobList[i].Address = empJobs.ElementAt(i).Object.Address;
+                            jobList[i].ContactNumber = empJobs.ElementAt(i).Object.ContactNumber;
+                            jobList[i].JobType = empJobs.ElementAt(i).Object.JobType;
+                            jobList[i].Date = empJobs.ElementAt(i).Object.Date;
+                            jobList[i].Notes = empJobs.ElementAt(i).Object.Notes;
+                            jobList[i].Assignee = empJobs.ElementAt(i).Object.Assignee;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(context, "There was a problem retrieving jobs.", ToastLength.Long).Show();
+                }
+                finally
+                {
+                    dialog.Hide();
+                }
             }
 
             try

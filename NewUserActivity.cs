@@ -108,7 +108,7 @@ namespace Lawnmower
             user.LastName = holder.LastNameEdit.Text.FirstOrDefault().ToString().ToUpper() + holder.LastNameEdit.Text.Substring(1);
             user.Email = holder.UsernameEdit.Text;
             user.Uid = FirebaseAuth.Instance.CurrentUser.Uid;
-            var Item = await Shared.firebaseClient.Child("users").PostAsync<User>(user);
+            var userTask = await Shared.firebaseClient.Child("users").PostAsync<User>(user);
         }
     }
 }

@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Firebase.Auth;
+using Firebase.Xamarin.Database.Query;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 
@@ -65,6 +66,7 @@ namespace Lawnmower.Adapters
             holder.AssignText.Tag = position;
             holder.NotesImage.Tag = position;
             holder.DirectionsImage.Tag = position;
+            holder.CancelImage.Tag = position;
 
             SetViews(position);
             this.position = position;
@@ -177,9 +179,15 @@ namespace Lawnmower.Adapters
             this.context.FragmentManager.BeginTransaction().Show(holder.NotesFragment).Commit();
         }
 
-        private void CancelClick(object sender, EventArgs e)
+        private async void CancelClick(object sender, EventArgs e)
         {
-            // Cancel job, notify assigned employee
+            var cancelImage = (ImageView)sender;
+
+            Shared.selectedJob = (int)cancelImage.Tag;
+
+            await Shared.firebaseClient.Child("jobs").Child(Shared.jobList[Shared.selectedJob].Id).DeleteAsync();
+
+            Shared.GetJobsAsync(this.context);
         }
 
 #endregion

@@ -83,6 +83,8 @@ namespace Lawnmower
             dialog.Indeterminate = true;
             dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
 
+            jobList = new List<Job>();
+
             if (showAdmin) // If an admin, show all jobs
             {
                 try
@@ -162,6 +164,7 @@ namespace Lawnmower
         public async static void CreateJob()
         {
             var job = new Objects.Job();
+
             job.Address = "1234 Banning St";
             job.FirstName = "John";
             job.LastName = "Smith";
@@ -169,7 +172,8 @@ namespace Lawnmower
             job.ContactNumber = "417 555 1234";
             job.Date = new DateTime().Date;
             job.Assignee = "";
-            var Item = await Shared.firebaseClient.Child("jobs").PostAsync<Job>(job);
+
+            var jobTask = await Shared.firebaseClient.Child("jobs").PostAsync<Job>(job);
         }
     }
 }

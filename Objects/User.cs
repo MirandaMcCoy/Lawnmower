@@ -13,8 +13,10 @@ namespace Lawnmower.Objects
 {
     public class User
     {
-        public string uid { get; set; }
-        public string passWord { get; set; }
-        public string userName { get; set; }
+        public string Uid { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool Admin { get; set; }
     }
 }

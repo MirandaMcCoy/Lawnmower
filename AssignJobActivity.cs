@@ -62,7 +62,7 @@ namespace Lawnmower
         private void ConfirmClick(object sender, EventArgs e)
         {
             // Assign job to proper employee
-            Shared.dummyJobList[Shared.selectedJob].Assignee = holder.EmployeeSpinner.SelectedItem.ToString();
+            Shared.jobList[Shared.selectedJob].Assignee = holder.EmployeeSpinner.SelectedItem.ToString();
 
             Shared.jobListAdapter.NotifyDataSetChanged();
 

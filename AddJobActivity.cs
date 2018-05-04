@@ -96,9 +96,9 @@ namespace Lawnmower
         private void CreateJob(object sender, EventArgs e)
         {
             // Add job to list
-            Shared.dummyJobList.Add(new Job());
-            var index = Shared.dummyJobList.Count - 1;
-            var newJob = Shared.dummyJobList[index];
+            Shared.jobList.Add(new Job());
+            var index = Shared.jobList.Count - 1;
+            var newJob = Shared.jobList[index];
             newJob.Address = holder.AddressEdit.Text;
             newJob.ContactNumber = holder.ContactEdit.Text;
 
@@ -112,7 +112,7 @@ namespace Lawnmower
             newJob.Assignee = holder.AssignSpinner.SelectedItem.ToString();
 
             // Update job list
-            Shared.jobListAdapter.jobs = Shared.dummyJobList.ToList();
+            Shared.jobListAdapter.jobs = Shared.jobList.ToList();
             Shared.jobListAdapter.NotifyDataSetChanged();
 
             FragmentManager.BeginTransaction().Hide(this).Commit();

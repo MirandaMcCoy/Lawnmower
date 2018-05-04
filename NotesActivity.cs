@@ -55,7 +55,7 @@ namespace Lawnmower
         {
             base.OnHiddenChanged(hidden);
 
-            holder.NotesEdit.Text = Shared.dummyJobList[Shared.selectedJob].Notes;
+            //holder.NotesEdit.Text = Shared.jobList[Shared.selectedJob].Notes;
         }
 
         private void SetHolderViews()
@@ -81,7 +81,7 @@ namespace Lawnmower
         private void NotesChanged(object sender, EventArgs e)
         {
             var notes = (EditText)sender;
-            Shared.dummyJobList[Shared.selectedJob].Notes = notes.Text;
+            Shared.jobList[Shared.selectedJob].Notes = notes.Text;
         }
 
         private void CloseClick(object sender, EventArgs e)

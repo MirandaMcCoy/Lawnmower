@@ -9,6 +9,9 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Firebase;
+using Firebase.Xamarin.Auth;
+using Firebase.Auth;
 
 namespace Lawnmower
 {
@@ -25,6 +28,7 @@ namespace Lawnmower
         protected override void OnResume()
         {
             base.OnResume();
+            FirebaseApp.InitializeApp(this);
 
             Task startup = new Task(() => { SimulateStartup(); });
             startup.Start();
@@ -34,9 +38,28 @@ namespace Lawnmower
         {
             // Simulate waiting time so splash screen does not look awkward
             await Task.Delay(1000);
+            Firebase.Auth.FirebaseAuth.Instance.SignOut(); //--this is used to test whether the login auth is working, it will log any user out upon startup
+            Firebase.Auth.FirebaseAuth.Instance.AuthState += (sender, e) =>
+            {
+                var user = e?.Auth?.CurrentUser;
+                
+                if (user != null)
+                {
+                    //user is signed in
+                    Shared.TestIfAdmin();
+                    
+                    StartActivity(new Intent(Application.Context, typeof(JobListActivity)));
+                }
+                else
+                {
+                    //user is signed out
+                    StartActivity(new Intent(Application.Context, typeof(LoginActivity)));
+                }
+            };
+            
 
             // Start login activity
-            StartActivity(new Intent(Application.Context, typeof(LoginActivity)));
+            
         }
     }
 }

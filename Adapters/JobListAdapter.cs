@@ -136,7 +136,7 @@ namespace Lawnmower.Adapters
 
             try
             {
-                this.context.StartActivity(new Intent(Intent.ActionView, global::Android.Net.Uri.Parse("google.navigation:q=" + Shared.dummyJobList[Shared.selectedJob].Address)));
+                this.context.StartActivity(new Intent(Intent.ActionView, global::Android.Net.Uri.Parse("google.navigation:q=" + Shared.jobList[Shared.selectedJob].Address)));
             }
             catch
             {

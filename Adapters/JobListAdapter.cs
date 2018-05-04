@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Firebase.Auth;
+using Firebase.Xamarin.Database.Query;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 
@@ -64,6 +66,7 @@ namespace Lawnmower.Adapters
             holder.AssignText.Tag = position;
             holder.NotesImage.Tag = position;
             holder.DirectionsImage.Tag = position;
+            holder.CancelImage.Tag = position;
 
             SetViews(position);
             this.position = position;
@@ -79,6 +82,13 @@ namespace Lawnmower.Adapters
             }
         }
 
+        public override void NotifyDataSetChanged()
+        {
+            jobs = Shared.jobList;
+
+            base.NotifyDataSetChanged();
+        }
+
         private void SetViews(int position)
         {
             var job = jobs[(int)holder.AssignText.Tag];
@@ -90,7 +100,20 @@ namespace Lawnmower.Adapters
             holder.JobDateText.Text = job.Date.Month.ToString() + "/" + job.Date.Day.ToString() + "/" + job.Date.Year.ToString();
             holder.JobDayText.Text = job.Date.DayOfWeek.ToString();
             holder.JobTypeText.Text = job.JobType;
-            holder.AssignText.Text = job.Assignee;
+
+            if (job.Assignee == "")
+            {
+                holder.AssignText.Text = "Unassigned";
+            } else
+            {
+                for (int i = 0; i < Shared.employeeList.Count; i++)
+                {
+                    if (Shared.employeeList[i].Uid == Shared.jobList[Shared.selectedJob].Assignee)
+                    {
+                        holder.AssignText.Text = Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName;
+                    }
+                }
+            }
         }
 
         private void SetHolderViews()
@@ -136,7 +159,7 @@ namespace Lawnmower.Adapters
 
             try
             {
-                this.context.StartActivity(new Intent(Intent.ActionView, global::Android.Net.Uri.Parse("google.navigation:q=" + Shared.dummyJobList[Shared.selectedJob].Address)));
+                this.context.StartActivity(new Intent(Intent.ActionView, global::Android.Net.Uri.Parse("google.navigation:q=" + Shared.jobList[Shared.selectedJob].Address)));
             }
             catch
             {
@@ -156,9 +179,15 @@ namespace Lawnmower.Adapters
             this.context.FragmentManager.BeginTransaction().Show(holder.NotesFragment).Commit();
         }
 
-        private void CancelClick(object sender, EventArgs e)
+        private async void CancelClick(object sender, EventArgs e)
         {
-            // Cancel job, notify assigned employee
+            var cancelImage = (ImageView)sender;
+
+            Shared.selectedJob = (int)cancelImage.Tag;
+
+            await Shared.firebaseClient.Child("jobs").Child(Shared.jobList[Shared.selectedJob].Id).DeleteAsync();
+
+            Shared.GetJobsAsync(this.context);
         }
 
 #endregion

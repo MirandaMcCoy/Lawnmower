@@ -18,6 +18,8 @@ using Lawnmower.Adapters;
 using System.Threading.Tasks;
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
+using Firebase.Auth;
+
 
 namespace Lawnmower
 {
@@ -71,8 +73,22 @@ namespace Lawnmower
             holder.CreateAccountButton.Click -= CreateAccountClick;
         }
 
-        private void CreateAccountClick(object sender, EventArgs e)
+        private async void CreateAccountClick(object sender, EventArgs e)
         {
+            try
+            {
+                await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
+                CreateUser();
+                Shared.CheckIfAdmin();
+                
+            }
+            catch (Exception ex)
+            {
+                // Sign-up failed, display a message to the user
+                // If sign in succeeds, the AuthState event handler will
+                //  be notified and logic to handle the signed in user can happen there
+                Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+            }
             // Verify that there is not an account with that username in the db
             // If there is, alert the user
             // Else, check that the two password fields match
@@ -84,5 +100,15 @@ namespace Lawnmower
             Finish();
         }
 #endregion
+        private async void CreateUser()
+        {
+            var user = new Objects.User();
+            user.Admin = false;
+            user.FirstName = holder.FirstNameEdit.Text.FirstOrDefault().ToString().ToUpper() + holder.FirstNameEdit.Text.Substring(1);
+            user.LastName = holder.LastNameEdit.Text.FirstOrDefault().ToString().ToUpper() + holder.LastNameEdit.Text.Substring(1);
+            user.Email = holder.UsernameEdit.Text;
+            user.Uid = FirebaseAuth.Instance.CurrentUser.Uid;
+            var userTask = await Shared.firebaseClient.Child("users").PostAsync<User>(user);
+        }
     }
 }

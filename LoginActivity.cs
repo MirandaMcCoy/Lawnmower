@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
 using Android.Support.V4.Content;
+using Firebase.Xamarin.Auth;
 using Firebase.Auth;
 
 namespace Lawnmower
@@ -27,10 +28,8 @@ namespace Lawnmower
     public class LoginActivity : Activity
     {
         private LoginViewHolder holder;
-        private List<User> list_users = new List<User>();
-        private const string firebaseURL = "https://lawnmower-a4296.firebaseio.com/";
-
-        protected override async void OnCreate(Bundle savedInstanceState)
+        private List<Objects.User> list_users = new List<Objects.User>();
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -44,34 +43,7 @@ namespace Lawnmower
             SetHolderViews();
 
             AssignClickEvents();
-
-            await LoadData();
         }
-
-        private async Task LoadData()
-        {
-            var firebase = new FirebaseClient(firebaseURL);
-            var items = await firebase.Child("Users").OnceAsync<User>();
-            foreach (var item in items)
-            {
-                User account = new User();
-                account.uid = item.Key;
-                account.userName = item.Object.userName;
-                account.passWord = item.Object.passWord;
-                list_users.Add(account);
-            }
-        }
-        private async void CreateUser()
-        {
-            User user = new User();
-            user.userName = holder.UsernameEdit.Text;
-            user.passWord = holder.PasswordEdit.Text;
-            var firebase = new FirebaseClient(firebaseURL);
-            //Add Item  
-            var item = await firebase.Child("login").PostAsync<User>(user);
-            await LoadData();
-        }
-
         protected override void OnDestroy()
         {
             UnassignClickEvents();
@@ -101,40 +73,36 @@ namespace Lawnmower
             holder.NewUserText.Click -= NewUserClick;
         }
 
-        private void LoginClick(object sender, EventArgs e)
+        private async void LoginClick(object sender, EventArgs e)
         {
-            // if holder.username == (any)database.username{
-            //      test if holder.password == (that)database.password
-            //      if not == {
-            //          tell user mismatched password
-            //      else {
-            //          log user in
-            // else {
-            //      tell user bad username
-
-
-
-            // Only worry about passing the username and password data and returning
-            //     if the user is a valid employee or not.
-            //     Job List will handle what to show/not to show to different employees
-            //CreateUser();
-
-            // To get the entered username, use:
-            // holder.UsernameEdit.Text
-
-            // To get the entered password, use:
-            // holder.PasswordEdit.Text
             
-            // Open Up Job List if valid employee (Currently open regardless for testing)
-            StartActivity(typeof(JobListActivity));
+            try
+            {
+                await Firebase.Auth.FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
+                Shared.CheckIfAdmin();
+                
+                StartActivity(typeof(JobListActivity));
 
-            Finish();
+                Finish();
+            }
+            catch (Exception ex)
+            {
+                // Sign-in failed, display a message to the user
+                // If sign in succeeds, the AuthState event handler will
+                //  be notified and logic to handle the signed in user can happen there
+                Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+            }
+            //CreateUser();
+            
         }
 
         private void NewUserClick(object sender, EventArgs e)
         {
             StartActivity(typeof(NewUserActivity));
         }
+        
 #endregion
+        
     }
+
 }

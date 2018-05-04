@@ -198,7 +198,7 @@
     <None Include=".gitignore" />
     <None Include="app.config" />
     <None Include="GettingStarted.Xamarin" />
-    <None Include="google-services.json" />
+    <GoogleServicesJson Include="google-services.json" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />

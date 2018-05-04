@@ -27,5 +27,6 @@ namespace Lawnmower.ViewHolders
         public Spinner AssignSpinner { get; set; }
         public EditText NotesEdit { get; set; }
         public TextView CreateButton { get; set; }
+        public LinearLayout AllViewHolder { get; set; }
     }
 }

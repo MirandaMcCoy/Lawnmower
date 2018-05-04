@@ -20,8 +20,8 @@ namespace Lawnmower.Objects
         public string ContactNumber { get; set; }
         public string JobType { get; set; } // Eventually make this an enum
         public DateTime Date { get; set; }
-        public bool Repeating { get; set; }
         public string Notes { get; set; }
         public string Assignee { get; set; }
+        public string Id { get; set; }
     }
 }

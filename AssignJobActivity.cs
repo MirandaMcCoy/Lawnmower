@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
+using Firebase.Xamarin.Database.Query;
 
 namespace Lawnmower
 {
@@ -47,6 +48,20 @@ namespace Lawnmower
             return view;
         }
 
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            UnassignClickEvents();
+        }
+
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+
+            SetSpinner();
+        }
+
         private void SetHolderViews()
         {
             holder.EmployeeSpinner = view.FindViewById<Spinner>(Resource.Id.EmployeeListSpinner);
@@ -59,10 +74,23 @@ namespace Lawnmower
             holder.ConfirmButton.Click += ConfirmClick;
         }
 
-        private void ConfirmClick(object sender, EventArgs e)
+        private void UnassignClickEvents()
+        {
+            holder.ConfirmButton.Click -= ConfirmClick;
+        }
+
+        private async void ConfirmClick(object sender, EventArgs e)
         {
             // Assign job to proper employee
-            Shared.dummyJobList[Shared.selectedJob].Assignee = holder.EmployeeSpinner.SelectedItem.ToString();
+            for (int i = 0; i < Shared.employeeList.Count; i++)
+            {
+                if (holder.EmployeeSpinner.SelectedItem.ToString() == (Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName))
+                {
+                    Shared.jobList[Shared.selectedJob].Assignee = Shared.employeeList[i].Uid;
+
+                    await Shared.firebaseClient.Child("jobs").Child(Shared.jobList[Shared.selectedJob].Id).Child("Assignee").PutAsync(Shared.employeeList[i].Uid);
+                }
+            }
 
             Shared.jobListAdapter.NotifyDataSetChanged();
 
@@ -76,15 +104,10 @@ namespace Lawnmower
         private void SetSpinner()
         {
             var employeeList = new List<string>();
-
-            if (Shared.dummyEmployeeList.Count == 0)
+            
+            for (int i = 0; i < Shared.employeeList.Count; i++)
             {
-                Shared.FillEmployeeList();
-            }
-
-            for (int i = 0; i < Shared.dummyEmployeeList.Count; i++)
-            {
-                employeeList.Add(Shared.dummyEmployeeList[i].FirstName + " " + Shared.dummyEmployeeList[i].LastName);
+                employeeList.Add(Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName);
             }
 
 

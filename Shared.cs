@@ -161,19 +161,11 @@ namespace Lawnmower
             }
         }
 
-        public async static void CreateJob()
+        public async static void CreateJob(Activity context, Job job)
         {
-            var job = new Objects.Job();
-
-            job.Address = "1234 Banning St";
-            job.FirstName = "John";
-            job.LastName = "Smith";
-            job.Notes = "Please work please work please work";
-            job.ContactNumber = "417 555 1234";
-            job.Date = new DateTime().Date;
-            job.Assignee = "";
-
             var jobTask = await Shared.firebaseClient.Child("jobs").PostAsync<Job>(job);
+
+            GetJobsAsync(context);
         }
     }
 }

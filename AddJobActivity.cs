@@ -77,6 +77,7 @@ namespace Lawnmower
             holder.NotesEdit = view.FindViewById<EditText>(Resource.Id.NotesEdit);
             holder.DateText = view.FindViewById<TextView>(Resource.Id.Date);
             holder.CreateButton = view.FindViewById<TextView>(Resource.Id.CreateButton);
+            holder.AllViewHolder = view.FindViewById<LinearLayout>(Resource.Id.AddJobLayoutHolder);
         }
 
         #region Click Events
@@ -102,31 +103,49 @@ namespace Lawnmower
 
         private void CreateJob(object sender, EventArgs e)
         {
-            // Add job to list
-            Shared.jobList.Add(new Job());
-            var index = Shared.jobList.Count - 1;
-            var newJob = Shared.jobList[index];
-            newJob.Address = holder.AddressEdit.Text;
-            newJob.ContactNumber = holder.ContactEdit.Text;
+            bool complete = true;
+            var job = new Job();
 
-            string[] date = holder.DateText.Text.Split('/', ' ');
-            newJob.Date = new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1]));
+            for (int i = 0; i < holder.AllViewHolder.ChildCount; i++)
+            {
+                if (holder.AllViewHolder.GetChildAt(i) == holder.FirstNameEdit
+                    || holder.AllViewHolder.GetChildAt(i) == holder.LastNameEdit
+                    || holder.AllViewHolder.GetChildAt(i) == holder.AddressEdit
+                    || holder.AllViewHolder.GetChildAt(i) == holder.CityEdit
+                    || holder.AllViewHolder.GetChildAt(i) == holder.ZipcodeEdit)
+                {
+                    var view = (EditText)holder.AllViewHolder.GetChildAt(i);
 
-            newJob.FirstName = holder.FirstNameEdit.Text;
-            newJob.JobType = holder.JobSpinner.SelectedItem.ToString();
-            newJob.LastName = holder.LastNameEdit.Text;
-            newJob.Notes = holder.NotesEdit.Text;
-            newJob.Assignee = holder.AssignSpinner.SelectedItem.ToString();
+                    if (view.Text == "")
+                    {
+                        complete = false;
+                    }
+                }
+            }
 
-            // Update job list
-            Shared.jobListAdapter.jobs = Shared.jobList.ToList();
-            Shared.jobListAdapter.NotifyDataSetChanged();
+            if (complete)
+            {
+                job.Address = holder.AddressEdit.Text;
+                job.Assignee = Shared.employeeList[(int)holder.AssignSpinner.SelectedItemId].Uid;
+                job.ContactNumber = holder.ContactEdit.Text;
 
-            FragmentManager.BeginTransaction().Hide(this).Commit();
+                string[] date = holder.DateText.Text.Split('/', ' ');
+                job.Date = new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1]));
 
-            ClearInfo();
+                job.FirstName = holder.FirstNameEdit.Text;
+                job.LastName = holder.LastNameEdit.Text;
+                job.Notes = holder.NotesEdit.Text;
+                job.JobType = holder.JobSpinner.SelectedItem.ToString();
 
-            // Perhaps test that all the fields were filled out, but later
+                Shared.CreateJob(this.Activity, job);
+
+                FragmentManager.BeginTransaction().Hide(this).Commit();
+
+                ClearInfo();
+            } else
+            {
+                Toast.MakeText(this.Context, "Please fill out all fields", ToastLength.Short).Show();
+            }
         }
 
         #endregion

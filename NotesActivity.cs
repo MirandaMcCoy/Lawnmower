@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Firebase.Xamarin.Database.Query;
 using Lawnmower.Objects;
 using Lawnmower.ViewHolders;
 
@@ -30,8 +31,6 @@ namespace Lawnmower
 
             view = inflater.Inflate(Resource.Layout.NotesFragment, container, false);
 
-            FragmentManager.BeginTransaction().Hide(this).Commit();
-
             if (holder == null)
             {
                 holder = new NotesViewHolder();
@@ -40,6 +39,8 @@ namespace Lawnmower
             SetHolderViews();
 
             AssignClickEvents();
+
+            FragmentManager.BeginTransaction().Hide(this).Commit();
 
             return view;
         }
@@ -55,7 +56,13 @@ namespace Lawnmower
         {
             base.OnHiddenChanged(hidden);
 
-            //holder.NotesEdit.Text = Shared.jobList[Shared.selectedJob].Notes;
+            try
+            {
+                holder.NotesEdit.Text = Shared.jobList[Shared.selectedJob].Notes;
+            } catch (Exception ex)
+            {
+                // Will crash during first loading because Shared.selectedJob hasn't been set yet
+            }
         }
 
         private void SetHolderViews()
@@ -78,10 +85,12 @@ namespace Lawnmower
             holder.CloseButton.Click -= CloseClick;
         }
 
-        private void NotesChanged(object sender, EventArgs e)
+        private async void NotesChanged(object sender, EventArgs e)
         {
             var notes = (EditText)sender;
+
             Shared.jobList[Shared.selectedJob].Notes = notes.Text;
+            await Shared.firebaseClient.Child("jobs").Child(Shared.jobList[Shared.selectedJob].Id).Child("Notes").PutAsync(notes.Text);
         }
 
         private void CloseClick(object sender, EventArgs e)

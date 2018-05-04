@@ -30,24 +30,24 @@ namespace Lawnmower
             base.OnResume();
             FirebaseApp.InitializeApp(this);
 
-            Task startup = new Task(() => { SimulateStartup(); });
+            StartApplication();
+
+            Task startup = new Task(() => { Task.Delay(2000); });
             startup.Start();
         }
 
-        async void SimulateStartup()
+        private async void StartApplication()
         {
-            // Simulate waiting time so splash screen does not look awkward
-            await Task.Delay(1000);
             Firebase.Auth.FirebaseAuth.Instance.SignOut(); //--this is used to test whether the login auth is working, it will log any user out upon startup
-            Firebase.Auth.FirebaseAuth.Instance.AuthState += (sender, e) =>
+            Firebase.Auth.FirebaseAuth.Instance.AuthState += async (sender, e) =>
             {
                 var user = e?.Auth?.CurrentUser;
-                
+
                 if (user != null)
                 {
                     //user is signed in
-                    Shared.TestIfAdmin();
-                    
+                    var adminTask = await Shared.CheckIfAdmin();
+
                     StartActivity(new Intent(Application.Context, typeof(JobListActivity)));
                 }
                 else
@@ -56,10 +56,6 @@ namespace Lawnmower
                     StartActivity(new Intent(Application.Context, typeof(LoginActivity)));
                 }
             };
-            
-
-            // Start login activity
-            
         }
     }
 }

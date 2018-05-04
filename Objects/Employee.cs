@@ -16,5 +16,6 @@ namespace Lawnmower.Objects
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Uid { get; set; }
     }
 }

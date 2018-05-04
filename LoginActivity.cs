@@ -79,7 +79,7 @@ namespace Lawnmower
             try
             {
                 await Firebase.Auth.FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
-                Shared.TestIfAdmin();
+                Shared.CheckIfAdmin();
                 
                 StartActivity(typeof(JobListActivity));
 

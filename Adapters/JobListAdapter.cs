@@ -79,6 +79,13 @@ namespace Lawnmower.Adapters
             }
         }
 
+        public override void NotifyDataSetChanged()
+        {
+            jobs = Shared.jobList;
+
+            base.NotifyDataSetChanged();
+        }
+
         private void SetViews(int position)
         {
             var job = jobs[(int)holder.AssignText.Tag];

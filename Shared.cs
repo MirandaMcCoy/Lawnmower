@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -19,64 +19,74 @@ namespace Lawnmower
 {
     static class Shared
     {
-        public static string FirebaseURL = "https://test-a05bd.firebaseio.com/";
-        public static FirebaseClient FirebaseClient = new FirebaseClient(FirebaseURL);
+        public static string firebaseURL = "https://test-a05bd.firebaseio.com/";
+        public static FirebaseClient firebaseClient = new FirebaseClient(firebaseURL);
+
         public static List<Job> jobList = new List<Job>();
-        public static List<Employee> dummyEmployeeList = new List<Employee>();
+        public static List<Employee> employeeList = new List<Employee>();
+
         public static Adapters.JobListAdapter jobListAdapter;
+
         public static int selectedJob;
+
         public static bool showAdmin = false;
 
-        public static void testDB()
+        public async static Task<bool> GetEmployeesAsync(Activity context)
         {
-            //JavaDictionary<string, object> newUser = new JavaDictionary<string, object>();
+            var employees = await Shared.firebaseClient.Child("users").OnceAsync<Objects.User>();
 
-            //newUser.Add("userName", "NathanDunn");
-            //newUser.Add("passWord", "password");
-
-            //fs.Collection("Users").Document("0").Set(newUser);
-        }
-
-        public static void FillEmployeeList()
-        {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < employees.Count; i++)
             {
-
-                dummyEmployeeList.Add(new Employee());
-            }
-
-            dummyEmployeeList[0].FirstName = "Unassigned";
-            dummyEmployeeList[0].LastName = "";
-
-            dummyEmployeeList[1].FirstName = "Earl";
-            dummyEmployeeList[1].LastName = "Gray";
-
-            dummyEmployeeList[2].FirstName = "John";
-            dummyEmployeeList[2].LastName = "White";
-
-            dummyEmployeeList[3].FirstName = "Jane";
-            dummyEmployeeList[3].LastName = "Doe";
-        }
-        public async static void TestIfAdmin()
-        {
-            var users = await Shared.FirebaseClient.Child("users").OnceAsync<Objects.User>();
-            foreach (var item in users)
-            {
-                var y = item.Object.Uid;
-                if (FirebaseAuth.Instance.CurrentUser.Uid == item.Object.Uid)
+                var employee = employees.ElementAt(i).Object;
+                if (employees.ElementAt(i).Object.Uid != FirebaseAuth.Instance.CurrentUser.Uid)
                 {
-                    showAdmin = item.Object.Admin;
+                    employeeList.Add(new Employee());
+
+                    employeeList[i].FirstName = employee.FirstName;
+                    employeeList[i].LastName = employee.LastName;
+                    employeeList[i].Uid = employee.Uid;
+                } else
+                {
+                    employeeList.Add(new Employee());
+
+                    employeeList[i].FirstName = "Assign to";
+                    employeeList[i].LastName = "self";
+                    employeeList[i].Uid = employee.Uid;
                 }
             }
+
+            return true;
         }
-        public async static void GetJobs(Activity context)
-        {          
-            if (showAdmin == true || showAdmin == false)
-            {              
+        public async static Task<bool> CheckIfAdmin()
+        {
+            var users = await Shared.firebaseClient.Child("users").OnceAsync<Objects.User>();
+
+            foreach (var user in users)
+            {
+                if (FirebaseAuth.Instance.CurrentUser.Uid == user.Object.Uid)
+                {
+                    showAdmin = user.Object.Admin;
+                }
+            }
+
+            return showAdmin;
+        }
+
+        public static async void GetJobsAsync(Activity context)
+        {
+            if (showAdmin) // If an admin, show all jobs
+            {
+                ProgressDialog dialog = new ProgressDialog(context);
                 try
                 {
-                    var empJobs = await Shared.FirebaseClient.Child("jobs").OnceAsync<Objects.Job>();
-                    for (int i = 0; i < jobList.Count; i++)
+                    dialog.SetMessage("Retrieving jobs...");
+                    dialog.Indeterminate = true;
+                    dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+                    dialog.Show();
+
+                    var empJobs = await Shared.firebaseClient.Child("jobs").OnceAsync<Objects.Job>();
+
+                    for (int i = 0; i < empJobs.Count; i++)
                     {
                         jobList.Add(new Job());
                         jobList[i].FirstName = empJobs.ElementAt(i).Object.FirstName;
@@ -87,20 +97,34 @@ namespace Lawnmower
                         jobList[i].Date = empJobs.ElementAt(i).Object.Date;
                         jobList[i].Notes = empJobs.ElementAt(i).Object.Notes;
                         jobList[i].Assignee = empJobs.ElementAt(i).Object.Assignee;
-
                     }
+
                 }
                 catch(Exception ex)
                 {
-                    Toast.MakeText(context, ex.ToString(), ToastLength.Short).Show();
+                    Toast.MakeText(context, "There was a problem retrieving jobs.", ToastLength.Long).Show();
+                }
+                finally
+                {
+                    dialog.Hide();
                 }
             }
-            else
+            else // If not admin, only show jobs assigned to the employee
+            {
+
+            }
+
+            try
+            {
+                Shared.jobListAdapter.NotifyDataSetChanged();
+            }
+            catch (Exception ex)
             {
 
             }
         }
-        public async static void CreateJobs()
+
+        public async static void CreateJob()
         {
             var job = new Objects.Job();
             job.Address = "1234 Banning St";
@@ -110,7 +134,7 @@ namespace Lawnmower
             job.ContactNumber = "417 555 1234";
             job.Date = new DateTime().Date;
             job.Assignee = "unassigned";
-            var Item = await Shared.FirebaseClient.Child("jobs").PostAsync<Job>(job);
+            var Item = await Shared.firebaseClient.Child("jobs").PostAsync<Job>(job);
         }
     }
 }

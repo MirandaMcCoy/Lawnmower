@@ -21,7 +21,7 @@ namespace Lawnmower
         ListViewHolder holder;
         
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -36,7 +36,13 @@ namespace Lawnmower
 
             AssignClickEvents();
 
+            var employeeTask = await Shared.GetEmployeesAsync(this);
+
+            Shared.GetJobsAsync(this);
+
             SetViewAdapter();
+
+            Shared.jobListAdapter.NotifyDataSetChanged();
         }
 
        
@@ -68,9 +74,8 @@ namespace Lawnmower
             holder.NotesFragment = FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
         }
 
-            private void SetViewAdapter()
+        private void SetViewAdapter()
         {
-            Shared.GetJobs(this);
             Shared.jobListAdapter = new JobListAdapter(this, Shared.jobList.ToArray());
 
             holder.JobListView.Adapter = Shared.jobListAdapter;

@@ -47,6 +47,20 @@ namespace Lawnmower
             return view;
         }
 
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            UnassignClickEvents();
+        }
+
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+
+            SetSpinner();
+        }
+
         private void SetHolderViews()
         {
             holder.EmployeeSpinner = view.FindViewById<Spinner>(Resource.Id.EmployeeListSpinner);
@@ -57,6 +71,11 @@ namespace Lawnmower
         private void AssignClickEvents()
         {
             holder.ConfirmButton.Click += ConfirmClick;
+        }
+
+        private void UnassignClickEvents()
+        {
+            holder.ConfirmButton.Click -= ConfirmClick;
         }
 
         private void ConfirmClick(object sender, EventArgs e)
@@ -76,15 +95,10 @@ namespace Lawnmower
         private void SetSpinner()
         {
             var employeeList = new List<string>();
-
-            if (Shared.dummyEmployeeList.Count == 0)
+            
+            for (int i = 0; i < Shared.employeeList.Count; i++)
             {
-                Shared.FillEmployeeList();
-            }
-
-            for (int i = 0; i < Shared.dummyEmployeeList.Count; i++)
-            {
-                employeeList.Add(Shared.dummyEmployeeList[i].FirstName + " " + Shared.dummyEmployeeList[i].LastName);
+                employeeList.Add(Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName);
             }
 
 

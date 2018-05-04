@@ -79,7 +79,7 @@ namespace Lawnmower
             {
                 await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
                 CreateUser();
-                Shared.TestIfAdmin();
+                Shared.CheckIfAdmin();
                 
             }
             catch (Exception ex)
@@ -104,11 +104,11 @@ namespace Lawnmower
         {
             var user = new Objects.User();
             user.Admin = false;
-            user.FirstName = holder.FirstNameEdit.Text;
-            user.LastName = holder.LastNameEdit.Text;
+            user.FirstName = holder.FirstNameEdit.Text.FirstOrDefault().ToString().ToUpper() + holder.FirstNameEdit.Text.Substring(1);
+            user.LastName = holder.LastNameEdit.Text.FirstOrDefault().ToString().ToUpper() + holder.LastNameEdit.Text.Substring(1);
             user.Email = holder.UsernameEdit.Text;
             user.Uid = FirebaseAuth.Instance.CurrentUser.Uid;
-            var Item = await Shared.FirebaseClient.Child("users").PostAsync<User>(user);
+            var Item = await Shared.firebaseClient.Child("users").PostAsync<User>(user);
         }
     }
 }

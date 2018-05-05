@@ -75,29 +75,52 @@ namespace Lawnmower
 
         private async void CreateAccountClick(object sender, EventArgs e)
         {
-            try
+            int restrictCount = 8;
+
+            if (holder.PasswordEdit.Text == holder.VerifyPasswordEdit.Text)
             {
-                await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
-                CreateUser();
-                Shared.CheckIfAdmin();
+                if (holder.PasswordEdit.Text.Length >= restrictCount)
+                {
+                    try
+                    {
+                        await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
+                        CreateUser();
+                        Shared.CheckIfAdmin();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Sign-up failed, display a message to the user
+                        // If sign in succeeds, the AuthState event handler will
+                        //  be notified and logic to handle the signed in user can happen there
+                        Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+                    }
+                    // Verify that there is not an account with that username in the db
+                    // If there is, alert the user
+                    // Else, check that the two password fields match
+                    //      If they don't, alert the user
+                    //      If they do, create user and log them in
+
+                    StartActivity(typeof(JobListActivity));
+
+                    Finish();
+                }
+                else
+                {
+                    Toast.MakeText(this, "Passwords must be at least 8 characters", ToastLength.Short).Show();
+                    holder.PasswordEdit.Text = String.Empty;
+                    holder.VerifyPasswordEdit.Text = String.Empty;
+                }
                 
             }
-            catch (Exception ex)
+            else
             {
-                // Sign-up failed, display a message to the user
-                // If sign in succeeds, the AuthState event handler will
-                //  be notified and logic to handle the signed in user can happen there
-                Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+                Toast.MakeText(this, "Passwords Must Match!", ToastLength.Short).Show();
+                holder.PasswordEdit.Text = String.Empty;
+                holder.VerifyPasswordEdit.Text = String.Empty;
+                
             }
-            // Verify that there is not an account with that username in the db
-            // If there is, alert the user
-            // Else, check that the two password fields match
-            //      If they don't, alert the user
-            //      If they do, create user and log them in
-
-            StartActivity(typeof(JobListActivity));
-
-            Finish();
+            
         }
 #endregion
         private async void CreateUser()

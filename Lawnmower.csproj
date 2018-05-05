@@ -168,7 +168,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\JobListAdapterAdmin.cs" />
     <Compile Include="Adapters\JobListAdapter.cs" />
+    <Compile Include="JobListActivityAdmin.cs" />
     <Compile Include="NotesActivity.cs" />
     <Compile Include="AlertBoxActivity.cs" />
     <Compile Include="AddJobActivity.cs" />
@@ -213,6 +215,13 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\NotesFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ToolbarAdmin.axml" />
+    <AndroidResource Include="Resources\layout\JobListAdmin.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\JobListItemAdmin.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

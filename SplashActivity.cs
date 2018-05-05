@@ -48,7 +48,13 @@ namespace Lawnmower
                     //user is signed in
                     var adminTask = await Shared.CheckIfAdmin();
 
-                    StartActivity(new Intent(Application.Context, typeof(JobListActivity)));
+                    if (Shared.showAdmin)
+                    {
+                        StartActivity(new Intent(Application.Context, typeof(JobListActivityAdmin)));
+                    } else
+                    {
+                        StartActivity(new Intent(Application.Context, typeof(JobListActivity)));
+                    }
                 }
                 else
                 {

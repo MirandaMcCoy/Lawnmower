@@ -12,6 +12,7 @@ using Android.Views;
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
 using System.Collections.Generic;
+using Firebase.Auth;
 
 namespace Lawnmower
 {
@@ -19,7 +20,6 @@ namespace Lawnmower
     public class JobListActivity : Activity
     {
         ListViewHolder holder;
-        
 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,45 +36,31 @@ namespace Lawnmower
 
             AssignClickEvents();
 
-            var employeeTask = await Shared.GetEmployeesAsync(this);
-
             Shared.GetJobsAsync(this);
 
-            SetViewAdapter();
+            if (Shared.jobList.Count > 0)
+            {
+                SetViewAdapter();
 
-            Shared.jobListAdapter.NotifyDataSetChanged();
+                Shared.jobListAdapter.NotifyDataSetChanged();
+            }
         }
 
-       
-        #region Click Events
-
-        private void AssignClickEvents()
-        {
-            holder.AddJobImage.Click += AddJobClick;
-        }
-
-        private void UnassignClickEvents()
-        {
-
-        }
-
-        private void AddJobClick(object sender, EventArgs e)
-        {
-            FragmentManager.BeginTransaction().Show(holder.AddJobFragment).Commit();
-        }
-
-        #endregion
 
         private void SetHolderViews()
         {
             holder.JobListView = FindViewById<ListView>(Resource.Id.JobList);
-            holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
-            holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
-            holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
             holder.NotesFragment = FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
+
+            if (Shared.showAdmin) // Only need to set this view if the user is an admin
+            {
+                holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
+                holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
+                holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
+            }
         }
 
-        private void SetViewAdapter()
+        public void SetViewAdapter()
         {
             Shared.jobListAdapter = new JobListAdapter(this, Shared.jobList.ToArray());
 
@@ -83,20 +69,30 @@ namespace Lawnmower
 
         public override void OnBackPressed()
         {
-            if (holder.AddJobFragment.IsVisible)
-            {
-                FragmentManager.BeginTransaction().Hide(holder.AddJobFragment).Commit();
-            } else if (holder.AssignJobFragment.IsVisible)
-            {
-                FragmentManager.BeginTransaction().Hide(holder.AssignJobFragment).Commit();
-            } else if (holder.NotesFragment.IsVisible)
+
+            if (holder.NotesFragment.IsVisible)
             {
                 FragmentManager.BeginTransaction().Hide(holder.NotesFragment).Commit();
-            } else
+            }
+            else
             {
                 base.OnBackPressed();
             }
         }
+
+        #region Click Events
+
+        private void AssignClickEvents()
+        {
+            
+        }
+
+        private void UnassignClickEvents()
+        {
+            
+        }
+
+        #endregion
     }
 }
 

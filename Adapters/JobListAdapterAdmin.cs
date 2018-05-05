@@ -16,7 +16,7 @@ using Lawnmower.ViewHolders;
 
 namespace Lawnmower.Adapters
 {
-    class JobListAdapter : BaseAdapter
+    class JobListAdapterAdmin : BaseAdapter
     {
 
         Activity context;
@@ -25,7 +25,7 @@ namespace Lawnmower.Adapters
         View view;
         int position;
 
-        public JobListAdapter(Activity context, Job[] jobs)
+        public JobListAdapterAdmin(Activity context, Job[] jobs)
         {
             this.context = context;
             this.jobs = jobs.ToList();
@@ -49,7 +49,7 @@ namespace Lawnmower.Adapters
             if (view == null)
             {
                 var inflater = context.GetSystemService(Context.LayoutInflaterService).JavaCast<LayoutInflater>();
-                view = inflater.Inflate(Resource.Layout.JobListItem, parent, false);
+                view = inflater.Inflate(Resource.Layout.JobListItemAdmin, parent, false);
 
                 holder = new JobListItemViewHolder();
 
@@ -63,9 +63,10 @@ namespace Lawnmower.Adapters
                 holder = view.Tag as JobListItemViewHolder;
             }
 
+            holder.AssignText.Tag = position;
             holder.NotesImage.Tag = position;
             holder.DirectionsImage.Tag = position;
-            holder.FinishImage.Tag = position;
+            holder.CancelImage.Tag = position;
 
             SetViews(position);
             this.position = position;
@@ -90,7 +91,7 @@ namespace Lawnmower.Adapters
 
         private void SetViews(int position)
         {
-            var job = jobs[(int)holder.FinishImage.Tag];
+            var job = jobs[(int)holder.AssignText.Tag];
 
             holder.FirstNameText.Text = job.FirstName;
             holder.LastNameText.Text = job.LastName;
@@ -99,10 +100,25 @@ namespace Lawnmower.Adapters
             holder.JobDateText.Text = job.Date.Month.ToString() + "/" + job.Date.Day.ToString() + "/" + job.Date.Year.ToString();
             holder.JobDayText.Text = job.Date.DayOfWeek.ToString();
             holder.JobTypeText.Text = job.JobType;
+
+            if (job.Assignee == "")
+            {
+                holder.AssignText.Text = "Unassigned";
+            } else
+            {
+                for (int i = 0; i < Shared.employeeList.Count; i++)
+                {
+                    if (Shared.employeeList[i].Uid == Shared.jobList[Shared.selectedJob].Assignee)
+                    {
+                        holder.AssignText.Text = Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName;
+                    }
+                }
+            }
         }
 
         private void SetHolderViews()
         {
+            holder.AssignText = view.FindViewById<TextView>(Resource.Id.AssignedText);
             holder.AddressNameText = view.FindViewById<TextView>(Resource.Id.AddressText);
             holder.FirstNameText = view.FindViewById<TextView>(Resource.Id.FirstNameTextView);
             holder.LastNameText = view.FindViewById<TextView>(Resource.Id.LastNameTextView);
@@ -110,9 +126,11 @@ namespace Lawnmower.Adapters
             holder.JobDateText = view.FindViewById<TextView>(Resource.Id.JobDateText);
             holder.JobDayText = view.FindViewById<TextView>(Resource.Id.JobDayText);
             holder.JobTypeText = view.FindViewById<TextView>(Resource.Id.JobTypeText);
+            holder.RepeatingMark = view.FindViewById<TextView>(Resource.Id.RepeatingXText);
             holder.DirectionsImage = view.FindViewById<ImageView>(Resource.Id.DirectionsImage);
-            holder.FinishImage = view.FindViewById<ImageView>(Resource.Id.FinishImage);
+            holder.CancelImage = view.FindViewById<ImageView>(Resource.Id.DeleteImage);
             holder.NotesImage = view.FindViewById<ImageView>(Resource.Id.NotepadImage);
+            holder.AssignJobFragment = this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
             holder.NotesFragment = this.context.FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
         }
 
@@ -120,9 +138,18 @@ namespace Lawnmower.Adapters
 
         private void AssignClickEvents()
         {
+            holder.AssignText.Click += AssignJobOpen;
             holder.DirectionsImage.Click += DirectionsClick;
-            holder.FinishImage.Click += FinishClick;
+            holder.CancelImage.Click += CancelClick;
             holder.NotesImage.Click += NotesClick;
+        }
+
+        private void AssignJobOpen(object sender, EventArgs e)
+        {
+            var assignText = (TextView)sender;
+
+            Shared.selectedJob = (int)assignText.Tag;
+            this.context.FragmentManager.BeginTransaction().Show(holder.AssignJobFragment).Commit();
         }
 
         private void DirectionsClick(object sender, EventArgs e)
@@ -152,13 +179,15 @@ namespace Lawnmower.Adapters
             this.context.FragmentManager.BeginTransaction().Show(holder.NotesFragment).Commit();
         }
 
-        private async void FinishClick(object sender, EventArgs e)
+        private async void CancelClick(object sender, EventArgs e)
         {
-            var finishImage = (ImageView)sender;
-            Shared.selectedJob = (int)finishImage.Tag;
+            var cancelImage = (ImageView)sender;
 
-            // Change the job's "waitingApproval" field to true
-            // Update job list
+            Shared.selectedJob = (int)cancelImage.Tag;
+
+            await Shared.firebaseClient.Child("jobs").Child(Shared.jobList[Shared.selectedJob].Id).DeleteAsync();
+
+            Shared.GetJobsAsync(this.context);
         }
 
 #endregion

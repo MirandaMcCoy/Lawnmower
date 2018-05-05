@@ -26,6 +26,7 @@ namespace Lawnmower
         public static List<Employee> employeeList = new List<Employee>();
 
         public static Adapters.JobListAdapter jobListAdapter;
+        public static Adapters.JobListAdapterAdmin jobListAdapterAdmin;
 
         public static int selectedJob;
 
@@ -107,6 +108,20 @@ namespace Lawnmower
                         jobList[i].Id = empJobs.ElementAt(i).Key;
                     }
 
+                    try
+                    {
+                        if (Shared.jobListAdapterAdmin == null)
+                        {
+                            ((JobListActivityAdmin)context).SetViewAdapter();
+                        }
+
+                        Shared.jobListAdapterAdmin.NotifyDataSetChanged();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
                 }
                 catch(Exception ex)
                 {
@@ -130,34 +145,39 @@ namespace Lawnmower
                         if (empJobs.ElementAt(i).Object.Assignee == FirebaseAuth.Instance.CurrentUser.Uid)
                         {
                             jobList.Add(new Job());
-                            jobList[i].FirstName = empJobs.ElementAt(i).Object.FirstName;
-                            jobList[i].LastName = empJobs.ElementAt(i).Object.LastName;
-                            jobList[i].Address = empJobs.ElementAt(i).Object.Address;
-                            jobList[i].ContactNumber = empJobs.ElementAt(i).Object.ContactNumber;
-                            jobList[i].JobType = empJobs.ElementAt(i).Object.JobType;
-                            jobList[i].Date = empJobs.ElementAt(i).Object.Date;
-                            jobList[i].Notes = empJobs.ElementAt(i).Object.Notes;
-                            jobList[i].Assignee = empJobs.ElementAt(i).Object.Assignee;
+                            jobList[jobList.Count - 1].FirstName = empJobs.ElementAt(i).Object.FirstName;
+                            jobList[jobList.Count - 1].LastName = empJobs.ElementAt(i).Object.LastName;
+                            jobList[jobList.Count - 1].Address = empJobs.ElementAt(i).Object.Address;
+                            jobList[jobList.Count - 1].ContactNumber = empJobs.ElementAt(i).Object.ContactNumber;
+                            jobList[jobList.Count - 1].JobType = empJobs.ElementAt(i).Object.JobType;
+                            jobList[jobList.Count - 1].Date = empJobs.ElementAt(i).Object.Date;
+                            jobList[jobList.Count - 1].Notes = empJobs.ElementAt(i).Object.Notes;
+                            jobList[jobList.Count - 1].Assignee = empJobs.ElementAt(i).Object.Assignee;
                         }
+                    }
+
+                    try
+                    {
+                        if (Shared.jobListAdapter == null)
+                        {
+                            ((JobListActivity)context).SetViewAdapter();
+                        }
+
+                        Shared.jobListAdapter.NotifyDataSetChanged();
+                    }
+                    catch (Exception ex)
+                    {
+
                     }
                 }
                 catch (Exception ex)
                 {
-                    Toast.MakeText(context, "There was a problem retrieving jobs.", ToastLength.Long).Show();
+                    Toast.MakeText(context, ex.ToString(), ToastLength.Long).Show();
                 }
                 finally
                 {
                     dialog.Hide();
                 }
-            }
-
-            try
-            {
-                Shared.jobListAdapter.NotifyDataSetChanged();
-            }
-            catch (Exception ex)
-            {
-
             }
         }
 

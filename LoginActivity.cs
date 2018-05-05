@@ -79,9 +79,16 @@ namespace Lawnmower
             try
             {
                 await Firebase.Auth.FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
-                Shared.CheckIfAdmin();
-                
-                StartActivity(typeof(JobListActivity));
+                await Shared.CheckIfAdmin();
+
+                if (Shared.showAdmin)
+                {
+                    StartActivity(new Intent(Application.Context, typeof(JobListActivityAdmin)));
+                }
+                else
+                {
+                    StartActivity(new Intent(Application.Context, typeof(JobListActivity)));
+                }
 
                 Finish();
             }
@@ -91,9 +98,7 @@ namespace Lawnmower
                 // If sign in succeeds, the AuthState event handler will
                 //  be notified and logic to handle the signed in user can happen there
                 Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
-            }
-            //CreateUser();
-            
+            }            
         }
 
         private void NewUserClick(object sender, EventArgs e)

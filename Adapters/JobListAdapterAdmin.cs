@@ -108,7 +108,11 @@ namespace Lawnmower.Adapters
             {
                 for (int i = 0; i < Shared.employeeList.Count; i++)
                 {
-                    if (Shared.employeeList[i].Uid == Shared.jobList[Shared.selectedJob].Assignee)
+                    if (FirebaseAuth.Instance.CurrentUser.Uid == job.Assignee)
+                    {
+                        holder.AssignText.Text = "Assigned to self";
+                    }
+                    else if (Shared.employeeList[i].Uid == job.Assignee)
                     {
                         holder.AssignText.Text = Shared.employeeList[i].FirstName + " " + Shared.employeeList[i].LastName;
                     }

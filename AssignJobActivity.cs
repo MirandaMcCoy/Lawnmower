@@ -19,7 +19,6 @@ namespace Lawnmower
     {
         View view;
         AssignViewHolder holder;
-        Job selectedJob;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -92,7 +91,7 @@ namespace Lawnmower
                 }
             }
 
-            Shared.jobListAdapter.NotifyDataSetChanged();
+            Shared.jobListAdapterAdmin.NotifyDataSetChanged();
 
             FragmentManager.BeginTransaction().Hide(this).Commit();
 

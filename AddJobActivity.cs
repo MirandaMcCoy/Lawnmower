@@ -60,6 +60,7 @@ namespace Lawnmower
             base.OnHiddenChanged(hidden);
 
             SetSpinners();
+            ClearInfo();
         }
 
         private void SetHolderViews()
@@ -125,7 +126,10 @@ namespace Lawnmower
 
             if (complete)
             {
-                job.Address = holder.AddressEdit.Text;
+                job.Address = holder.AddressEdit.Text + ", " + holder.CityEdit.Text + ", " + holder.StateSpinner.SelectedItem.ToString() + " " + holder.ZipcodeEdit.Text;
+                job.City = holder.CityEdit.Text;
+                job.State = holder.StateSpinner.SelectedItem.ToString();
+                job.Zipcode = holder.ZipcodeEdit.Text;
                 job.Assignee = Shared.employeeList[(int)holder.AssignSpinner.SelectedItemId].Uid;
                 job.ContactNumber = holder.ContactEdit.Text;
 

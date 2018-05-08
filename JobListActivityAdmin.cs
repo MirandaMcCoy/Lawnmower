@@ -20,7 +20,6 @@ namespace Lawnmower
     {
         ListViewHolder holder;
         
-
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -71,7 +70,7 @@ namespace Lawnmower
             holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
             holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
             holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
-            holder.NotesFragment = FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
+            holder.EditJobFragment = FragmentManager.FindFragmentById<EditJobActivity>(Resource.Id.EditJobMenu);
         }
 
         public void SetViewAdapter()
@@ -86,13 +85,16 @@ namespace Lawnmower
             if (holder.AddJobFragment.IsVisible)
             {
                 FragmentManager.BeginTransaction().Hide(holder.AddJobFragment).Commit();
-            } else if (holder.AssignJobFragment.IsVisible)
+            }
+            else if (holder.AssignJobFragment.IsVisible)
             {
                 FragmentManager.BeginTransaction().Hide(holder.AssignJobFragment).Commit();
-            } else if (holder.NotesFragment.IsVisible)
+            }
+            else if (holder.EditJobFragment.IsVisible)
             {
-                FragmentManager.BeginTransaction().Hide(holder.NotesFragment).Commit();
-            } else
+                FragmentManager.BeginTransaction().Hide(holder.EditJobFragment).Commit();
+            }
+            else
             {
                 base.OnBackPressed();
             }

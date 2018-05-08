@@ -170,6 +170,7 @@
   <ItemGroup>
     <Compile Include="Adapters\JobListAdapterAdmin.cs" />
     <Compile Include="Adapters\JobListAdapter.cs" />
+    <Compile Include="EditJobActivity.cs" />
     <Compile Include="JobListActivityAdmin.cs" />
     <Compile Include="NotesActivity.cs" />
     <Compile Include="AlertBoxActivity.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="ViewHolders\EditJobViewHolder.cs" />
     <Compile Include="ViewHolders\NotesViewHolder.cs" />
     <Compile Include="ViewHolders\AlertBoxViewHolder.cs" />
     <Compile Include="ViewHolders\AddJobViewHolder.cs" />
@@ -222,6 +224,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\JobListItemAdmin.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\EditJobFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

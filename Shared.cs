@@ -32,6 +32,26 @@ namespace Lawnmower
 
         public static bool showAdmin = false;
 
+        public const string fbJob = "jobs";
+        public const string fbJobAssignee = "Assignee";
+        public const string fbJobAddress = "Address";
+        public const string fbJobCity = "City";
+        public const string fbJobContactNumber = "ContactNumber";
+        public const string fbJobDate = "Date";
+        public const string fbJobFirstName = "FirstName";
+        public const string fbJobJobType = "JobType";
+        public const string fbJobLastName = "LastName";
+        public const string fbJobNotes = "Notes";
+        public const string fbJobState = "State";
+        public const string fbJobZipcode = "Zipcode";
+
+        public const string fbUser = "users";
+        public const string fbUserAdmin = "Admin";
+        public const string fbUserEmail = "Email";
+        public const string fbUserFirstName = "FirstName";
+        public const string fbUserLastName = "LastName";
+        public const string fbUserUid = "Uid";
+
         public async static Task<bool> GetEmployeesAsync(Activity context)
         {
             var employees = await Shared.firebaseClient.Child("users").OnceAsync<Objects.User>();
@@ -106,6 +126,9 @@ namespace Lawnmower
                         jobList[i].Notes = empJobs.ElementAt(i).Object.Notes;
                         jobList[i].Assignee = empJobs.ElementAt(i).Object.Assignee;
                         jobList[i].Id = empJobs.ElementAt(i).Key;
+                        jobList[i].City = empJobs.ElementAt(i).Object.City;
+                        jobList[i].Zipcode = empJobs.ElementAt(i).Object.Zipcode;
+                        jobList[i].State = empJobs.ElementAt(i).Object.State;
                     }
 
                     try
@@ -153,6 +176,10 @@ namespace Lawnmower
                             jobList[jobList.Count - 1].Date = empJobs.ElementAt(i).Object.Date;
                             jobList[jobList.Count - 1].Notes = empJobs.ElementAt(i).Object.Notes;
                             jobList[jobList.Count - 1].Assignee = empJobs.ElementAt(i).Object.Assignee;
+                            jobList[jobList.Count - 1].City = empJobs.ElementAt(i).Object.City;
+                            jobList[jobList.Count - 1].Zipcode = empJobs.ElementAt(i).Object.Zipcode;
+                            jobList[jobList.Count - 1].State = empJobs.ElementAt(i).Object.State;
+
                         }
                     }
 

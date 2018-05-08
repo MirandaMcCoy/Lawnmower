@@ -135,7 +135,7 @@ namespace Lawnmower.Adapters
             holder.CancelImage = view.FindViewById<ImageView>(Resource.Id.DeleteImage);
             holder.NotesImage = view.FindViewById<ImageView>(Resource.Id.NotepadImage);
             holder.AssignJobFragment = this.context.FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
-            holder.NotesFragment = this.context.FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
+            holder.EditJobFragment = this.context.FragmentManager.FindFragmentById<EditJobActivity>(Resource.Id.EditJobMenu);
         }
 
         #region Click Events
@@ -180,7 +180,7 @@ namespace Lawnmower.Adapters
             var notesImage = (ImageView)sender;
 
             Shared.selectedJob = (int)notesImage.Tag;
-            this.context.FragmentManager.BeginTransaction().Show(holder.NotesFragment).Commit();
+            this.context.FragmentManager.BeginTransaction().Show(holder.EditJobFragment).Commit();
         }
 
         private async void CancelClick(object sender, EventArgs e)

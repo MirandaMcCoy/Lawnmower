@@ -7,7 +7,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent">
       <include
-          layout="@layout/Toolbar" />
+          layout="@layout/ToolbarAdmin" />
       <ListView
           android:id="@+id/JobList"
           android:layout_height="match_parent"
@@ -16,8 +16,20 @@
   </LinearLayout>
   
   <fragment
-      android:name="lawnmower.NotesActivity"
-      android:id="@+id/NotesMenu"
+      android:name="lawnmower.AddJobActivity"
+      android:id="@+id/AddJobMenu"
+      android:layout_gravity="center"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+  <fragment
+      android:name="lawnmower.AssignJobActivity"
+      android:id="@+id/AssignJobMenu"
+      android:layout_gravity="center"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+  <fragment
+      android:name="lawnmower.EditJobActivity"
+      android:id="@+id/EditJobMenu"
       android:layout_gravity="center"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>

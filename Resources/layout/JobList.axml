@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
-  <LinearLayout
-      android:orientation="vertical"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-      <include
-          layout="@layout/Toolbar" />
-      <ListView
-          android:id="@+id/JobList"
-          android:layout_height="match_parent"
-          android:layout_width="match_parent"
-          android:background="@color/bedazzled_blue" />
-  </LinearLayout>
-  
-  <fragment
-      android:name="lawnmower.AddJobActivity"
-      android:id="@+id/AddJobMenu"
-      android:layout_gravity="center"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
-  <fragment
-      android:name="lawnmower.AssignJobActivity"
-      android:id="@+id/AssignJobMenu"
-      android:layout_gravity="center"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
-  <fragment
-      android:name="lawnmower.NotesActivity"
-      android:id="@+id/NotesMenu"
-      android:layout_gravity="center"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/Toolbar" />
+        <ListView
+            android:id="@+id/JobList"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@color/bedazzled_blue" />
+    </LinearLayout>
+    <fragment
+        android:name="lawnmower.AddJobActivity"
+        android:id="@+id/AddJobMenu"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <fragment
+        android:name="lawnmower.AssignJobActivity"
+        android:id="@+id/AssignJobMenu"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <fragment
+        android:name="lawnmower.NotesActivity"
+        android:id="@+id/NotesMenu"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>

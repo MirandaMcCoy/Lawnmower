@@ -177,7 +177,6 @@
     <Compile Include="AlertBoxActivity.cs" />
     <Compile Include="AddJobActivity.cs" />
     <Compile Include="AssignJobActivity.cs" />
-    <Compile Include="FirebaseConstructors\Account.cs" />
     <Compile Include="JobListActivity.cs" />
     <Compile Include="NewUserActivity.cs" />
     <Compile Include="LoginActivity.cs" />

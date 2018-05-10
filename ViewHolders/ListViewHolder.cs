@@ -19,5 +19,6 @@ namespace Lawnmower.ViewHolders
         public AddJobActivity AddJobFragment { get; set; }
         public AssignJobActivity AssignJobFragment { get; set; }
         public NotesActivity NotesFragment { get; set; }
+        public EditJobActivity EditJobFragment { get; set; }
     }
 }

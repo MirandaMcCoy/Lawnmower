@@ -51,13 +51,8 @@ namespace Lawnmower
         {
             holder.JobListView = FindViewById<ListView>(Resource.Id.JobList);
             holder.NotesFragment = FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
-
-            if (Shared.showAdmin) // Only need to set this view if the user is an admin
-            {
-                holder.AddJobImage = FindViewById<ImageView>(Resource.Id.AddJobButton);
-                holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
-                holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
-            }
+            holder.MenuImage = FindViewById<ImageView>(Resource.Id.MenuBar);
+            holder.MenuFragment = FragmentManager.FindFragmentById<MenuFragment>(Resource.Id.MenuMenu);
         }
 
         public void SetViewAdapter()
@@ -74,6 +69,10 @@ namespace Lawnmower
             {
                 FragmentManager.BeginTransaction().Hide(holder.NotesFragment).Commit();
             }
+            else if (holder.MenuFragment.IsVisible)
+            {
+                FragmentManager.BeginTransaction().Hide(holder.MenuFragment).Commit();
+            }
             else
             {
                 base.OnBackPressed();
@@ -84,12 +83,17 @@ namespace Lawnmower
 
         private void AssignClickEvents()
         {
-            
+            holder.MenuImage.Click += OpenMenu;
         }
 
         private void UnassignClickEvents()
         {
-            
+            holder.MenuImage.Click -= OpenMenu;
+        }
+
+        private void OpenMenu(object sender, EventArgs e)
+        {
+            FragmentManager.BeginTransaction().Show(holder.MenuFragment).Commit();
         }
 
         #endregion

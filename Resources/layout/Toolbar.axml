@@ -4,14 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/gray2">
-    <ImageView
-        android:id="@+id/Logo"
+    <FrameLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_logo_height"
-        android:gravity="center"
-        android:paddingTop="2dp"
-        android:paddingLeft="@dimen/toolbar_padding"
-        android:src="@drawable/dml" />
+        android:layout_height="@dimen/toolbar_height"
+        android:gravity="center_horizontal"
+        android:background="@color/gray2">
+        <ImageView
+            android:id="@+id/MenuBar"
+            android:layout_width="@dimen/toolbar_logo_height"
+            android:layout_height="@dimen/toolbar_logo_height"
+            android:layout_gravity="left"
+            android:paddingLeft="@dimen/toolbar_padding"
+            android:src="@drawable/menuBar"/>
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_logo_height"
+            android:gravity="center"
+            android:paddingTop="2dp"
+            android:paddingLeft="@dimen/toolbar_padding"
+            android:src="@drawable/dml" />
+    </FrameLayout>
     <View
         android:layout_height="1dp"
         android:layout_width="match_parent"

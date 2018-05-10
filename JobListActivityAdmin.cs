@@ -50,16 +50,23 @@ namespace Lawnmower
         private void AssignClickEvents()
         {
             holder.AddJobImage.Click += AddJobClick;
+            holder.MenuImage.Click += OpenMenu;
         }
 
         private void UnassignClickEvents()
         {
-
+            holder.AddJobImage.Click -= AddJobClick;
+            holder.MenuImage.Click -= OpenMenu;
         }
 
         private void AddJobClick(object sender, EventArgs e)
         {
             FragmentManager.BeginTransaction().Show(holder.AddJobFragment).Commit();
+        }
+
+        private void OpenMenu(object sender, EventArgs e)
+        {
+            FragmentManager.BeginTransaction().Show(holder.MenuFragment).Commit();
         }
 
         #endregion
@@ -71,6 +78,8 @@ namespace Lawnmower
             holder.AddJobFragment = FragmentManager.FindFragmentById<AddJobActivity>(Resource.Id.AddJobMenu);
             holder.AssignJobFragment = FragmentManager.FindFragmentById<AssignJobActivity>(Resource.Id.AssignJobMenu);
             holder.EditJobFragment = FragmentManager.FindFragmentById<EditJobActivity>(Resource.Id.EditJobMenu);
+            holder.MenuImage = FindViewById<ImageView>(Resource.Id.MenuBar);
+            holder.MenuFragment = FragmentManager.FindFragmentById<MenuFragment>(Resource.Id.MenuMenu);
         }
 
         public void SetViewAdapter()
@@ -93,6 +102,10 @@ namespace Lawnmower
             else if (holder.EditJobFragment.IsVisible)
             {
                 FragmentManager.BeginTransaction().Hide(holder.EditJobFragment).Commit();
+            } 
+            else if (holder.MenuFragment.IsVisible)
+            {
+                FragmentManager.BeginTransaction().Hide(holder.MenuFragment).Commit();
             }
             else
             {

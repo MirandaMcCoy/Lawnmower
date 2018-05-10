@@ -38,7 +38,6 @@ namespace Lawnmower
 
         private async void StartApplication()
         {
-            //Firebase.Auth.FirebaseAuth.Instance.SignOut(); //--this is used to test whether the login auth is working, it will log any user out upon startup
             Firebase.Auth.FirebaseAuth.Instance.AuthState += async (sender, e) =>
             {
                 var user = e?.Auth?.CurrentUser;

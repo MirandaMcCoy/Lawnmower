@@ -170,6 +170,7 @@
   <ItemGroup>
     <Compile Include="Adapters\JobListAdapterAdmin.cs" />
     <Compile Include="Adapters\JobListAdapter.cs" />
+    <Compile Include="MenuFragment.cs" />
     <Compile Include="EditJobActivity.cs" />
     <Compile Include="JobListActivityAdmin.cs" />
     <Compile Include="NotesActivity.cs" />
@@ -227,6 +228,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\EditJobFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MenuFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -338,6 +342,8 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\menuBar.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\menuBar.png" />
     <Content Include="Resources\mipmap\icon.png" />
     <Content Include="Resources\mipmap-hdpi\icon.png" />
     <Content Include="Resources\mipmap-mdpi\icon.png" />

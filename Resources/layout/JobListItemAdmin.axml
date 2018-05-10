@@ -10,6 +10,7 @@
     android:layout_width="match_parent"
     android:paddingTop="@dimen/job_item_assign_padding"
     android:paddingBottom="@dimen/job_item_assign_padding"
+    android:textColor="@color/black"
     android:text="Unassigned"
     android:textSize="@dimen/job_item_text_size"
     android:gravity="right|center_horizontal"
@@ -42,6 +43,7 @@
           android:layout_height="wrap_content"
           android:layout_width="wrap_content"
           android:layout_marginRight="10dp"
+          android:textColor="@color/black"
           android:textSize="@dimen/job_item_text_size"
           android:text="FirstName"/>
 
@@ -49,6 +51,7 @@
           android:id="@+id/LastNameTextView"
           android:layout_height="wrap_content"
           android:layout_width="wrap_content"
+          android:textColor="@color/black"
           android:textSize="@dimen/job_item_text_size"
           android:text="LastName"/>
       </LinearLayout>
@@ -59,6 +62,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/job_item_text_padding_left"
         android:layout_marginBottom="@dimen/job_view_bottom_margin"
+        android:textColor="@color/black"
         android:text="Address"
         android:textSize="@dimen/job_item_text_size"/>
 
@@ -68,6 +72,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/job_item_text_padding_left"
         android:layout_marginBottom="@dimen/job_view_bottom_margin"
+        android:textColor="@color/black"
         android:text="Contact Number"
         android:textSize="@dimen/job_item_text_size"/>
 
@@ -77,6 +82,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/job_item_text_padding_left"
         android:layout_marginBottom="@dimen/job_view_bottom_margin"
+        android:textColor="@color/black"
         android:text="Job Type"
         android:textSize="@dimen/job_item_text_size"/>
 
@@ -86,6 +92,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/job_item_text_padding_left"
         android:layout_marginBottom="@dimen/job_view_bottom_margin"
+        android:textColor="@color/black"
         android:text="Job Day"
         android:textSize="@dimen/job_item_text_size"/>
 
@@ -95,32 +102,9 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/job_item_text_padding_left"
         android:layout_marginBottom="@dimen/job_view_bottom_margin"
+        android:textColor="@color/black"
         android:text="Job Date"
         android:textSize="@dimen/job_item_text_size"/>
-
-      <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/job_item_padding"
-        android:paddingLeft="@dimen/job_item_text_padding_left">
-        <TextView
-          android:id="@+id/RepeatingText"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="@dimen/job_view_bottom_margin"
-          android:layout_marginRight="10dp"
-          android:text="Repeating"
-          android:textSize="@dimen/job_item_text_size"/>
-
-        <TextView
-          android:id="@+id/RepeatingXText"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="@dimen/job_view_bottom_margin"
-          android:text="X"
-          android:textSize="@dimen/job_item_text_size"/>
-      </LinearLayout>
     </LinearLayout>
 
     <LinearLayout

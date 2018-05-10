@@ -130,7 +130,6 @@ namespace Lawnmower.Adapters
             holder.JobDateText = view.FindViewById<TextView>(Resource.Id.JobDateText);
             holder.JobDayText = view.FindViewById<TextView>(Resource.Id.JobDayText);
             holder.JobTypeText = view.FindViewById<TextView>(Resource.Id.JobTypeText);
-            holder.RepeatingMark = view.FindViewById<TextView>(Resource.Id.RepeatingXText);
             holder.DirectionsImage = view.FindViewById<ImageView>(Resource.Id.DirectionsImage);
             holder.CancelImage = view.FindViewById<ImageView>(Resource.Id.DeleteImage);
             holder.NotesImage = view.FindViewById<ImageView>(Resource.Id.NotepadImage);

@@ -27,6 +27,10 @@ namespace Lawnmower
     public class NewUserActivity : Activity
     {
         private NewUserViewHolder holder;
+        private int minPasswordLength = 8;
+        private bool passwordContainsLetter = false;
+        private bool passwordContainsNum = false;
+        private bool passwordContainsSpace = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -75,35 +79,60 @@ namespace Lawnmower
 
         private async void CreateAccountClick(object sender, EventArgs e)
         {
-            int restrictCount = 8;
+            // Verify that there is not an account with that username in the db
+            // If there is, alert the user
 
             if (holder.PasswordEdit.Text == holder.VerifyPasswordEdit.Text)
             {
-                if (holder.PasswordEdit.Text.Length >= restrictCount)
+                if (holder.PasswordEdit.Text.Length >= minPasswordLength)
                 {
-                    try
+                    var passwordChars = holder.PasswordEdit.Text.ToCharArray();
+
+                    for (int i = 0; i < passwordChars.Length; i++)
                     {
-                        await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
-                        CreateUser();
-                        Shared.CheckIfAdmin();
+                        var chara = passwordChars[i];
+                        if((chara >= 'A' && chara <= 'Z') || (chara >= 'a' && chara <= 'z'))
+                        {
+                            passwordContainsLetter = true;
+                        }
 
+                        if((chara >= '0' && chara <= '9'))
+                        {
+                            passwordContainsNum = true;
+                        }
+
+                        if ((chara == ' '))
+                        {
+                            passwordContainsSpace = true;
+                        }
                     }
-                    catch (Exception ex)
+
+                    if (passwordContainsNum && passwordContainsLetter && !passwordContainsSpace)
                     {
-                        // Sign-up failed, display a message to the user
-                        // If sign in succeeds, the AuthState event handler will
-                        //  be notified and logic to handle the signed in user can happen there
-                        Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+                        try
+                        {
+                            await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
+                            CreateUser();
+                            Shared.CheckIfAdmin();
+
+                            StartActivity(typeof(JobListActivity));
+
+                            Finish();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            // Sign-up failed, display a message to the user
+                            // If sign in succeeds, the AuthState event handler will
+                            //  be notified and logic to handle the signed in user can happen there
+                            Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+                        }
+                    } else
+                    {
+                        Toast.MakeText(this, "Passwords must contain a letter, a number, and can not have any spaces.", ToastLength.Short).Show();
+                        holder.PasswordEdit.Text = String.Empty;
+                        holder.VerifyPasswordEdit.Text = String.Empty;
                     }
-                    // Verify that there is not an account with that username in the db
-                    // If there is, alert the user
-                    // Else, check that the two password fields match
-                    //      If they don't, alert the user
-                    //      If they do, create user and log them in
-
-                    StartActivity(typeof(JobListActivity));
-
-                    Finish();
                 }
                 else
                 {

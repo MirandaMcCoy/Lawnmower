@@ -20,4 +20,7 @@
   <string name="incorrect_password">The password you entered was incorrect.</string>
   <string name="mismatched_passwords">The passwords you entered did not match.</string>
   <string name="username_taken">The username you entered has already been taken.</string>
+  
+  <!-- Menu -->
+  <string name="menu_sign_out_text">Sign Out</string>
 </resources>

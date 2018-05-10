@@ -188,6 +188,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="ViewHolders\MenuViewHolder.cs" />
     <Compile Include="ViewHolders\EditJobViewHolder.cs" />
     <Compile Include="ViewHolders\NotesViewHolder.cs" />
     <Compile Include="ViewHolders\AlertBoxViewHolder.cs" />

@@ -51,4 +51,8 @@
   <dimen name="notes_fragment_header_margin_bottom">15dp</dimen>
   <dimen name="notes_fragment_text_size">15sp</dimen>
   <dimen name="notes_fragment_box_height">300dp</dimen>
+  
+  <!-- Menu -->
+  <dimen name="menu_width">250dp</dimen>
+  <dimen name="menu_text_size">20sp</dimen>
 </resources>

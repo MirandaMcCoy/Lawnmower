@@ -18,5 +18,6 @@ namespace Lawnmower.Objects
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool Admin { get; set; }
+        public string Token { get; set; }
     }
 }

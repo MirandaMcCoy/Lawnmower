@@ -176,6 +176,8 @@
   <ItemGroup>
     <Compile Include="Adapters\JobListAdapterAdmin.cs" />
     <Compile Include="Adapters\JobListAdapter.cs" />
+    <Compile Include="MyFirebaseIIDService.cs" />
+    <Compile Include="MyFirebaseMessagingService.cs" />
     <Compile Include="MenuFragment.cs" />
     <Compile Include="EditJobActivity.cs" />
     <Compile Include="JobListActivityAdmin.cs" />
@@ -183,7 +185,6 @@
     <Compile Include="AlertBoxActivity.cs" />
     <Compile Include="AddJobActivity.cs" />
     <Compile Include="AssignJobActivity.cs" />
-    <Compile Include="FirebaseConstructors\Account.cs" />
     <Compile Include="JobListActivity.cs" />
     <Compile Include="NewUserActivity.cs" />
     <Compile Include="LoginActivity.cs" />

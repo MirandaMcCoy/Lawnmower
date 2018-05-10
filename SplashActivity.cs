@@ -12,6 +12,8 @@ using Android.Widget;
 using Firebase;
 using Firebase.Xamarin.Auth;
 using Firebase.Auth;
+using Firebase.Iid;
+using Firebase.Xamarin.Database.Query;
 
 namespace Lawnmower
 {
@@ -46,6 +48,17 @@ namespace Lawnmower
                 {
                     //user is signed in
                     var adminTask = await Shared.CheckIfAdmin();
+
+                    var users = await Shared.firebaseClient.Child(Shared.fbUser).OnceAsync<Objects.User>();
+
+                    for (int i = 0; i < users.Count; i++)
+                    {
+                        if (users.ElementAt(i).Object.Uid == Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
+                        {
+                            users.ElementAt(i).Object.Token = FirebaseInstanceId.Instance.Token;
+                            await Shared.firebaseClient.Child(Shared.fbUser).Child(users.ElementAt(i).Key).Child("Token").PutAsync<string>(FirebaseInstanceId.Instance.Token);
+                        }
+                    }
 
                     if (Shared.showAdmin)
                     {

@@ -150,39 +150,72 @@ namespace Lawnmower
                     dialog.Show();
 
                     var address = holder.AddressEdit.Text + ", " + holder.CityEdit.Text + ", " + holder.StateSpinner.SelectedItem.ToString() + " " + holder.ZipcodeEdit.Text;
-                    job.Address = address;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobAddress).PutAsync(address);
+                    if (job.Address != address)
+                    {
+                        job.Address = address;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobAddress).PutAsync(address);
+                    }
 
-                    job.City = holder.CityEdit.Text;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobCity).PutAsync(holder.CityEdit.Text);
+                    if (job.City != holder.CityEdit.Text)
+                    {
+                        job.City = holder.CityEdit.Text;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobCity).PutAsync(holder.CityEdit.Text);
+                    }
 
-                    job.State = holder.StateSpinner.SelectedItem.ToString();
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobState).PutAsync(holder.StateSpinner.SelectedItem.ToString());
+                    if (job.State != holder.StateSpinner.SelectedItem.ToString())
+                    {
+                        job.State = holder.StateSpinner.SelectedItem.ToString();
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobState).PutAsync(holder.StateSpinner.SelectedItem.ToString());
+                    }
 
-                    job.Zipcode = holder.ZipcodeEdit.Text;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobZipcode).PutAsync(holder.ZipcodeEdit.Text);
+                    if (job.Zipcode != holder.ZipcodeEdit.Text)
+                    {
+                        job.Zipcode = holder.ZipcodeEdit.Text;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobZipcode).PutAsync(holder.ZipcodeEdit.Text);
+                    }
 
-                    job.Assignee = Shared.employeeList[(int)holder.AssignSpinner.SelectedItemId].Uid;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobAssignee).PutAsync(holder.AssignSpinner.SelectedItem.ToString());
+                    if (job.Assignee != Shared.employeeList[(int)holder.AssignSpinner.SelectedItemId].Uid)
+                    {
+                        job.Assignee = Shared.employeeList[(int)holder.AssignSpinner.SelectedItemId].Uid;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobAssignee).PutAsync(holder.AssignSpinner.SelectedItem.ToString());
+                    }
 
-                    job.ContactNumber = holder.ContactEdit.Text;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobContactNumber).PutAsync(holder.ContactEdit.Text);
+                    if (job.ContactNumber != holder.ContactEdit.Text)
+                    {
+                        job.ContactNumber = holder.ContactEdit.Text;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobContactNumber).PutAsync(holder.ContactEdit.Text);
+                    }
 
                     string[] date = holder.DateText.Text.Split('/', ' ');
-                    job.Date = new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1]));
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobDate).PutAsync(new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1])));
+                    if (job.Date != new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1])))
+                    {
+                        job.Date = new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1]));
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobDate).PutAsync(new DateTime(Int32.Parse(date[2]), Int32.Parse(date[0]), Int32.Parse(date[1])));
+                    }
 
-                    job.FirstName = holder.FirstNameEdit.Text;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobFirstName).PutAsync(holder.FirstNameEdit.Text);
+                    if (job.FirstName != holder.FirstNameEdit.Text)
+                    {
+                        job.FirstName = holder.FirstNameEdit.Text;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobFirstName).PutAsync(holder.FirstNameEdit.Text);
+                    }
 
-                    job.LastName = holder.LastNameEdit.Text;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobLastName).PutAsync(holder.LastNameEdit.Text);
+                    if (job.LastName != holder.LastNameEdit.Text)
+                    {
+                        job.LastName = holder.LastNameEdit.Text;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobLastName).PutAsync(holder.LastNameEdit.Text);
+                    }
 
-                    job.Notes = holder.NotesEdit.Text;
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobNotes).PutAsync(holder.NotesEdit.Text);
+                    if (job.Notes != holder.NotesEdit.Text)
+                    {
+                        job.Notes = holder.NotesEdit.Text;
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobNotes).PutAsync(holder.NotesEdit.Text);
+                    }
 
-                    job.JobType = holder.JobSpinner.SelectedItem.ToString();
-                    await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobJobType).PutAsync(holder.JobSpinner.SelectedItem.ToString());
+                    if (job.JobType != holder.JobSpinner.SelectedItem.ToString())
+                    {
+                        job.JobType = holder.JobSpinner.SelectedItem.ToString();
+                        await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobJobType).PutAsync(holder.JobSpinner.SelectedItem.ToString());
+                    }
 
                     FragmentManager.BeginTransaction().Hide(this).Commit();
 

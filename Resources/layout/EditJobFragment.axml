@@ -4,144 +4,149 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/semi_solid_menu_background">
+  <ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="@dimen/fragment_margin"
+    android:gravity="top|center_horizontal">
     <LinearLayout
         android:id="@+id/AddJobLayoutHolder"
         android:orientation="vertical"
         android:background="@drawable/menuFragmentBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fragment_margin"
-        android:layout_gravity="center"
         android:gravity="center"
         android:padding="@dimen/fragment_padding">
-        <LinearLayout
-            android:id="@+id/NameEditHolder"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="@dimen/add_job_inside_margin"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/FirstNameEdit"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/add_job_view_height"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/add_job_inside_margin"
-                android:padding="@dimen/login_edit_padding"
-                android:singleLine="true"
-                android:background="@drawable/editTextBox"
-                android:hint="First Name" />
-            <EditText
-                android:id="@+id/LastNameEdit"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/add_job_view_height"
-                android:layout_weight="1"
-                android:padding="@dimen/login_edit_padding"
-                android:singleLine="true"
-                android:background="@drawable/editTextBox"
-                android:hint="Last Name" />
-        </LinearLayout>
+      <LinearLayout
+          android:id="@+id/NameEditHolder"
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_marginBottom="@dimen/add_job_inside_margin"
+          android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/AddressEdit"
-            android:layout_width="match_parent"
+            android:id="@+id/FirstNameEdit"
+            android:layout_width="0dp"
             android:layout_height="@dimen/add_job_view_height"
-            android:padding="@dimen/login_edit_padding"
-            android:layout_marginBottom="@dimen/add_job_inside_margin"
-            android:singleLine="true"
-            android:background="@drawable/editTextBox"
-            android:hint="Address" />
-        <LinearLayout
-            android:id="@+id/AddressEditHolder"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="@dimen/add_job_inside_margin"
-            android:layout_height="@dimen/add_job_view_height">
-            <EditText
-                android:id="@+id/CityEdit"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:padding="@dimen/login_edit_padding"
-                android:singleLine="true"
-                android:background="@drawable/editTextBox"
-                android:layout_marginRight="@dimen/add_job_inside_margin"
-                android:hint="City" />
-            <Spinner
-                android:id="@+id/StateSpinner"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/add_job_inside_margin"
-                android:layout_weight="1" />
-            <EditText
-                android:id="@+id/ZipEdit"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                android:padding="@dimen/login_edit_padding"
-                android:singleLine="true"
-                android:background="@drawable/editTextBox"
-                android:hint="Zipcode" />
-        </LinearLayout>
-        <EditText
-            android:id="@+id/ContactEdit"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/add_job_view_height"
-            android:layout_marginBottom="@dimen/add_job_inside_margin"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/add_job_inside_margin"
             android:padding="@dimen/login_edit_padding"
             android:singleLine="true"
             android:background="@drawable/editTextBox"
-            android:hint="Contact Number" />
-        <Spinner
-            android:id="@+id/JobSpinner"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="@dimen/add_job_inside_margin"
-            android:layout_height="@dimen/add_job_view_height" />
-        <LinearLayout
-            android:id="@+id/DateHolder"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/add_job_view_height"
-            android:layout_marginBottom="@dimen/add_job_inside_margin"
-            android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/CalendarImage"
-                android:layout_width="@dimen/add_job_view_height"
-                android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/add_job_inside_margin"
-                android:src="@drawable/calendar" />
-            <TextView
-                android:id="@+id/Date"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:textSize="@dimen/fragment_text_size"
-                android:text=" " />
-        </LinearLayout>
-        <Spinner
-            android:id="@+id/AssignSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/add_job_view_height"
-            android:layout_marginBottom="@dimen/add_job_inside_margin" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/fragment_text_size"
-            android:text="Notes"
-            android:layout_marginBottom="@dimen/add_job_inside_margin" />
+            android:hint="First Name" />
         <EditText
-            android:id="@+id/NotesEdit"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/add_job_notes_height"
-            android:padding="@dimen/login_edit_padding"
-            android:background="@drawable/editTextBox"
-            android:gravity="top|left"
-            android:layout_marginBottom="@dimen/add_job_inside_margin" />
-        <TextView
-            android:id="@+id/CreateButton"
-            android:layout_width="match_parent"
+            android:id="@+id/LastNameEdit"
+            android:layout_width="0dp"
             android:layout_height="@dimen/add_job_view_height"
+            android:layout_weight="1"
+            android:padding="@dimen/login_edit_padding"
+            android:singleLine="true"
+            android:background="@drawable/editTextBox"
+            android:hint="Last Name" />
+      </LinearLayout>
+      <EditText
+          android:id="@+id/AddressEdit"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/add_job_view_height"
+          android:padding="@dimen/login_edit_padding"
+          android:layout_marginBottom="@dimen/add_job_inside_margin"
+          android:singleLine="true"
+          android:background="@drawable/editTextBox"
+          android:hint="Address" />
+      <LinearLayout
+          android:id="@+id/AddressEditHolder"
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_marginBottom="@dimen/add_job_inside_margin"
+          android:layout_height="@dimen/add_job_view_height">
+        <EditText
+            android:id="@+id/CityEdit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:padding="@dimen/login_edit_padding"
+            android:singleLine="true"
+            android:background="@drawable/editTextBox"
+            android:layout_marginRight="@dimen/add_job_inside_margin"
+            android:hint="City" />
+        <Spinner
+            android:id="@+id/StateSpinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/add_job_inside_margin"
+            android:layout_weight="1" />
+        <EditText
+            android:id="@+id/ZipEdit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:padding="@dimen/login_edit_padding"
+            android:singleLine="true"
+            android:background="@drawable/editTextBox"
+            android:hint="Zipcode" />
+      </LinearLayout>
+      <EditText
+          android:id="@+id/ContactEdit"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/add_job_view_height"
+          android:layout_marginBottom="@dimen/add_job_inside_margin"
+          android:padding="@dimen/login_edit_padding"
+          android:singleLine="true"
+          android:background="@drawable/editTextBox"
+          android:hint="Contact Number" />
+      <Spinner
+          android:id="@+id/JobSpinner"
+          android:layout_width="match_parent"
+          android:layout_marginBottom="@dimen/add_job_inside_margin"
+          android:layout_height="@dimen/add_job_view_height" />
+      <LinearLayout
+          android:id="@+id/DateHolder"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/add_job_view_height"
+          android:layout_marginBottom="@dimen/add_job_inside_margin"
+          android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/CalendarImage"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/add_job_view_height"
+            android:layout_weight="2"
+            android:src="@drawable/calendar" />
+        <TextView
+            android:id="@+id/Date"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="5"
             android:gravity="center"
-            android:background="@drawable/editTextBox"
-            android:textSize="@dimen/add_job_text_size"
-            android:textColor="@color/black"
-            android:text="Edit Job" />
+            android:textSize="@dimen/fragment_text_size"
+            android:text=" " />
+        <Spinner
+          android:id="@+id/AssignSpinner"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/add_job_view_height"
+          android:layout_weight="8"/>
+      </LinearLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/fragment_text_size"
+          android:text="Notes"
+          android:layout_marginBottom="@dimen/add_job_inside_margin" />
+      <EditText
+          android:id="@+id/NotesEdit"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/add_job_notes_height"
+          android:padding="@dimen/login_edit_padding"
+          android:background="@drawable/editTextBox"
+          android:gravity="top|left"
+          android:layout_marginBottom="@dimen/add_job_inside_margin" />
+      <TextView
+          android:id="@+id/CreateButton"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/add_job_view_height"
+          android:gravity="center"
+          android:background="@drawable/editTextBox"
+          android:textSize="@dimen/add_job_text_size"
+          android:textColor="@color/black"
+          android:text="Edit Job" />
     </LinearLayout>
+  </ScrollView>
 </FrameLayout>

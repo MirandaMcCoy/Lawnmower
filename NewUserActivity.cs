@@ -109,8 +109,17 @@ namespace Lawnmower
 
                     if (passwordContainsNum && passwordContainsLetter && !passwordContainsSpace)
                     {
+                        ProgressDialog dialog = new ProgressDialog(this);
+                        dialog.SetMessage("Creating user...");
+                        dialog.Indeterminate = true;
+                        dialog.SetCancelable(false);
+                        dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
                         try
                         {
+                            dialog.Show();
+                            UnassignClickEvents(); // So user cannot spam the button
+
                             await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
                             CreateUser();
                             Shared.CheckIfAdmin();
@@ -126,6 +135,11 @@ namespace Lawnmower
                             // If sign in succeeds, the AuthState event handler will
                             //  be notified and logic to handle the signed in user can happen there
                             Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+                            AssignClickEvents();
+                        }
+                        finally
+                        {
+                            dialog.Hide();
                         }
                     } else
                     {

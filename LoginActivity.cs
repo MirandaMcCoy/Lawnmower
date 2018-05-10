@@ -75,9 +75,18 @@ namespace Lawnmower
 
         private async void LoginClick(object sender, EventArgs e)
         {
-            
+            ProgressDialog dialog = new ProgressDialog(this);
+            dialog.SetMessage("Signing in...");
+            dialog.Indeterminate = true;
+            dialog.SetCancelable(false);
+            dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
             try
             {
+                dialog.Show();
+
+                UnassignClickEvents(); // So users can't spam the login button
+
                 await Firebase.Auth.FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
                 await Shared.CheckIfAdmin();
 
@@ -98,7 +107,12 @@ namespace Lawnmower
                 // If sign in succeeds, the AuthState event handler will
                 //  be notified and logic to handle the signed in user can happen there
                 Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
-            }            
+                AssignClickEvents();
+            }
+            finally
+            {
+                dialog.Hide();
+            }   
         }
 
         private void NewUserClick(object sender, EventArgs e)

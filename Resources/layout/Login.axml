@@ -23,7 +23,7 @@
       android:layout_margin="20dp"
       android:padding="@dimen/login_edit_padding"
       android:background="@drawable/editTextBox"
-      android:hint="Username"
+      android:hint="Email"
       android:singleLine="true"/>
     <EditText
       android:id="@+id/PasswordEdit"
@@ -48,6 +48,7 @@
       android:id="@+id/NewUserText"
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
+      android:layout_marginTop="@dimen/login_new_user_margin"
       android:text="@string/new_user_text"
       android:textSize="@dimen/login_new_user_text_size"
       android:textColor="@color/cloudy_blue" />

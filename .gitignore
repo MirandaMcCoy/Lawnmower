@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 Lawnmower.csproj.bak
+Shared.cs.orig
+*.orig

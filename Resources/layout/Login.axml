@@ -23,6 +23,7 @@
       android:layout_margin="20dp"
       android:padding="@dimen/login_edit_padding"
       android:background="@drawable/editTextBox"
+      android:inputType="textWebEmailAddress"
       android:hint="Email"
       android:singleLine="true"/>
     <EditText

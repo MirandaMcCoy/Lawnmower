@@ -49,6 +49,7 @@
       android:layout_marginBottom="@dimen/new_user_top_bottom_margin"
       android:padding="@dimen/login_edit_padding"
       android:background="@drawable/editTextBox"
+      android:inputType="textWebEmailAddress"
       android:hint="Email"
       android:singleLine="true"/>
     <EditText

@@ -156,9 +156,10 @@ namespace Lawnmower.Adapters
         {
             var finishImage = (ImageView)sender;
             Shared.selectedJob = (int)finishImage.Tag;
+            
+            await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).Child(Shared.fbJobInApproval).PutAsync<bool>(true);
 
-            // Change the job's "waitingApproval" field to true
-            // Update job list
+            Shared.GetJobsAsync(this.context);
         }
 
 #endregion

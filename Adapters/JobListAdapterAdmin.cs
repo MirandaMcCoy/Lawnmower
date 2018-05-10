@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
 using Android.Views;
 using Android.Widget;
 using Firebase.Auth;
@@ -86,6 +87,15 @@ namespace Lawnmower.Adapters
         {
             jobs = Shared.jobList;
 
+            try
+            {
+                UnassignClickEvents();
+                AssignClickEvents();
+            } catch (Exception ex)
+            {
+
+            }
+
             base.NotifyDataSetChanged();
         }
 
@@ -100,6 +110,16 @@ namespace Lawnmower.Adapters
             holder.JobDateText.Text = job.Date.Month.ToString() + "/" + job.Date.Day.ToString() + "/" + job.Date.Year.ToString();
             holder.JobDayText.Text = job.Date.DayOfWeek.ToString();
             holder.JobTypeText.Text = job.JobType;
+
+            if (job.InApproval == true)
+            {
+                holder.CancelImage.SetImageDrawable(ContextCompat.GetDrawable(this.context, Resource.Drawable.finish));
+                holder.CancelImage.Click += FinishClick;
+            } else
+            {
+                holder.CancelImage.SetImageDrawable(ContextCompat.GetDrawable(this.context, Resource.Drawable.cancel));
+                holder.CancelImage.Click += CancelClick;
+            }
 
             if (job.Assignee == "")
             {
@@ -143,8 +163,24 @@ namespace Lawnmower.Adapters
         {
             holder.AssignText.Click += AssignJobOpen;
             holder.DirectionsImage.Click += DirectionsClick;
-            holder.CancelImage.Click += CancelClick;
             holder.NotesImage.Click += NotesClick;
+        }
+
+        private void UnassignClickEvents()
+        {
+            holder.AssignText.Click -= AssignJobOpen;
+            holder.DirectionsImage.Click -= DirectionsClick;
+            holder.NotesImage.Click -= NotesClick;
+            holder.CancelImage.Click -= CancelClick;
+            holder.CancelImage.Click -= FinishClick;
+
+            //try
+            //{
+            //    holder.CancelImage.Click -= CancelClick;
+            //} catch (Exception ex)
+            //{
+            //    holder.CancelImage.Click -= FinishClick;
+            //}
         }
 
         private void AssignJobOpen(object sender, EventArgs e)
@@ -191,6 +227,21 @@ namespace Lawnmower.Adapters
             await Shared.firebaseClient.Child("jobs").Child(Shared.jobList[Shared.selectedJob].Id).DeleteAsync();
 
             Shared.GetJobsAsync(this.context);
+
+            // Eventually alert assigned employee that their job was canceled if need-be
+        }
+
+        private async void FinishClick(object sender, EventArgs e)
+        {
+            var image = (ImageView)sender;
+
+            Shared.selectedJob = (int)image.Tag;
+
+            await Shared.firebaseClient.Child(Shared.fbJob).Child(Shared.jobList[Shared.selectedJob].Id).DeleteAsync();
+
+            Shared.GetJobsAsync(this.context);
+
+            // Eventually, add this to a list of finished jobs instead of deleting
         }
 
 #endregion

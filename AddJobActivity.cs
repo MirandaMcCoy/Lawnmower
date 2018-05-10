@@ -140,6 +140,7 @@ namespace Lawnmower
                 job.LastName = holder.LastNameEdit.Text;
                 job.Notes = holder.NotesEdit.Text;
                 job.JobType = holder.JobSpinner.SelectedItem.ToString();
+                job.InApproval = false;
 
                 Shared.CreateJob(this.Activity, job);
 

@@ -44,6 +44,7 @@ namespace Lawnmower
         public const string fbJobNotes = "Notes";
         public const string fbJobState = "State";
         public const string fbJobZipcode = "Zipcode";
+        public const string fbJobInApproval = "InApproval";
 
         public const string fbUser = "users";
         public const string fbUserAdmin = "Admin";
@@ -129,6 +130,7 @@ namespace Lawnmower
                         jobList[i].City = empJobs.ElementAt(i).Object.City;
                         jobList[i].Zipcode = empJobs.ElementAt(i).Object.Zipcode;
                         jobList[i].State = empJobs.ElementAt(i).Object.State;
+                        jobList[i].InApproval = empJobs.ElementAt(i).Object.InApproval;
                     }
 
                     try
@@ -165,7 +167,7 @@ namespace Lawnmower
 
                     for (int i = 0; i < empJobs.Count; i++)
                     {
-                        if (empJobs.ElementAt(i).Object.Assignee == FirebaseAuth.Instance.CurrentUser.Uid)
+                        if (empJobs.ElementAt(i).Object.Assignee == FirebaseAuth.Instance.CurrentUser.Uid && empJobs.ElementAt(i).Object.InApproval == false)
                         {
                             jobList.Add(new Job());
                             jobList[jobList.Count - 1].FirstName = empJobs.ElementAt(i).Object.FirstName;
@@ -179,7 +181,7 @@ namespace Lawnmower
                             jobList[jobList.Count - 1].City = empJobs.ElementAt(i).Object.City;
                             jobList[jobList.Count - 1].Zipcode = empJobs.ElementAt(i).Object.Zipcode;
                             jobList[jobList.Count - 1].State = empJobs.ElementAt(i).Object.State;
-
+                            jobList[jobList.Count - 1].Id = empJobs.ElementAt(i).Key;
                         }
                     }
 

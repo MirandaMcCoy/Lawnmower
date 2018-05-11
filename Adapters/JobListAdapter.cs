@@ -46,7 +46,7 @@ namespace Lawnmower.Adapters
         {
             view = convertView;
 
-            if (view == null)
+            if (view == null && jobs[position].Id != null)
             {
                 var inflater = context.GetSystemService(Context.LayoutInflaterService).JavaCast<LayoutInflater>();
                 view = inflater.Inflate(Resource.Layout.JobListItem, parent, false);

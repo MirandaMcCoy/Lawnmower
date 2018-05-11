@@ -47,7 +47,7 @@ namespace Lawnmower.Adapters
         {
             view = convertView;
 
-            if (view == null)
+            if (view == null && jobs[position].Id != null)
             {
                 var inflater = context.GetSystemService(Context.LayoutInflaterService).JavaCast<LayoutInflater>();
                 view = inflater.Inflate(Resource.Layout.JobListItemAdmin, parent, false);
@@ -115,7 +115,8 @@ namespace Lawnmower.Adapters
             {
                 holder.CancelImage.SetImageDrawable(ContextCompat.GetDrawable(this.context, Resource.Drawable.finish));
                 holder.CancelImage.Click += FinishClick;
-            } else
+            }
+            else
             {
                 holder.CancelImage.SetImageDrawable(ContextCompat.GetDrawable(this.context, Resource.Drawable.cancel));
                 holder.CancelImage.Click += CancelClick;
@@ -124,7 +125,8 @@ namespace Lawnmower.Adapters
             if (job.Assignee == "")
             {
                 holder.AssignText.Text = "Unassigned";
-            } else
+            }
+            else
             {
                 for (int i = 0; i < Shared.employeeList.Count; i++)
                 {
@@ -173,14 +175,6 @@ namespace Lawnmower.Adapters
             holder.NotesImage.Click -= NotesClick;
             holder.CancelImage.Click -= CancelClick;
             holder.CancelImage.Click -= FinishClick;
-
-            //try
-            //{
-            //    holder.CancelImage.Click -= CancelClick;
-            //} catch (Exception ex)
-            //{
-            //    holder.CancelImage.Click -= FinishClick;
-            //}
         }
 
         private void AssignJobOpen(object sender, EventArgs e)

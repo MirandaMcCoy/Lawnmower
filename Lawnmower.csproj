@@ -170,6 +170,7 @@
   <ItemGroup>
     <Compile Include="Adapters\JobListAdapterAdmin.cs" />
     <Compile Include="Adapters\JobListAdapter.cs" />
+    <Compile Include="ForgotPassword.cs" />
     <Compile Include="MenuFragment.cs" />
     <Compile Include="EditJobActivity.cs" />
     <Compile Include="JobListActivityAdmin.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="ViewHolders\ForgotPasswordViewHolder.cs" />
     <Compile Include="ViewHolders\MenuViewHolder.cs" />
     <Compile Include="ViewHolders\EditJobViewHolder.cs" />
     <Compile Include="ViewHolders\NotesViewHolder.cs" />
@@ -231,6 +233,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\MenuFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ForgotPasswordFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -344,6 +349,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\menuBar.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\menuBar.png" />
+    <AndroidResource Include="Resources\drawable\dot.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\dot.png" />
     <Content Include="Resources\mipmap\icon.png" />
     <Content Include="Resources\mipmap-hdpi\icon.png" />
     <Content Include="Resources\mipmap-mdpi\icon.png" />

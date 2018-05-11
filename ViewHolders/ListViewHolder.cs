@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Widget;
 
@@ -23,5 +24,6 @@ namespace Lawnmower.ViewHolders
         public ImageView MenuImage { get; set; }
         public MenuFragment MenuFragment {get; set;}
         public AlertBoxActivity AlertBox { get; set; }
+        public SwipeRefreshLayout SwipeRefresh { get; set; }
     }
 }

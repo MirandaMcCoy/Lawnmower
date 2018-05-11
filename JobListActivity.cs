@@ -13,6 +13,7 @@ using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
 using System.Collections.Generic;
 using Firebase.Auth;
+using Android.Support.V4.Widget;
 
 namespace Lawnmower
 {
@@ -54,6 +55,7 @@ namespace Lawnmower
             holder.MenuImage = FindViewById<ImageView>(Resource.Id.MenuBar);
             holder.MenuFragment = FragmentManager.FindFragmentById<MenuFragment>(Resource.Id.MenuMenu);
             holder.AlertBox = FragmentManager.FindFragmentById<AlertBoxActivity>(Resource.Id.AlertBoxFragment);
+            holder.SwipeRefresh = FindViewById<SwipeRefreshLayout>(Resource.Id.SwipeRefresh);
         }
 
         public void SetViewAdapter()
@@ -85,16 +87,27 @@ namespace Lawnmower
         private void AssignClickEvents()
         {
             holder.MenuImage.Click += OpenMenu;
+            holder.SwipeRefresh.Refresh += RefreshJobList;
         }
 
         private void UnassignClickEvents()
         {
             holder.MenuImage.Click -= OpenMenu;
+            holder.SwipeRefresh.Refresh -= RefreshJobList;
         }
 
         private void OpenMenu(object sender, EventArgs e)
         {
             FragmentManager.BeginTransaction().Show(holder.MenuFragment).Commit();
+        }
+
+        private void RefreshJobList(object sender, EventArgs e)
+        {
+            var swipe = (SwipeRefreshLayout)sender;
+
+            Shared.GetJobsAsync(this);
+
+            swipe.Refreshing = false;
         }
 
         #endregion

@@ -136,11 +136,7 @@ namespace Lawnmower.Adapters
             }
             catch
             {
-                using (Toast alert = Toast.MakeText(this.context, "No maps application found", ToastLength.Short))
-                {
-                    alert.Show();
-                }
-
+                ((JobListActivity)context).ShowAlert(context.Resources.GetString(Resource.String.no_maps_application));
             }
         }
 

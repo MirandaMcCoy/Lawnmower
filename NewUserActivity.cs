@@ -131,10 +131,13 @@ namespace Lawnmower
                         }
                         catch (Exception ex)
                         {
-                            // Sign-up failed, display a message to the user
-                            // If sign in succeeds, the AuthState event handler will
-                            //  be notified and logic to handle the signed in user can happen there
-                            Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+                            holder.AlertBox.SetAlert(Resources.GetString(Resource.String.sign_in_failed));
+                            FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+
+                            holder.UsernameEdit.Text = String.Empty;
+                            holder.PasswordEdit.Text = String.Empty;
+                            holder.VerifyPasswordEdit.Text = String.Empty;
+
                             AssignClickEvents();
                         }
                         finally
@@ -143,14 +146,18 @@ namespace Lawnmower
                         }
                     } else
                     {
-                        Toast.MakeText(this, "Passwords must contain a letter, a number, and can not have any spaces.", ToastLength.Short).Show();
+                        holder.AlertBox.SetAlert(Resources.GetString(Resource.String.password_does_not_meet_reqs));
+                        FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+
                         holder.PasswordEdit.Text = String.Empty;
                         holder.VerifyPasswordEdit.Text = String.Empty;
                     }
                 }
                 else
                 {
-                    Toast.MakeText(this, "Passwords must be at least 8 characters", ToastLength.Short).Show();
+                    holder.AlertBox.SetAlert(Resources.GetString(Resource.String.password_does_not_meet_length));
+                    FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+
                     holder.PasswordEdit.Text = String.Empty;
                     holder.VerifyPasswordEdit.Text = String.Empty;
                 }
@@ -158,7 +165,9 @@ namespace Lawnmower
             }
             else
             {
-                Toast.MakeText(this, "Passwords Must Match!", ToastLength.Short).Show();
+                holder.AlertBox.SetAlert(Resources.GetString(Resource.String.mismatched_passwords));
+                FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+
                 holder.PasswordEdit.Text = String.Empty;
                 holder.VerifyPasswordEdit.Text = String.Empty;
                 

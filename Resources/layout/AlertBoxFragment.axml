@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     android:layout_width="0dp"
     android:layout_weight="9"
-    android:padding="@dimen/alert_box_padding"
+    android:layout_margin="@dimen/alert_box_padding"
     android:background="@color/white"
     android:textSize="15sp"
     android:textColor="@color/black"

@@ -112,6 +112,12 @@ namespace Lawnmower
                 base.OnBackPressed();
             }
         }
+
+        public void ShowAlert(string alert)
+        {
+            holder.AlertBox.SetAlert(alert);
+            FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+        }
     }
 }
 

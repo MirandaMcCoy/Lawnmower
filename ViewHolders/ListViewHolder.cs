@@ -22,5 +22,6 @@ namespace Lawnmower.ViewHolders
         public EditJobActivity EditJobFragment { get; set; }
         public ImageView MenuImage { get; set; }
         public MenuFragment MenuFragment {get; set;}
+        public AlertBoxActivity AlertBox { get; set; }
     }
 }

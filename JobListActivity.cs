@@ -53,6 +53,7 @@ namespace Lawnmower
             holder.NotesFragment = FragmentManager.FindFragmentById<NotesActivity>(Resource.Id.NotesMenu);
             holder.MenuImage = FindViewById<ImageView>(Resource.Id.MenuBar);
             holder.MenuFragment = FragmentManager.FindFragmentById<MenuFragment>(Resource.Id.MenuMenu);
+            holder.AlertBox = FragmentManager.FindFragmentById<AlertBoxActivity>(Resource.Id.AlertBoxFragment);
         }
 
         public void SetViewAdapter()
@@ -97,6 +98,12 @@ namespace Lawnmower
         }
 
         #endregion
+
+        public void ShowAlert(string alert)
+        {
+            holder.AlertBox.SetAlert(alert);
+            FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+        }
     }
 }
 

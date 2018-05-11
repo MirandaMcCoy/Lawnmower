@@ -31,6 +31,8 @@ namespace Lawnmower
         private bool passwordContainsLetter = false;
         private bool passwordContainsNum = false;
         private bool passwordContainsSpace = false;
+        private bool checkPassword = true;
+        private bool checkEmail = true;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -79,100 +81,135 @@ namespace Lawnmower
 
         private async void CreateAccountClick(object sender, EventArgs e)
         {
-            // Verify that there is not an account with that username in the db
-            // If there is, alert the user
-
-            if (holder.PasswordEdit.Text == holder.VerifyPasswordEdit.Text)
+            if (holder.FirstNameEdit.Text == String.Empty
+                || holder.LastNameEdit.Text == String.Empty
+                || holder.UsernameEdit.Text == String.Empty
+                || holder.PasswordEdit.Text == String.Empty
+                || holder.VerifyPasswordEdit.Text == String.Empty)
             {
-                if (holder.PasswordEdit.Text.Length >= minPasswordLength)
+                holder.AlertBox.SetAlert(Resources.GetString(Resource.String.fill_out_all_fields));
+                FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+                checkEmail = false;
+                checkPassword = false;
+            } else
+            {
+                checkEmail = true;
+                checkPassword = true;
+            }
+
+
+            if (checkEmail)
+            {
+                // Check email isn't used already
+                var users = await Shared.firebaseClient.Child(Shared.fbUser).OnceAsync<Objects.User>();
+
+                for (int i = 0; i < users.Count; i++)
                 {
-                    var passwordChars = holder.PasswordEdit.Text.ToCharArray();
-
-                    for (int i = 0; i < passwordChars.Length; i++)
+                    if (users.ElementAt(i).Object.Email == holder.UsernameEdit.Text)
                     {
-                        var chara = passwordChars[i];
-                        if((chara >= 'A' && chara <= 'Z') || (chara >= 'a' && chara <= 'z'))
-                        {
-                            passwordContainsLetter = true;
-                        }
+                        checkPassword = false; // Don't bother checking password
 
-                        if((chara >= '0' && chara <= '9'))
-                        {
-                            passwordContainsNum = true;
-                        }
-
-                        if ((chara == ' '))
-                        {
-                            passwordContainsSpace = true;
-                        }
+                        holder.AlertBox.SetAlert(Resources.GetString(Resource.String.username_taken));
+                        FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
                     }
+                }
+            }
 
-                    if (passwordContainsNum && passwordContainsLetter && !passwordContainsSpace)
+
+            if (checkPassword) // If email wasn't used yet, check password
+            {
+                if (holder.PasswordEdit.Text == holder.VerifyPasswordEdit.Text)
+                {
+                    if (holder.PasswordEdit.Text.Length >= minPasswordLength)
                     {
-                        ProgressDialog dialog = new ProgressDialog(this);
-                        dialog.SetMessage("Creating user...");
-                        dialog.Indeterminate = true;
-                        dialog.SetCancelable(false);
-                        dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+                        var passwordChars = holder.PasswordEdit.Text.ToCharArray();
 
-                        try
+                        for (int i = 0; i < passwordChars.Length; i++)
                         {
-                            dialog.Show();
-                            UnassignClickEvents(); // So user cannot spam the button
+                            var chara = passwordChars[i];
+                            if ((chara >= 'A' && chara <= 'Z') || (chara >= 'a' && chara <= 'z'))
+                            {
+                                passwordContainsLetter = true;
+                            }
 
-                            await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
-                            CreateUser();
-                            Shared.CheckIfAdmin();
+                            if ((chara >= '0' && chara <= '9'))
+                            {
+                                passwordContainsNum = true;
+                            }
 
-                            StartActivity(typeof(JobListActivity));
-
-                            Finish();
-
+                            if ((chara == ' '))
+                            {
+                                passwordContainsSpace = true;
+                            }
                         }
-                        catch (Exception ex)
+
+                        if (passwordContainsNum && passwordContainsLetter && !passwordContainsSpace)
                         {
-                            holder.AlertBox.SetAlert(Resources.GetString(Resource.String.sign_in_failed));
+                            ProgressDialog dialog = new ProgressDialog(this);
+                            dialog.SetMessage("Creating user...");
+                            dialog.Indeterminate = true;
+                            dialog.SetCancelable(false);
+                            dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
+                            try
+                            {
+                                dialog.Show();
+                                UnassignClickEvents(); // So user cannot spam the button
+
+                                await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(holder.UsernameEdit.Text, holder.PasswordEdit.Text);
+                                CreateUser();
+                                Shared.CheckIfAdmin();
+
+                                StartActivity(typeof(JobListActivity));
+
+                                Finish();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                holder.AlertBox.SetAlert(Resources.GetString(Resource.String.sign_in_failed));
+                                FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+
+                                holder.UsernameEdit.Text = String.Empty;
+                                holder.PasswordEdit.Text = String.Empty;
+                                holder.VerifyPasswordEdit.Text = String.Empty;
+
+                                AssignClickEvents();
+                            }
+                            finally
+                            {
+                                dialog.Hide();
+                            }
+                        }
+                        else
+                        {
+                            holder.AlertBox.SetAlert(Resources.GetString(Resource.String.password_does_not_meet_reqs));
                             FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
 
-                            holder.UsernameEdit.Text = String.Empty;
                             holder.PasswordEdit.Text = String.Empty;
                             holder.VerifyPasswordEdit.Text = String.Empty;
-
-                            AssignClickEvents();
                         }
-                        finally
-                        {
-                            dialog.Hide();
-                        }
-                    } else
+                    }
+                    else
                     {
-                        holder.AlertBox.SetAlert(Resources.GetString(Resource.String.password_does_not_meet_reqs));
+                        holder.AlertBox.SetAlert(Resources.GetString(Resource.String.password_does_not_meet_length));
                         FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
 
                         holder.PasswordEdit.Text = String.Empty;
                         holder.VerifyPasswordEdit.Text = String.Empty;
                     }
+
                 }
                 else
                 {
-                    holder.AlertBox.SetAlert(Resources.GetString(Resource.String.password_does_not_meet_length));
+                    holder.AlertBox.SetAlert(Resources.GetString(Resource.String.mismatched_passwords));
                     FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
 
                     holder.PasswordEdit.Text = String.Empty;
                     holder.VerifyPasswordEdit.Text = String.Empty;
-                }
-                
-            }
-            else
-            {
-                holder.AlertBox.SetAlert(Resources.GetString(Resource.String.mismatched_passwords));
-                FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
 
-                holder.PasswordEdit.Text = String.Empty;
-                holder.VerifyPasswordEdit.Text = String.Empty;
-                
+                }
             }
-            
         }
 #endregion
         private async void CreateUser()

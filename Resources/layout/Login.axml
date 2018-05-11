@@ -45,18 +45,43 @@
       android:textSize="@dimen/login_button_text_size"
       android:background="@color/white"
       android:textColor="@color/gray1"/>
-    <TextView
-      android:id="@+id/NewUserText"
+    <LinearLayout
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:layout_marginTop="@dimen/login_new_user_margin"
-      android:text="@string/new_user_text"
-      android:textSize="@dimen/login_new_user_text_size"
-      android:textColor="@color/cloudy_blue" />
+      android:gravity="center"
+      android:layout_marginTop="@dimen/login_new_user_margin">
+      <TextView
+        android:id="@+id/NewUserText"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="@dimen/login_new_user_margin_right"
+        android:text="@string/new_user_text"
+        android:textSize="@dimen/login_new_user_text_size"
+        android:textColor="@color/cloudy_blue" />
+      <ImageView
+        android:layout_width="@dimen/login_dot_size"
+        android:layout_height="@dimen/login_dot_size"
+        android:src="@drawable/dot"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/login_new_user_margin_right"/>
+      <TextView
+        android:id="@+id/ForgotPasswordText"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/forgot_password_text"
+        android:textSize="@dimen/login_new_user_text_size"
+        android:textColor="@color/cloudy_blue" />
+    </LinearLayout>
   </LinearLayout>
   <fragment
     android:name="lawnmower.AlertBoxActivity"
     android:id="@+id/AlertBoxFragment"
     android:layout_width="match_parent"
     android:layout_height="@dimen/alert_box_height"/>
+  <fragment
+    android:name="lawnmower.ForgotPassword"
+    android:id="@+id/ForgotPasswordFragment"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 </FrameLayout>

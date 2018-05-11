@@ -58,6 +58,8 @@ namespace Lawnmower
             holder.LoginButton = FindViewById<Button>(Resource.Id.LoginButton);
             holder.NewUserText = FindViewById<TextView>(Resource.Id.NewUserText);
             holder.AlertBox = FragmentManager.FindFragmentById<AlertBoxActivity>(Resource.Id.AlertBoxFragment);
+            holder.ForgotPasswordText = FindViewById<TextView>(Resource.Id.ForgotPasswordText);
+            holder.ForgotPasswordFragment = FragmentManager.FindFragmentById<ForgotPassword>(Resource.Id.ForgotPasswordFragment);
         }
 
         #region Click Events
@@ -65,12 +67,14 @@ namespace Lawnmower
         {
             holder.LoginButton.Click += LoginClick;
             holder.NewUserText.Click += NewUserClick;
+            holder.ForgotPasswordText.Click += ForgotPasswordClick;
         }
 
         private void UnassignClickEvents()
         {
             holder.LoginButton.Click -= LoginClick;
             holder.NewUserText.Click -= NewUserClick;
+            holder.ForgotPasswordText.Click -= ForgotPasswordClick;
         }
 
         private async void LoginClick(object sender, EventArgs e)
@@ -120,6 +124,11 @@ namespace Lawnmower
         private void NewUserClick(object sender, EventArgs e)
         {
             StartActivity(typeof(NewUserActivity));
+        }
+
+        private void ForgotPasswordClick(object sender, EventArgs e)
+        {
+            FragmentManager.BeginTransaction().Show(holder.ForgotPasswordFragment).Commit();
         }
         
 #endregion

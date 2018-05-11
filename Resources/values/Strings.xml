@@ -19,7 +19,7 @@
   <string name="incorrect_username">The username you entered already exists.</string>
   <string name="incorrect_password">The password you entered was incorrect.</string>
   <string name="mismatched_passwords">The passwords you entered did not match.</string>
-  <string name="username_taken">The username you entered has already been taken.</string>
+  <string name="username_taken">The email you entered has already been used.</string>
   <string name="sign_in_failed">Sign in failed. Please try again.</string>
   <string name="password_does_not_meet_reqs">Password must contain a letter and a number and cannot have any spaces.</string>
   <string name="password_does_not_meet_length">Password must be at least 8 characters long.</string>

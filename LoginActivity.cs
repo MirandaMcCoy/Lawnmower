@@ -106,7 +106,9 @@ namespace Lawnmower
                 // Sign-in failed, display a message to the user
                 // If sign in succeeds, the AuthState event handler will
                 //  be notified and logic to handle the signed in user can happen there
-                Toast.MakeText(this, "Sign In failed", ToastLength.Short).Show();
+                holder.AlertBox.SetAlert(Resources.GetString(Resource.String.sign_in_failed));
+                FragmentManager.BeginTransaction().Show(holder.AlertBox).Commit();
+
                 AssignClickEvents();
             }
             finally

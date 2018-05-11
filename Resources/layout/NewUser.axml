@@ -86,5 +86,5 @@
     android:name="lawnmower.AlertBoxActivity"
     android:id="@+id/AlertBoxFragment"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/alert_box_height"/>
+    android:layout_height="wrap_content"/>
 </FrameLayout>

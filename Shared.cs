@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -150,7 +151,7 @@ namespace Lawnmower
                 }
                 catch(Exception ex)
                 {
-                    Toast.MakeText(context, "There was a problem retrieving jobs.", ToastLength.Long).Show();
+                    ((JobListActivityAdmin)context).ShowAlert(context.Resources.GetString(Resource.String.failed_to_load_jobs));
                 }
                 finally
                 {
@@ -201,7 +202,7 @@ namespace Lawnmower
                 }
                 catch (Exception ex)
                 {
-                    Toast.MakeText(context, ex.ToString(), ToastLength.Long).Show();
+                    ((JobListActivity)context).ShowAlert(context.Resources.GetString(Resource.String.failed_to_load_jobs));
                 }
                 finally
                 {
